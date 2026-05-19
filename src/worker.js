@@ -1,6 +1,7 @@
-// _worker.js — module worker entry for cascadelocalseo.com
-// Routes /audit and /audits/<id> to Supabase edge functions.
-// Falls back to static asset serving for everything else.
+// cascadelocalseo.com Worker
+// - /audit and /audit?prospect=N  → proxies to Supabase self-audit function
+// - /audits/<id>                   → proxies to Supabase render-audit function
+// - everything else                → static assets from ./public via env.ASSETS
 
 const SUPABASE_SELF_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/self-audit";
 const SUPABASE_RENDER_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-audit";
@@ -59,7 +60,6 @@ export default {
       return proxyRenderAudit(auditMatch[1]);
     }
 
-    // Static assets fallback (index.html, etc.)
     if (env.ASSETS && typeof env.ASSETS.fetch === "function") {
       return env.ASSETS.fetch(request);
     }
