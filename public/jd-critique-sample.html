@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample JD & KPI Critique — Demonstration of Methodology</title>
+  <meta name="description" content="A sample job description critique and KPI review demonstrating the methodology, depth, and turn-around quality you can expect.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d1e16;
+      --ink-soft: #4a5e54;
+      --ink-faint: #7d8e83;
+      --green: #0a6b3f;
+      --green-dark: #0a3d24;
+      --green-tint: #ecf3ee;
+      --bg: #f7f5f0;
+      --paper: #ffffff;
+      --border: #d8e0d9;
+      --red: #b8341c;
+      --red-tint: #fbe9e5;
+      --warn: #b86e00;
+      --good: #1e7e4a;
+      --max: 820px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+    .nav { background: var(--green-dark); color: #fff; padding: 16px 0; }
+    .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
+    .nav .logo { font-weight: 700; font-size: 15px; letter-spacing: 0.3px; color: #fff; text-decoration: none; }
+    .nav .logo .dot { color: #b6e2c5; }
+    .nav .right { font-size: 12px; color: #c9dac9; letter-spacing: 1.5px; text-transform: uppercase; }
+
+    .hero {
+      background: linear-gradient(180deg, #fdfbf6 0%, var(--bg) 100%);
+      padding: 56px 0 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .eyebrow {
+      font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--green); font-weight: 600; margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Lora', Georgia, serif; font-weight: 600;
+      font-size: 38px; line-height: 1.15; color: var(--ink);
+      margin: 0 0 14px; letter-spacing: -0.01em;
+    }
+    .lede { font-size: 18px; color: var(--ink-soft); max-width: 640px; margin: 0; line-height: 1.55; }
+
+    section { padding: 36px 0; }
+    section + section { border-top: 1px solid var(--border); }
+    h2 {
+      font-family: 'Lora', Georgia, serif; font-weight: 600;
+      font-size: 28px; line-height: 1.2; color: var(--green-dark);
+      margin: 0 0 8px; letter-spacing: -0.01em;
+    }
+    h3 {
+      font-family: 'Lora', Georgia, serif; font-weight: 600;
+      font-size: 20px; color: var(--ink);
+      margin: 22px 0 10px; letter-spacing: -0.005em;
+    }
+    h4 {
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px;
+      color: var(--green-dark); margin: 20px 0 8px;
+      letter-spacing: 0.1px; text-transform: uppercase;
+    }
+    .section-sub { color: var(--ink-soft); margin: 0 0 22px; font-size: 16px; }
+    p { margin: 10px 0 14px; }
+    ul, ol { margin: 10px 0 16px; padding-left: 22px; }
+    li { margin: 6px 0; }
+    li::marker { color: var(--green); }
+
+    .toc {
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: 10px; padding: 22px 26px; margin: 24px 0 0;
+    }
+    .toc-title {
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--green); font-weight: 600; margin-bottom: 12px;
+    }
+    .toc ol { margin: 0; padding-left: 22px; }
+    .toc li { margin: 6px 0; font-size: 15px; }
+    .toc a { color: var(--ink); text-decoration: none; }
+    .toc a:hover { color: var(--green); }
+
+    .sample-doc {
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: 10px; padding: 28px 32px; margin: 14px 0 22px;
+      font-size: 15px; line-height: 1.65;
+    }
+    .sample-doc h5 {
+      font-family: 'Lora', serif; font-size: 18px; font-weight: 600;
+      color: var(--ink); margin: 18px 0 6px;
+    }
+    .sample-doc h5:first-child { margin-top: 0; }
+    .sample-doc .meta { color: var(--ink-soft); font-size: 13px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+
+    .annot { background: var(--paper); border: 1px solid var(--border); border-radius: 10px; margin: 14px 0; overflow: hidden; }
+    .annot-line { display: grid; grid-template-columns: 50px 1fr; border-bottom: 1px solid var(--border); }
+    .annot-line:last-child { border-bottom: none; }
+    .annot-num { background: #f4f8f5; padding: 14px 10px; text-align: center; font-size: 12px; color: var(--ink-faint); font-family: 'Inter', monospace; border-right: 1px solid var(--border); }
+    .annot-body { padding: 14px 20px; }
+    .annot-orig { color: var(--ink-soft); margin-bottom: 6px; font-size: 14px; }
+    .annot-orig .strike { text-decoration: line-through; text-decoration-color: var(--red); color: var(--red); background: var(--red-tint); padding: 0 3px; }
+    .annot-new { color: var(--ink); font-weight: 500; margin: 6px 0; }
+    .annot-new .add { background: #e0f2e7; color: var(--good); padding: 0 3px; border-radius: 2px; }
+    .annot-note { color: var(--ink-soft); font-size: 13.5px; font-style: italic; margin: 8px 0 0; padding-top: 8px; border-top: 1px dashed var(--border); }
+
+    .verdict {
+      background: var(--green-tint); border-left: 4px solid var(--green);
+      padding: 18px 22px; margin: 14px 0; border-radius: 0 8px 8px 0;
+    }
+    .verdict .label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-dark); font-weight: 700; margin-bottom: 6px; }
+    .verdict p { margin: 4px 0; color: #1f2e26; font-size: 15px; }
+
+    .kpi-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; background: var(--paper); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .kpi-table th { background: var(--green-tint); padding: 12px 14px; text-align: left; color: var(--green-dark); font-weight: 600; font-size: 13px; }
+    .kpi-table td { padding: 12px 14px; border-top: 1px solid var(--border); vertical-align: top; }
+    .kpi-table td.keep { background: #f0f9f3; color: var(--good); font-weight: 600; }
+    .kpi-table td.fix { background: #fef6ed; color: var(--warn); font-weight: 600; }
+    .kpi-table td.drop { background: var(--red-tint); color: var(--red); font-weight: 600; }
+    .kpi-table td.add { background: #e0f2e7; color: var(--good); font-weight: 600; }
+
+    .four-focal {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+      margin: 18px 0;
+    }
+    @media (max-width: 640px) { .four-focal { grid-template-columns: 1fr; } }
+    .focal {
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: 10px; padding: 22px 24px;
+    }
+    .focal .head { font-family: 'Lora', serif; font-size: 17px; font-weight: 600; color: var(--green-dark); margin: 0 0 4px; }
+    .focal .score { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; margin-bottom: 10px; }
+    .focal .score.good { color: var(--good); }
+    .focal .score.warn { color: var(--warn); }
+    .focal .score.bad { color: var(--red); }
+    .focal ul { font-size: 14px; margin: 6px 0 0; }
+    .focal li { margin: 4px 0; }
+
+    .methodology {
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: 10px; padding: 26px 30px; margin: 14px 0;
+    }
+    .methodology ol li { margin: 8px 0; }
+    .methodology strong { color: var(--green-dark); }
+
+    .cta {
+      background: var(--green-dark); color: #f3f6f3;
+      border-radius: 12px; padding: 32px 36px; margin: 30px 0 8px;
+    }
+    .cta h3 { color: #fff; margin-top: 0; font-size: 22px; }
+    .cta p { color: #c9dac9; font-size: 15px; line-height: 1.65; margin: 6px 0 16px; }
+    .cta .next { font-size: 14px; color: #b6e2c5; }
+
+    .footer {
+      text-align: center; color: var(--ink-soft); font-size: 12px;
+      padding: 30px 0 50px; letter-spacing: 0.3px;
+    }
+    .footer a { color: var(--green); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 28px; }
+      h2 { font-size: 22px; }
+      .sample-doc { padding: 22px 22px; }
+      .annot-line { grid-template-columns: 40px 1fr; }
+      .annot-num { padding: 12px 6px; font-size: 11px; }
+      .annot-body { padding: 12px 16px; }
+      .cta { padding: 22px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/">Cascade Local SEO<span class="dot">.</span></a>
+    <div class="right">Sample · For review</div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Sample Deliverable · JD &amp; KPI Critique</div>
+    <h1>What you'd get back, before you hire me.</h1>
+    <p class="lede">You asked for a critique — not a rewrite — that highlights what's working, what isn't, and which fixes matter most. Here's what that deliverable actually looks like when I do it, on a sample Marketing Manager job description. Apply the same methodology to your own document and you'll have your annotated draft + 2-page report within 48 hours of you sharing the doc.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="toc">
+    <div class="toc-title">In this sample</div>
+    <ol>
+      <li><a href="#sample">The sample job description (the "before")</a></li>
+      <li><a href="#annot">Annotated critique — line-by-line</a></li>
+      <li><a href="#summary">2-page summary report (the four focal areas)</a></li>
+      <li><a href="#kpi">KPI alignment review</a></li>
+      <li><a href="#methodology">How I'd approach your document</a></li>
+    </ol>
+  </div>
+</div>
+
+<section id="sample">
+  <div class="wrap">
+    <h2>1. The sample JD I'm critiquing</h2>
+    <p class="section-sub">A fictional Marketing Manager role at a 30-person B2B SaaS company. This is the kind of draft that <em>looks</em> finished but has the exact issues you flagged in your own doc: vague duties, redundant points, soft KPI alignment.</p>
+
+    <div class="sample-doc">
+      <h5>Marketing Manager — Acme Cloud Platform</h5>
+      <div class="meta">Full-time · Remote (US) · $90,000–$120,000 + equity · Reports to: VP of Marketing</div>
+
+      <h5>About the role</h5>
+      <p>Acme Cloud is looking for a results-driven Marketing Manager to join our growing team. This is an exciting opportunity for the right candidate to make a real impact in a fast-paced environment. We're a passionate team building the future of cloud infrastructure.</p>
+
+      <h5>Duties and responsibilities</h5>
+      <ul>
+        <li>Drive marketing initiatives across the funnel</li>
+        <li>Develop and execute marketing campaigns</li>
+        <li>Manage marketing programs and projects</li>
+        <li>Work cross-functionally with sales, product, and engineering teams</li>
+        <li>Analyze marketing performance and optimize campaigns</li>
+        <li>Stay current on industry trends and best practices</li>
+        <li>Collaborate with internal stakeholders to align marketing activities with business goals</li>
+        <li>Contribute to overall marketing strategy and planning</li>
+      </ul>
+
+      <h5>Requirements</h5>
+      <ul>
+        <li>5+ years of B2B marketing experience</li>
+        <li>Bachelor's degree in marketing, business, or related field</li>
+        <li>Strong communication and analytical skills</li>
+        <li>Experience with marketing automation tools</li>
+        <li>Self-starter with a positive attitude</li>
+      </ul>
+
+      <h5>What we offer</h5>
+      <ul>
+        <li>Competitive salary and equity</li>
+        <li>Comprehensive health benefits</li>
+        <li>Flexible PTO</li>
+        <li>Remote-friendly culture</li>
+        <li>Great team</li>
+      </ul>
+
+      <h5>KPIs</h5>
+      <ul>
+        <li>Marketing-qualified leads (MQLs) generated</li>
+        <li>Pipeline contribution</li>
+        <li>Brand awareness</li>
+        <li>Campaign ROI</li>
+        <li>Website traffic growth</li>
+        <li>Social media engagement</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="annot">
+  <div class="wrap">
+    <h2>2. Annotated critique — line by line</h2>
+    <p class="section-sub">This is the "track changes" view. Original text on top (red strikethrough = needs cutting/fixing), proposed rewrite below (green = recommended language), with a one-line rationale. In the actual deliverable I send this as a Word .docx with native Track Changes plus inline comments — same content, same rationale, native review tools.</p>
+
+    <h3>Duties &amp; responsibilities — the main concern</h3>
+
+    <div class="annot">
+      <div class="annot-line">
+        <div class="annot-num">1</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Drive marketing initiatives across the funnel</span></div>
+          <div class="annot-new">Suggested: <span class="add">Own demand-gen for the mid-market segment, from first-touch through MQL handoff to sales (target: $X ARR pipeline / quarter).</span></div>
+          <p class="annot-note">"Drive" + "initiatives" + "across the funnel" is three vague abstractions stacked. Without a segment, a handoff point, or a number, this is unfalsifiable — meaning the candidate can't tell whether they're succeeding.</p>
+        </div>
+      </div>
+
+      <div class="annot-line">
+        <div class="annot-num">2</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Develop and execute marketing campaigns</span></div>
+          <div class="annot-new">Suggested: <span class="add">Plan and ship 2–3 integrated campaigns per quarter (e.g., webinar + email sequence + paid promotion + sales enablement), measured against the pipeline target above.</span></div>
+          <p class="annot-note">This was redundant with #1. Specify the cadence and what an integrated campaign actually contains — otherwise candidates will assume "one email blast" satisfies it.</p>
+        </div>
+      </div>
+
+      <div class="annot-line">
+        <div class="annot-num">3</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Manage marketing programs and projects</span></div>
+          <div class="annot-new">Suggested: <em>Delete this line.</em></div>
+          <p class="annot-note">Fully redundant with #1 and #2. "Programs and projects" is the umbrella term that ALL the other duties live under — listing it adds no information and signals to the candidate that the JD wasn't tightened.</p>
+        </div>
+      </div>
+
+      <div class="annot-line">
+        <div class="annot-num">4</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Work cross-functionally with sales, product, and engineering teams</span></div>
+          <div class="annot-new">Suggested: <span class="add">Partner with Sales (weekly MQL pipeline review with AEs) and Product Marketing (monthly persona/messaging refresh based on win/loss data).</span></div>
+          <p class="annot-note">"Work cross-functionally" appears in 90% of B2B JDs and tells the candidate nothing. Specify <em>which</em> teams, <em>what</em> the working ritual is, and <em>what</em> the output looks like.</p>
+        </div>
+      </div>
+
+      <div class="annot-line">
+        <div class="annot-num">5</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Analyze marketing performance and optimize campaigns</span></div>
+          <div class="annot-new">Suggested: <span class="add">Own the weekly marketing dashboard (Hubspot + Looker). Report MQL→SQL conversion, CPL by channel, and campaign attribution every Monday to the leadership team.</span></div>
+          <p class="annot-note">"Analyze and optimize" doesn't say what tooling, what cadence, or who the report goes to. Specifying the dashboard and the audience makes the candidate self-select for someone comfortable reporting up.</p>
+        </div>
+      </div>
+
+      <div class="annot-line">
+        <div class="annot-num">6</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Stay current on industry trends and best practices</span></div>
+          <div class="annot-new">Suggested: <em>Delete.</em></div>
+          <p class="annot-note">This is filler. No serious candidate doesn't do this — it's table stakes for the role, not a duty. Listing it dilutes the duties that actually matter.</p>
+        </div>
+      </div>
+
+      <div class="annot-line">
+        <div class="annot-num">7</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Collaborate with internal stakeholders to align marketing activities with business goals</span></div>
+          <div class="annot-new">Suggested: <em>Delete — covered by the rewritten #4.</em></div>
+          <p class="annot-note">"Collaborate with stakeholders" is a more abstract version of "work cross-functionally" (#4). Cutting it brings the duties list from 8 items down to 5, all concrete.</p>
+        </div>
+      </div>
+
+      <div class="annot-line">
+        <div class="annot-num">8</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Contribute to overall marketing strategy and planning</span></div>
+          <div class="annot-new">Suggested: <span class="add">Co-author the annual marketing plan with the VP and own the quarterly OKR for mid-market demand-gen.</span></div>
+          <p class="annot-note">"Contribute to strategy" reads as filler unless it specifies <em>what</em> they own. Adding the quarterly OKR makes the seniority and accountability legible.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>About the role &amp; "what we offer" — quick fixes</h3>
+
+    <div class="annot">
+      <div class="annot-line">
+        <div class="annot-num">9</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Acme Cloud is looking for a results-driven Marketing Manager to join our growing team. This is an exciting opportunity for the right candidate to make a real impact in a fast-paced environment.</span></div>
+          <div class="annot-new">Suggested: <span class="add">We're hiring a Marketing Manager to own demand-gen for our mid-market segment. You'll join a 6-person marketing team reporting to the VP, with a $400K/yr program budget and full autonomy over channel mix.</span></div>
+          <p class="annot-note">"Results-driven," "exciting opportunity," "real impact," "fast-paced" — every phrase here is a cliché the candidate scans past. Substitute facts: team size, budget, autonomy, who they report to. This is where you lose 40% of qualified candidates if it reads generic.</p>
+        </div>
+      </div>
+
+      <div class="annot-line">
+        <div class="annot-num">10</div>
+        <div class="annot-body">
+          <div class="annot-orig">Original: <span class="strike">Great team</span> (in "What we offer")</div>
+          <div class="annot-new">Suggested: <span class="add">Delete or replace with something concrete (e.g., "Quarterly in-person off-sites in Tahoe; documented async-first culture; founder-led with 18 months of runway")</span></div>
+          <p class="annot-note">Every JD says "great team." Cut it or earn it with specifics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <div class="wrap">
+    <h2>3. Summary report — the four focal areas</h2>
+    <p class="section-sub">This is the 1–2 page report you'd get in the deliverable, summarizing where the JD is strong, where it's weak, and the prioritized fixes. Same four focal areas you requested.</p>
+
+    <div class="four-focal">
+      <div class="focal">
+        <div class="head">Job role clarity</div>
+        <div class="score warn">⚠ Needs work — biggest gap</div>
+        <p>Duties read as 8 separate items but are really 4–5 ideas restated. After the proposed cuts (3 deletions, 5 rewrites), the candidate gets a crisp picture of the role's scope in 30 seconds of reading.</p>
+        <ul>
+          <li>Cut: lines 3, 6, 7 (full redundancy)</li>
+          <li>Rewrite: lines 1, 2, 4, 5, 8 (vague → concrete)</li>
+          <li>Add segment ownership (mid-market) and the quarterly OKR — currently absent</li>
+        </ul>
+      </div>
+
+      <div class="focal">
+        <div class="head">Growth opportunities</div>
+        <div class="score bad">✗ Missing — entirely silent</div>
+        <p>The JD says nothing about what success at 12/24 months looks like, or what role this leads into. Strong candidates filter heavily on growth path — its absence is the second-biggest weakness after duties clarity.</p>
+        <ul>
+          <li>Add a "Growth path" section: 12-month target = full ownership of mid-market segment; 24-month = Sr. Manager or Director if hitting OKRs</li>
+          <li>Mention specific past hires who grew (anonymized if needed): "Our last MM hire promoted to Sr. in 18 months"</li>
+        </ul>
+      </div>
+
+      <div class="focal">
+        <div class="head">Work environment</div>
+        <div class="score warn">⚠ Generic — needs specifics</div>
+        <p>"Remote-friendly culture" + "flexible PTO" + "great team" reads as table stakes. Strong candidates ignore generic descriptions and look for friction signals.</p>
+        <ul>
+          <li>Specify: meeting cadence (X hours/week meetings), async tooling (Linear/Slack/Loom), in-person frequency, time-zone overlap requirement</li>
+          <li>Be honest about pace: "intense for ~3 weeks per quarter at campaign launches; slower otherwise" — beats "fast-paced"</li>
+        </ul>
+      </div>
+
+      <div class="focal">
+        <div class="head">KPI alignment &amp; relevance</div>
+        <div class="score warn">⚠ Half the KPIs don't match the role</div>
+        <p>See the KPI section below for the full breakdown. Headline: 3 of 6 listed KPIs aren't actually under this role's control. Replace with metrics that are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kpi">
+  <div class="wrap">
+    <h2>4. KPI alignment review</h2>
+    <p class="section-sub">Per-KPI verdict on whether the metric (a) reflects this role's actual control, (b) ladders up to revenue, and (c) is measurable without ambiguity.</p>
+
+    <table class="kpi-table">
+      <thead>
+        <tr>
+          <th style="width:22%">KPI</th>
+          <th style="width:14%">Verdict</th>
+          <th>Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Marketing-qualified leads (MQLs) generated</td>
+          <td class="keep">Keep</td>
+          <td>Direct, controllable, ladders to pipeline. Add a numeric target (e.g., 250 MQLs / quarter) so the KPI is binary-checkable.</td>
+        </tr>
+        <tr>
+          <td>Pipeline contribution</td>
+          <td class="keep">Keep</td>
+          <td>This is the right north-star KPI for a Marketing Manager. Specify attribution model (first-touch / multi-touch / sourced vs. influenced) — without that, the metric is contested.</td>
+        </tr>
+        <tr>
+          <td>Brand awareness</td>
+          <td class="drop">Drop</td>
+          <td>Not measurable at this seniority. "Brand awareness" sits at the CMO/VP level with budget for brand tracking studies. A Marketing Manager can influence but not own it.</td>
+        </tr>
+        <tr>
+          <td>Campaign ROI</td>
+          <td class="fix">Rewrite</td>
+          <td>Too generic. Specify which campaigns and what ROI means here: "blended channel CAC for paid programs &lt; $X" is much clearer than "Campaign ROI."</td>
+        </tr>
+        <tr>
+          <td>Website traffic growth</td>
+          <td class="drop">Drop</td>
+          <td>Traffic is a vanity metric for a B2B MM role. Replace with conversion metrics: "Mid-market organic traffic → free-trial conversion rate."</td>
+        </tr>
+        <tr>
+          <td>Social media engagement</td>
+          <td class="drop">Drop</td>
+          <td>Not owned by this role (sits with Content or Brand). Including it dilutes signal and gives candidates a metric they can't move.</td>
+        </tr>
+        <tr>
+          <td>—</td>
+          <td class="add">Add</td>
+          <td><strong>MQL → SQL conversion rate</strong>: lagging indicator of lead quality. Most MMs are judged purely on MQL volume; adding conversion forces a quality focus.</td>
+        </tr>
+        <tr>
+          <td>—</td>
+          <td class="add">Add</td>
+          <td><strong>Campaign cycle time</strong>: weeks from kickoff to launch. Reveals operational maturity — a more diagnostic KPI than ROI alone.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="verdict">
+      <div class="label">Net change</div>
+      <p>6 KPIs → 5 KPIs after the review (2 kept as-is with targets added, 1 rewritten, 3 dropped, 2 added). The new set is fully under the role's control and ladders cleanly to ARR.</p>
+    </div>
+  </div>
+</section>
+
+<section id="methodology">
+  <div class="wrap">
+    <h2>5. How I'd approach your document</h2>
+    <p class="section-sub">Exactly the same methodology — applied to whatever role and KPI sheet you send over.</p>
+
+    <div class="methodology">
+      <ol>
+        <li><strong>Read pass (no edits).</strong> First read is for the role itself — who you're hiring, what they own, what success looks like. I take notes on what's <em>not</em> said as much as what is.</li>
+        <li><strong>Duties audit.</strong> Each duty gets one of four verdicts: keep, rewrite (with proposed language), delete-as-redundant, or split-into-two. Track Changes in Word with comments explaining the call.</li>
+        <li><strong>KPI alignment table.</strong> Per-KPI verdict using the controllability × measurability × revenue-ladder grid (see section 4 above). I add 1–3 KPIs that are missing and ladder better.</li>
+        <li><strong>Four focal-area scoring.</strong> Each of your focal areas gets a one-paragraph verdict + bullet list of prioritized fixes. Scored: ✓ strong / ⚠ needs work / ✗ missing.</li>
+        <li><strong>Prioritized fix list.</strong> The summary report opens with the top 3 highest-leverage changes — usually 1 in duties, 1 in growth path, 1 in KPIs. If you only do 3 things from the critique, do these.</li>
+        <li><strong>Delivery.</strong> You get: (a) your original .docx with native Track Changes + comments, (b) a separate 1.5-page summary report .pdf or .docx (your preference). Turnaround: 48 hours from receiving your doc.</li>
+      </ol>
+    </div>
+
+    <div class="cta">
+      <h3>Ready to apply this to your document?</h3>
+      <p>I'd much rather you see the work first and decide if the depth is what you want, than write you a generic bid pitch. If the methodology above matches what you're after, share your draft JD + KPI sheet through Freelancer chat and I'll have the annotated doc + 2-page summary back to you within 48 hours.</p>
+      <div class="next">Awarded the project? Send the document via the Freelancer message thread. No back-and-forth required — I'll come back with questions only if something's genuinely unclear.</div>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  Sample prepared by <a href="https://cascadelocalseo.com">Jonathan</a> · For prospective client review · Methodology demonstrated on a fictional Marketing Manager role
+</div>
+
+</body>
+</html>
