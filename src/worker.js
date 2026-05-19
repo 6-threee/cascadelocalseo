@@ -27,22 +27,28 @@ async function proxySelfAudit(request, url) {
   }
 
   const upstream = await fetch(target, init);
-  const responseHeaders = new Headers(upstream.headers);
-  responseHeaders.delete("content-security-policy");
-  return new Response(upstream.body, {
+  // Read body as text so we can control the content-type explicitly
+  // (the streaming proxy was downgrading text/html → text/plain somewhere in the chain).
+  const body = await upstream.text();
+  return new Response(body, {
     status: upstream.status,
-    headers: responseHeaders,
+    headers: {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "no-store",
+    },
   });
 }
 
 async function proxyRenderAudit(id) {
   const target = `${SUPABASE_RENDER_AUDIT}?id=${encodeURIComponent(id)}`;
   const upstream = await fetch(target);
-  const responseHeaders = new Headers(upstream.headers);
-  responseHeaders.delete("content-security-policy");
-  return new Response(upstream.body, {
+  const body = await upstream.text();
+  return new Response(body, {
     status: upstream.status,
-    headers: responseHeaders,
+    headers: {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "public, max-age=300",
+    },
   });
 }
 
