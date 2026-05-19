@@ -47,7 +47,7 @@ async function proxyRenderAudit(id) {
     status: upstream.status,
     headers: {
       "content-type": "text/html; charset=utf-8",
-      "cache-control": "public, max-age=300",
+      "cache-control": "no-store, no-cache, must-revalidate",
     },
   });
 }
