@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cascade Local SEO — Free local SEO audits for Central Oregon</title>
+  <meta name="description" content="Free, specific, no-pitch local SEO audits for service businesses in Bend, Redmond, Sisters, Prineville, and Madras. Honest data on where you actually stand.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏔%3C/text%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --ink: #1a202c;
+      --ink-soft: #4a5568;
+      --sand: #faf6f0;
+      --sand-deep: #f3ebde;
+      --terracotta: #c87457;
+      --terracotta-dark: #a05a42;
+      --sage: #6b7a5a;
+      --line: #e2dccf;
+      --pale: #fff;
+      --max: 760px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--sand);
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid currentColor; }
+    a:hover { color: var(--terracotta-dark); }
+    h1, h2, h3 { font-weight: 600; line-height: 1.25; color: var(--ink); }
+    h1 { font-size: 2.4rem; margin: 0 0 0.5em; letter-spacing: -0.02em; }
+    h2 { font-size: 1.7rem; margin: 2.5em 0 0.6em; letter-spacing: -0.01em; }
+    h3 { font-size: 1.15rem; margin: 1.5em 0 0.4em; }
+    p { margin: 0 0 1em; }
+    code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; font-size: 0.92em; background: var(--sand-deep); padding: 1px 6px; border-radius: 4px; }
+    .muted { color: var(--ink-soft); }
+    .small { font-size: 0.9rem; }
+
+    /* Header */
+    header {
+      padding: 26px 0 0;
+    }
+    .logo { display: flex; align-items: baseline; gap: 8px; font-weight: 700; font-size: 1.1rem; }
+    .logo .icon { font-size: 1.3rem; }
+    .logo a { border: none; color: var(--ink); }
+
+    /* Hero + form */
+    .hero { padding: 28px 0 8px; }
+    .hero .tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: var(--sage);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .hero p.lede {
+      font-size: 1.2rem;
+      color: var(--ink-soft);
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    /* Audit form */
+    .form-card {
+      background: var(--pale);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 20px 0 14px;
+    }
+    .form-card h3 { margin-top: 0; margin-bottom: 6px; font-size: 1.1rem; }
+    .form-card .small { color: var(--ink-soft); margin-bottom: 18px; }
+    .form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-row label { font-size: 0.86rem; font-weight: 600; color: var(--ink-soft); }
+    .form-row input, .form-row select {
+      font: inherit;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--pale);
+      color: var(--ink);
+    }
+    .form-row input:focus, .form-row select:focus {
+      outline: none;
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 3px rgba(200, 116, 87, 0.15);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 540px) { .form-grid { grid-template-columns: 1fr; } }
+    button.cta {
+      background: var(--terracotta);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font: inherit;
+      font-weight: 600;
+      border-radius: 7px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.12s;
+    }
+    button.cta:hover { background: var(--terracotta-dark); }
+    button.cta:disabled { background: var(--ink-soft); cursor: wait; }
+    #form-feedback {
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 7px;
+      font-size: 0.92rem;
+      display: none;
+    }
+    #form-feedback.ok { display: block; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    #form-feedback.err { display: block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+    /* Sample audit box */
+    .sample {
+      background: var(--pale);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 14px 0;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      max-height: 360px;
+      overflow-y: auto;
+      color: var(--ink);
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--terracotta);
+      padding: 6px 0;
+      user-select: none;
+    }
+
+    /* Benchmarks table */
+    .bench-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.93rem;
+    }
+    .bench-table th, .bench-table td {
+      padding: 10px 8px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+    .bench-table th {
+      background: var(--sand-deep);
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink-soft);
+    }
+    .bench-table tbody tr:hover { background: var(--sand-deep); }
+    .num { font-variant-numeric: tabular-nums; }
+    .bench-filter {
+      margin: 12px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .bench-filter select { font: inherit; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--pale); }
+
+    /* Pricing */
+    .pricing {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin: 18px 0;
+    }
+    @media (max-width: 640px) { .pricing { grid-template-columns: 1fr; } }
+    .tier {
+      background: var(--pale);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .tier h3 { margin-top: 0; margin-bottom: 4px; }
+    .tier .price { font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+    .tier .price small { font-size: 0.7em; font-weight: 500; color: var(--ink-soft); }
+    .tier ul { padding-left: 20px; margin: 0; font-size: 0.93rem; }
+    .tier ul li { margin-bottom: 6px; color: var(--ink-soft); }
+
+    /* FAQ */
+    .faq details {
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
+    }
+    .faq details summary {
+      font-size: 1rem;
+      color: var(--ink);
+      list-style: revert;
+    }
+    .faq details summary::-webkit-details-marker { color: var(--terracotta); }
+    .faq details p {
+      color: var(--ink-soft);
+      margin: 8px 0 4px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      padding: 32px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <span class="icon">🏔</span>
+      <a href="/">Cascade Local SEO</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="tag">Central Oregon · Free audits</div>
+    <h1>Free local SEO audits for service businesses in Bend, Redmond, Sisters, Prineville, and Madras.</h1>
+    <p class="lede">Tell me your business. I'll send back a one-page audit with three specific things I noticed, what I'd do about them, and an honest visibility forecast. No pitch attached. Most audits land in your inbox within 24 hours.</p>
+
+    <form class="form-card" id="audit-form">
+      <h3>Request your audit</h3>
+      <p class="small">No spam. No call required. Just a useful report.</p>
+
+      <div class="form-row">
+        <label for="business_name">Business name</label>
+        <input type="text" id="business_name" name="business_name" required placeholder="e.g. Drew Family Dentistry">
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="city">City</label>
+          <select id="city" name="city" required>
+            <option value="">Choose</option>
+            <option>Bend</option>
+            <option>Redmond</option>
+            <option>Sisters</option>
+            <option>Prineville</option>
+            <option>Madras</option>
+            <option>Other Central Oregon</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="industry">Industry</label>
+          <select id="industry" name="industry" required>
+            <option value="">Choose</option>
+            <option value="dentist">Dentist</option>
+            <option value="lawyer">Lawyer / law firm</option>
+            <option value="hvac">HVAC</option>
+            <option value="plumber">Plumber</option>
+            <option value="roofer">Roofer</option>
+            <option value="other">Other service business</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email (where to send the audit)</label>
+        <input type="email" id="email" name="email" required placeholder="you@yourbusiness.com">
+      </div>
+
+      <button class="cta" type="submit" id="submit-btn">Send me my audit</button>
+      <div id="form-feedback"></div>
+    </form>
+
+    <p class="small muted">⏱ Audits are personalized, not auto-generated boilerplate. I check your actual ranking, your actual review profile, and your top three competitors in your area.</p>
+  </section>
+
+  <section>
+    <h2>What you'll get back</h2>
+    <p>Roughly a one-page report. Real numbers, no fluff, no sales angle. Here's a real example from a Bend lawyer I audited last week (name changed):</p>
+
+    <details>
+      <summary>↓ See a sample audit</summary>
+      <div class="sample"># Local SEO Audit: Allen Law Firm
+
+*Bend, Oregon — 2026-05-17*
+
+## Your Current Position
+- **Google rating**: 4.1★ from 7 reviews
+- **Current rank for "lawyer"**: position #9
+- **Top 3 in your area for this search**:
+  1. Bryant Emerson & Fitch
+  2. Francis Hansen & Martin LLP
+  3. Kaiser Johnston Keathley LLP
+
+## What's Working
+You're already ranking on page 1. That's harder than it sounds — most lawyers in your area aren't.
+
+## Where You're Losing Visibility
+
+1. **Review volume**: You have 7 reviews. The top 3 in your area average 60 reviews. Google weights review volume heavily for local pack visibility — this is the single biggest gap.
+
+2. **Rating threshold**: Your 4.1★ is below the 4.3★ threshold Google uses to filter the top-3 pack. Top businesses in your area average 4.85★.
+
+3. **Local pack position**: You're #9 — page 1 but outside the top 3 that capture ~70% of clicks. The gap is closeable.
+
+## What I'd Do Next (Free — No Pitch)
+
+1. **Week 1-2**: Send a review request to your last 30 happy clients. Goal: 5-10 new reviews this month.
+2. **Week 3-6**: Respond professionally to your existing reviews — Google rewards engagement.
+3. **Week 7-8**: Ensure your Google Business Profile has all services listed, weekly posts, and 10+ photos updated in the last 90 days.
+
+## Estimated Visibility Impact
+Closing these gaps would likely move you from #9 toward the top 3 for "lawyer Bend" — the businesses ranking there have higher rating (4.85★ avg) and far more reviews (60 avg).
+
+---
+*Prepared 2026-05-17 by Jonathan. This audit is free — no follow-up unless you reply. Questions? Just hit reply.*</div>
+    </details>
+  </section>
+
+  <section>
+    <h2>Free: how your industry actually performs in Central Oregon</h2>
+    <p>Median rating and review count for service businesses I've benchmarked across the five biggest Central Oregon cities. Pulled from public Google Maps data. Updated monthly.</p>
+
+    <div class="bench-filter">
+      <select id="bench-city">
+        <option value="">All cities</option>
+        <option>Bend</option><option>Redmond</option><option>Sisters</option><option>Prineville</option><option>Madras</option>
+      </select>
+      <select id="bench-industry">
+        <option value="">All industries</option>
+        <option>dentist</option><option>lawyer</option><option>hvac</option><option>plumber</option><option>roofer</option>
+      </select>
+    </div>
+
+    <table class="bench-table" id="bench-table">
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>Industry</th>
+          <th class="num">Median ★</th>
+          <th class="num">Median reviews</th>
+          <th class="num">Top 25% reviews</th>
+          <th class="num">Businesses</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Bend</td><td>Dentist</td><td class="num">4.90</td><td class="num">373</td><td class="num">634</td><td class="num">20</td></tr>
+        <tr><td>Bend</td><td>HVAC</td><td class="num">4.85</td><td class="num">179</td><td class="num">590</td><td class="num">20</td></tr>
+        <tr><td>Bend</td><td>Lawyer</td><td class="num">4.85</td><td class="num">60</td><td class="num">95</td><td class="num">20</td></tr>
+        <tr><td>Bend</td><td>Plumber</td><td class="num">4.90</td><td class="num">154</td><td class="num">362</td><td class="num">17</td></tr>
+        <tr><td>Bend</td><td>Roofer</td><td class="num">4.90</td><td class="num">44</td><td class="num">93</td><td class="num">20</td></tr>
+        <tr><td>Redmond</td><td>Dentist</td><td class="num">4.90</td><td class="num">262</td><td class="num">370</td><td class="num">20</td></tr>
+        <tr><td>Redmond</td><td>HVAC</td><td class="num">4.95</td><td class="num">55</td><td class="num">115</td><td class="num">16</td></tr>
+        <tr><td>Redmond</td><td>Lawyer</td><td class="num">5.00</td><td class="num">10</td><td class="num">41</td><td class="num">11</td></tr>
+        <tr><td>Redmond</td><td>Plumber</td><td class="num">5.00</td><td class="num">17</td><td class="num">31</td><td class="num">15</td></tr>
+        <tr><td>Redmond</td><td>Roofer</td><td class="num">4.90</td><td class="num">17</td><td class="num">32</td><td class="num">15</td></tr>
+        <tr><td>Sisters</td><td>Dentist</td><td class="num">4.90</td><td class="num">104</td><td class="num">113</td><td class="num">3</td></tr>
+        <tr><td>Sisters</td><td>HVAC</td><td class="num">4.95</td><td class="num">11</td><td class="num">68</td><td class="num">4</td></tr>
+        <tr><td>Sisters</td><td>Lawyer</td><td class="num">4.75</td><td class="num">30</td><td class="num">97</td><td class="num">6</td></tr>
+        <tr><td>Sisters</td><td>Plumber</td><td class="num">5.00</td><td class="num">18</td><td class="num">20</td><td class="num">4</td></tr>
+        <tr><td>Sisters</td><td>Roofer</td><td class="num">5.00</td><td class="num">10</td><td class="num">17</td><td class="num">8</td></tr>
+        <tr><td>Prineville</td><td>Dentist</td><td class="num">4.90</td><td class="num">20</td><td class="num">59</td><td class="num">11</td></tr>
+        <tr><td>Prineville</td><td>HVAC</td><td class="num">5.00</td><td class="num">24</td><td class="num">48</td><td class="num">13</td></tr>
+        <tr><td>Prineville</td><td>Lawyer</td><td class="num">4.50</td><td class="num">6</td><td class="num">10</td><td class="num">9</td></tr>
+        <tr><td>Prineville</td><td>Plumber</td><td class="num">4.90</td><td class="num">9</td><td class="num">15</td><td class="num">13</td></tr>
+        <tr><td>Prineville</td><td>Roofer</td><td class="num">5.00</td><td class="num">10</td><td class="num">10</td><td class="num">9</td></tr>
+        <tr><td>Madras</td><td>Dentist</td><td class="num">4.60</td><td class="num">5</td><td class="num">53</td><td class="num">9</td></tr>
+        <tr><td>Madras</td><td>HVAC</td><td class="num">5.00</td><td class="num">5</td><td class="num">6</td><td class="num">3</td></tr>
+        <tr><td>Madras</td><td>Lawyer</td><td class="num">4.90</td><td class="num">9</td><td class="num">12</td><td class="num">5</td></tr>
+        <tr><td>Madras</td><td>Plumber</td><td class="num">3.00</td><td class="num">6</td><td class="num">8</td><td class="num">2</td></tr>
+        <tr><td>Madras</td><td>Roofer</td><td class="num">5.00</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr>
+      </tbody>
+    </table>
+    <p class="small muted">Read this as: to be competitive for "dentist" in Bend, you probably need a 4.9★ rating and at least ~370 reviews. Below that, you're not making the top 3 pack. (Numbers update as new businesses get tracked.)</p>
+  </section>
+
+  <section>
+    <h2>If you want to hire me after the audit</h2>
+    <p>Most of what's in the audit, you can do yourself in 60 days. If you'd rather not, here's what working together looks like — flat monthly, no contracts.</p>
+
+    <div class="pricing">
+      <div class="tier">
+        <h3>Starter</h3>
+        <div class="price">$500<small>/mo</small></div>
+        <ul>
+          <li>Track 10 keywords</li>
+          <li>Monthly performance report</li>
+          <li>Drafted review responses</li>
+          <li>Weekly GBP post drafts</li>
+          <li>Email + Slack alerts on rank drops</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Standard</h3>
+        <div class="price">$800<small>/mo</small></div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Track 25 keywords</li>
+          <li>Competitor movement tracking</li>
+          <li>Monthly content brief for your blog</li>
+          <li>Quarterly 30-min strategy call</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Full retainer</h3>
+        <div class="price">$1,500<small>/mo</small></div>
+        <ul>
+          <li>Everything in Standard</li>
+          <li>Track 50 keywords</li>
+          <li>Two pieces of optimized content/mo</li>
+          <li>Citation cleanup + directory pushes</li>
+          <li>Monthly review call</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small muted">Cancel any time. No setup fees. Most clients see top-3 movement within 90 days. If you don't, I'll keep working until you do.</p>
+  </section>
+
+  <section>
+    <h2>Who I am</h2>
+    <p>I'm Jonathan, a one-person operation based in Central Oregon. I run a system of automated routines that handle the rank tracking, review monitoring, content drafting, and reporting — the work most agencies overcharge for and do by hand. That means I can keep prices reasonable and take on more clients per week than a typical SEO consultant.</p>
+    <p>This page exists because cold-pitching local businesses on SEO services feels gross. I'd rather show you the data, give you a real audit, and let you decide whether you want help executing on it. Most don't. That's fine.</p>
+  </section>
+
+  <section class="faq">
+    <h2>FAQ</h2>
+
+    <details>
+      <summary>How does the audit actually work?</summary>
+      <p>You submit your business. My system pulls your current rank, review profile, and the top 3 competitors in your area for your primary keyword. I write up three specific gaps and three specific actions. You get the audit by email, usually within 24 hours, sometimes within an hour.</p>
+    </details>
+
+    <details>
+      <summary>Why is the audit free?</summary>
+      <p>Two reasons. First, it's mostly automated — it costs me about a dollar to generate. Second, most cold sales feel terrible because they ask before they give. I'd rather give first. If the audit is useful and you want help executing on it, hire me. If not, no harm done.</p>
+    </details>
+
+    <details>
+      <summary>I'm not a dentist/lawyer/HVAC/plumber/roofer. Can you still help?</summary>
+      <p>Probably yes, but the automated benchmarks I show on this page only cover those industries right now. If you're a vet, a med spa, an auto shop, a real estate agent, anything with local search demand — submit anyway. The audit logic adapts.</p>
+    </details>
+
+    <details>
+      <summary>Are you actually in Central Oregon?</summary>
+      <p>Yes. I work remotely but operate locally. Most of my clients are in the Bend/Redmond corridor.</p>
+    </details>
+
+    <details>
+      <summary>How fast can I expect results?</summary>
+      <p>For most local pack improvements: 30-90 days. Reviews compound; one strong review month moves the needle. Top-3 ranking changes typically happen in months 2-4 once the basics are fixed. If your business is brand new with no GBP listing, the timeline doubles. I'll be honest about timing in your audit.</p>
+    </details>
+
+    <details>
+      <summary>What if I already have an SEO agency?</summary>
+      <p>Get the audit anyway. Use it to ask your agency hard questions. If they're doing their job, they'll appreciate the second set of eyes. If not, you'll know.</p>
+    </details>
+
+    <details>
+      <summary>Will you spam me?</summary>
+      <p>No. The audit comes once. If you don't reply, you'll get one short check-in a week later and one final note a week after that. Then I stop and you never hear from me again. Three emails total, max.</p>
+    </details>
+
+    <details>
+      <summary>Do you sign contracts?</summary>
+      <p>Month-to-month only. If I can't keep delivering value, you should be able to leave.</p>
+    </details>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong>Cascade Local SEO</strong> · Central Oregon · built by Jonathan
+    </div>
+    <div>
+      <a href="mailto:hello@cascadelocalseo.com">hello@cascadelocalseo.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Benchmark table filter
+  const cityFilter = document.getElementById('bench-city');
+  const industryFilter = document.getElementById('bench-industry');
+  const benchRows = document.querySelectorAll('#bench-table tbody tr');
+  function applyFilter() {
+    const c = cityFilter.value.toLowerCase();
+    const i = industryFilter.value.toLowerCase();
+    benchRows.forEach(r => {
+      const cells = r.querySelectorAll('td');
+      const rowCity = cells[0].textContent.toLowerCase();
+      const rowInd = cells[1].textContent.toLowerCase();
+      r.style.display = (!c || rowCity === c) && (!i || rowInd === i) ? '' : 'none';
+    });
+  }
+  cityFilter.addEventListener('change', applyFilter);
+  industryFilter.addEventListener('change', applyFilter);
+
+  // Form submission
+  const form = document.getElementById('audit-form');
+  const feedback = document.getElementById('form-feedback');
+  const btn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    feedback.className = '';
+    feedback.textContent = '';
+
+    const payload = {
+      business_name: form.business_name.value.trim(),
+      city: form.city.value,
+      industry: form.industry.value,
+      email: form.email.value.trim().toLowerCase(),
+      submitted_at: new Date().toISOString(),
+      source: 'cascadelocalseo.com',
+    };
+
+    try {
+      const r = await fetch('https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/audit-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const j = await r.json();
+      if (j.success) {
+        feedback.className = 'ok';
+        feedback.textContent = '✓ Thanks. Your audit is queued. Check ' + payload.email + ' within 24 hours. If you don\'t see it, check spam.';
+        form.reset();
+      } else {
+        feedback.className = 'err';
+        feedback.textContent = '✗ Something went wrong: ' + (j.error || 'unknown error') + '. Email hello@cascadelocalseo.com and I\'ll handle it manually.';
+      }
+    } catch (err) {
+      feedback.className = 'err';
+      feedback.textContent = '✗ Network error. Email hello@cascadelocalseo.com and I\'ll handle it manually.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send me my audit';
+    }
+  });
+</script>
+
+</body>
+</html>
