@@ -384,8 +384,58 @@
       font-weight: 500;
       color: var(--ink-soft);
     }
-    .tier ul { padding-left: 20px; margin: 0; font-size: 0.92rem; }
+    .tier ul { padding-left: 20px; margin: 0 0 18px; font-size: 0.92rem; }
     .tier ul li { margin-bottom: 7px; color: var(--ink-soft); }
+    .tier .cta {
+      display: block;
+      text-align: center;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      border-bottom: none;
+      transition: background 0.15s;
+    }
+    .tier .cta:hover { background: var(--green-dark); color: #fff; }
+    .tier .cta-secondary {
+      background: var(--paper);
+      color: var(--green-dark);
+      border: 1px solid var(--border);
+    }
+    .tier .cta-secondary:hover { background: var(--green-tint); color: var(--green-dark); border-color: var(--green); }
+    .tier.recommended {
+      border-color: var(--green);
+      border-width: 2px;
+      position: relative;
+    }
+    .tier.recommended::before {
+      content: "Most popular";
+      position: absolute;
+      top: -10px;
+      left: 18px;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    .portal-line {
+      text-align: center;
+      margin-top: 26px;
+      font-size: 0.88rem;
+      color: var(--ink-faint);
+    }
+    .portal-line a {
+      color: var(--ink-soft);
+      border-bottom: 1px dotted currentColor;
+    }
+    .portal-line a:hover { color: var(--green); border-bottom-color: var(--green); }
 
     /* FAQ */
     .faq details {
@@ -607,41 +657,44 @@
     <p>Most of what's in the audit, you can execute yourself in 60 days. If you'd rather not, here's what working together looks like — flat monthly, no contracts.</p>
 
     <div class="pricing">
-      <div class="tier">
+      <div class="tier recommended">
         <h3>Starter</h3>
         <div class="price">$500<small>/mo</small></div>
         <ul>
-          <li>Track 10 keywords</li>
-          <li>Monthly performance report</li>
-          <li>Drafted review responses</li>
-          <li>Weekly GBP post drafts</li>
-          <li>Email + Slack alerts on rank drops</li>
+          <li>Daily review monitoring + drafted responses</li>
+          <li>2× weekly GBP posts (Tues + Thurs)</li>
+          <li>Monthly progress report (1st of month)</li>
+          <li>One-time citation cleanup across 30-40 directory sites in your first 30 days</li>
+          <li>Rank tracking on your top keywords + alerts</li>
         </ul>
+        <a class="cta" href="https://buy.stripe.com/00w4gB1Ozdm8eZ96rq0co00">Start Starter — $500/mo →</a>
       </div>
       <div class="tier">
         <h3>Standard</h3>
         <div class="price">$800<small>/mo</small></div>
         <ul>
           <li>Everything in Starter</li>
-          <li>Track 25 keywords</li>
-          <li>Competitor movement tracking</li>
-          <li>Monthly content brief for your blog</li>
-          <li>Quarterly 30-min strategy call</li>
+          <li>3× weekly GBP posts (Mon + Wed + Fri)</li>
+          <li>Bi-weekly competitor scan with specific actions</li>
+          <li>Quarterly keyword expansion (5 new long-tail keywords every 90 days)</li>
         </ul>
+        <a class="cta cta-secondary" href="https://buy.stripe.com/9B600l64Pa9W9EPaHG0co01">Start Standard — $800/mo →</a>
       </div>
       <div class="tier">
         <h3>Full retainer</h3>
         <div class="price">$1,500<small>/mo</small></div>
         <ul>
           <li>Everything in Standard</li>
-          <li>Track 50 keywords</li>
-          <li>Two pieces of optimized content/mo</li>
-          <li>Citation cleanup + directory pushes</li>
-          <li>Monthly review call</li>
+          <li>5× weekly GBP posts (every weekday)</li>
+          <li>Weekly content briefs + 2 SEO blog posts written for you each month (1,500-2,500 words)</li>
+          <li>Bi-monthly reports (1st + 15th)</li>
+          <li>Monthly 30-min strategy call</li>
         </ul>
+        <a class="cta cta-secondary" href="https://buy.stripe.com/cNicN764P2Hu9EP5nm0co02">Start Full — $1,500/mo →</a>
       </div>
     </div>
-    <p class="small muted">Cancel any time. No setup fees. Most clients see top-3 movement within 90 days. If you don't, I'll keep working until you do.</p>
+    <p class="small muted">Month-to-month. Cancel anytime. No setup fees. Stripe Customer Portal lets you update your card or cancel yourself — no calls required.</p>
+    <p class="portal-line">Already a customer? <a href="https://billing.stripe.com/p/login/00w4gB1Ozdm8eZ96rq0co00">Manage your subscription →</a></p>
   </section>
 
   <section>
