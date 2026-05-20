@@ -5,6 +5,7 @@
 
 const SUPABASE_SELF_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/self-audit";
 const SUPABASE_RENDER_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-audit";
+const SUPABASE_APPROVE_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/approve-audit";
 
 async function proxySelfAudit(request, url) {
   const target = `${SUPABASE_SELF_AUDIT}${url.search}`;
@@ -52,6 +53,19 @@ async function proxyRenderAudit(id) {
   });
 }
 
+async function proxyApproveAudit(url) {
+  const target = `${SUPABASE_APPROVE_AUDIT}${url.search}`;
+  const upstream = await fetch(target);
+  const body = await upstream.text();
+  return new Response(body, {
+    status: upstream.status,
+    headers: {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "no-store",
+    },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -59,6 +73,10 @@ export default {
 
     if (path === "/audit") {
       return proxySelfAudit(request, url);
+    }
+
+    if (path === "/approve") {
+      return proxyApproveAudit(url);
     }
 
     const auditMatch = path.match(/^\/audits\/(\d+)$/);
