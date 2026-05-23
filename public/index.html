@@ -347,6 +347,71 @@
     .bench-table tbody tr:hover { background: var(--green-pale); }
     .num { font-variant-numeric: tabular-nums; }
 
+    /* How this works */
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0 14px;
+    }
+    @media (max-width: 720px) { .how-grid { grid-template-columns: 1fr; } }
+    .how-step {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 22px 22px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .how-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      font-family: 'Lora', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .how-step h3 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+    .how-step p {
+      color: var(--ink-soft);
+      font-size: 0.93rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .how-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .how-footer {
+      background: var(--green-tint);
+      border-left: 3px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 22px;
+      margin: 22px 0 0;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    .how-footer strong { color: var(--green-dark); }
+
     /* Pricing */
     .pricing {
       display: grid;
@@ -590,6 +655,36 @@
         <a class="sample-cta-link" href="/audit">Take the full self-audit →</a>
       </div>
     </article>
+  </section>
+
+  <section>
+    <h2>How this works</h2>
+    <p>The work most SEO agencies bill $2,500–$5,000/mo for — daily review monitoring, weekly GBP posts, citation cleanup, rank tracking, content drafts, monthly reports — most of it is repetitive. Repetitive work is what software does well. Strategy still needs a human. Here's the split.</p>
+
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <span class="how-tag">Week 1</span>
+        <h3>Discovery + onboarding</h3>
+        <p>You take the 5-minute self-audit. I review every submission personally and reply within 24 hours. If we work together, week one sets up your tracked keywords, GBP audit, citation baseline, and brand voice — all from what you told me on the form.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <span class="how-tag">Daily, ongoing</span>
+        <h3>Automated delivery</h3>
+        <p>From day one, automated systems handle the recurring work: monitoring your GBP for new reviews and drafting responses, generating GBP posts in your voice, tracking rank changes, scanning competitors, building out citations. The work happens on schedule — your tier sets the cadence.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <span class="how-tag">Before publish + monthly</span>
+        <h3>Human review + reporting</h3>
+        <p>Nothing publishes without me reviewing it first. Drafted review responses, GBP posts, content briefs — they all hit my queue before they hit your customers. On the 1st of every month you get a real progress report: rank changes, review-count delta, what moved, what's next.</p>
+      </div>
+    </div>
+
+    <div class="how-footer">
+      <strong>This is why I can charge $1,000–$4,000/mo instead of $2,500–$5,000.</strong> Automation does the labor. I do the strategy and the quality bar. Same playbook as the bigger agencies — fraction of the cost, faster turnaround, no account-manager markup.
+    </div>
   </section>
 
   <section>
