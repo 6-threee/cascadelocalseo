@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cascade Local SEO — Free local SEO audits for Central Oregon</title>
-  <meta name="description" content="Free, specific, no-pitch local SEO audits for service businesses in Bend, Redmond, Sisters, Prineville, and Madras. Honest data on where you actually stand.">
+  <title>Cascade Local SEO — Free local SEO audits</title>
+  <meta name="description" content="Free, specific, no-pitch local SEO audits for service businesses. Honest data on where you actually stand and what to do about it.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -479,14 +479,14 @@
 <nav class="nav">
   <div class="nav-inner">
     <a class="logo" href="/">Cascade Local SEO<span class="dot">.</span></a>
-    <div class="meta">Central Oregon</div>
+    <div class="meta">Local SEO audits</div>
   </div>
 </nav>
 
 <div class="hero">
   <div class="wrap">
-    <div class="tag">Central Oregon · Free audits</div>
-    <h1>Free local SEO audits for service businesses in Bend, Redmond, Sisters, Prineville, and Madras.</h1>
+    <div class="tag">Free local SEO audits</div>
+    <h1>A specific, no-pitch local SEO audit for your service business.</h1>
     <p class="lede">Tell me your business. I send back a one-page audit with three specific gaps, the data behind them, and a 60-day action plan. No pitch attached. Most audits land within 24 hours.</p>
 
     <form class="form-card" id="audit-form">
@@ -501,20 +501,14 @@
       <div class="form-grid">
         <div class="form-row">
           <label for="city">City</label>
-          <select id="city" name="city" required>
-            <option value="">Choose</option>
-            <option>Bend</option>
-            <option>Redmond</option>
-            <option>Sisters</option>
-            <option>Prineville</option>
-            <option>Madras</option>
-            <option>Other Central Oregon</option>
-          </select>
+          <input type="text" id="city" name="city" required placeholder="e.g. Phoenix, AZ">
         </div>
         <div class="form-row">
           <label for="industry">Industry</label>
           <select id="industry" name="industry" required>
             <option value="">Choose</option>
+            <option value="chiropractor">Chiropractor</option>
+            <option value="med_spa">Med spa / aesthetics</option>
             <option value="dentist">Dentist</option>
             <option value="lawyer">Lawyer / law firm</option>
             <option value="hvac">HVAC</option>
@@ -546,13 +540,13 @@
 
   <section>
     <h2>What you'll get back</h2>
-    <p>Roughly a one-page audit. Real numbers from your actual Google Business Profile + SerpAPI competitor data — no fluff, no sales angle. Below is an example layout. Yours will be specific to your real numbers and Central Oregon competitors.</p>
+    <p>Roughly a one-page audit. Real numbers from your actual Google Business Profile + live competitor data — no fluff, no sales angle. Below is an example layout. Yours will be specific to your real numbers and the businesses competing with you for top-3 visibility.</p>
 
     <article class="sample-preview">
       <header class="sample-header">
         <div class="sample-eyebrow">Sample audit · format preview</div>
         <h3 class="sample-title">Pinecrest Family Dental</h3>
-        <p class="sample-sub">Dentist in Bend, Oregon · <em>(example business — not a real prospect)</em></p>
+        <p class="sample-sub">Family dentistry · <em>(example business — not a real prospect)</em></p>
       </header>
 
       <div class="sample-stats">
@@ -593,63 +587,6 @@
         <a class="sample-cta-link" href="/audit">Take the full self-audit →</a>
       </div>
     </article>
-  </section>
-
-  <section>
-    <h2>How your industry actually performs in Central Oregon</h2>
-    <p>Median rating and review count for service businesses I've benchmarked across the five biggest Central Oregon cities. Pulled from public Google Maps data. Updated monthly.</p>
-
-    <div class="bench-filter">
-      <select id="bench-city">
-        <option value="">All cities</option>
-        <option>Bend</option><option>Redmond</option><option>Sisters</option><option>Prineville</option><option>Madras</option>
-      </select>
-      <select id="bench-industry">
-        <option value="">All industries</option>
-        <option>dentist</option><option>lawyer</option><option>hvac</option><option>plumber</option><option>roofer</option>
-      </select>
-    </div>
-
-    <table class="bench-table" id="bench-table">
-      <thead>
-        <tr>
-          <th>City</th>
-          <th>Industry</th>
-          <th class="num">Median ★</th>
-          <th class="num">Median reviews</th>
-          <th class="num">Top 25% reviews</th>
-          <th class="num">Businesses</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Bend</td><td>Dentist</td><td class="num">4.90</td><td class="num">373</td><td class="num">634</td><td class="num">20</td></tr>
-        <tr><td>Bend</td><td>HVAC</td><td class="num">4.85</td><td class="num">179</td><td class="num">590</td><td class="num">20</td></tr>
-        <tr><td>Bend</td><td>Lawyer</td><td class="num">4.85</td><td class="num">60</td><td class="num">95</td><td class="num">20</td></tr>
-        <tr><td>Bend</td><td>Plumber</td><td class="num">4.90</td><td class="num">154</td><td class="num">362</td><td class="num">17</td></tr>
-        <tr><td>Bend</td><td>Roofer</td><td class="num">4.90</td><td class="num">44</td><td class="num">93</td><td class="num">20</td></tr>
-        <tr><td>Redmond</td><td>Dentist</td><td class="num">4.90</td><td class="num">262</td><td class="num">370</td><td class="num">20</td></tr>
-        <tr><td>Redmond</td><td>HVAC</td><td class="num">4.95</td><td class="num">55</td><td class="num">115</td><td class="num">16</td></tr>
-        <tr><td>Redmond</td><td>Lawyer</td><td class="num">5.00</td><td class="num">10</td><td class="num">41</td><td class="num">11</td></tr>
-        <tr><td>Redmond</td><td>Plumber</td><td class="num">5.00</td><td class="num">17</td><td class="num">31</td><td class="num">15</td></tr>
-        <tr><td>Redmond</td><td>Roofer</td><td class="num">4.90</td><td class="num">17</td><td class="num">32</td><td class="num">15</td></tr>
-        <tr><td>Sisters</td><td>Dentist</td><td class="num">4.90</td><td class="num">104</td><td class="num">113</td><td class="num">3</td></tr>
-        <tr><td>Sisters</td><td>HVAC</td><td class="num">4.95</td><td class="num">11</td><td class="num">68</td><td class="num">4</td></tr>
-        <tr><td>Sisters</td><td>Lawyer</td><td class="num">4.75</td><td class="num">30</td><td class="num">97</td><td class="num">6</td></tr>
-        <tr><td>Sisters</td><td>Plumber</td><td class="num">5.00</td><td class="num">18</td><td class="num">20</td><td class="num">4</td></tr>
-        <tr><td>Sisters</td><td>Roofer</td><td class="num">5.00</td><td class="num">10</td><td class="num">17</td><td class="num">8</td></tr>
-        <tr><td>Prineville</td><td>Dentist</td><td class="num">4.90</td><td class="num">20</td><td class="num">59</td><td class="num">11</td></tr>
-        <tr><td>Prineville</td><td>HVAC</td><td class="num">5.00</td><td class="num">24</td><td class="num">48</td><td class="num">13</td></tr>
-        <tr><td>Prineville</td><td>Lawyer</td><td class="num">4.50</td><td class="num">6</td><td class="num">10</td><td class="num">9</td></tr>
-        <tr><td>Prineville</td><td>Plumber</td><td class="num">4.90</td><td class="num">9</td><td class="num">15</td><td class="num">13</td></tr>
-        <tr><td>Prineville</td><td>Roofer</td><td class="num">5.00</td><td class="num">10</td><td class="num">10</td><td class="num">9</td></tr>
-        <tr><td>Madras</td><td>Dentist</td><td class="num">4.60</td><td class="num">5</td><td class="num">53</td><td class="num">9</td></tr>
-        <tr><td>Madras</td><td>HVAC</td><td class="num">5.00</td><td class="num">5</td><td class="num">6</td><td class="num">3</td></tr>
-        <tr><td>Madras</td><td>Lawyer</td><td class="num">4.90</td><td class="num">9</td><td class="num">12</td><td class="num">5</td></tr>
-        <tr><td>Madras</td><td>Plumber</td><td class="num">3.00</td><td class="num">6</td><td class="num">8</td><td class="num">2</td></tr>
-        <tr><td>Madras</td><td>Roofer</td><td class="num">5.00</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr>
-      </tbody>
-    </table>
-    <p class="small muted">Read this as: to be competitive for "dentist" in Bend, you probably need a 4.9★ rating and at least ~370 reviews. Below that, you're not making the top 3 pack. Numbers update as new businesses get tracked.</p>
   </section>
 
   <section>
@@ -699,7 +636,7 @@
 
   <section>
     <h2>Who I am</h2>
-    <p>I'm Jonathan, a one-person operation based in Central Oregon. I run a system of automated routines that handle the rank tracking, review monitoring, content drafting, and reporting — the work most agencies overcharge for and do by hand. That means I can keep prices reasonable and take on more clients than a typical SEO consultant.</p>
+    <p>I'm Jonathan, a one-person operation. I run a system of automated routines that handle the rank tracking, review monitoring, content drafting, and reporting — the work most agencies overcharge for and do by hand. That means I can keep prices reasonable and take on more clients than a typical SEO consultant.</p>
     <p>This page exists because cold-pitching local businesses on SEO services feels gross. I'd rather show you the data, give you a real audit, and let you decide whether you want help executing on it. Most don't. That's fine.</p>
   </section>
 
@@ -717,13 +654,8 @@
     </details>
 
     <details>
-      <summary>I'm not a dentist/lawyer/HVAC/plumber/roofer. Can you still help?</summary>
-      <p>Probably yes, but the automated benchmarks I show on this page only cover those industries right now. If you're a vet, a med spa, an auto shop, a real estate agent, anything with local search demand — submit anyway. The audit logic adapts.</p>
-    </details>
-
-    <details>
-      <summary>Are you actually in Central Oregon?</summary>
-      <p>Yes. I work remotely but operate locally. Most of my clients are in the Bend/Redmond corridor.</p>
+      <summary>I'm not a chiropractor/dentist/HVAC/lawyer/etc. Can you still help?</summary>
+      <p>Yes. The audit logic adapts to any service business with local search demand — vets, med spas, auto shops, real estate agents, gyms, salons, accountants. If your customers find you on Google Maps, the same playbook applies.</p>
     </details>
 
     <details>
@@ -752,7 +684,7 @@
 <footer>
   <div class="wrap">
     <div>
-      <strong>Cascade Local SEO</strong> · Central Oregon · built by Jonathan
+      <strong>Cascade Local SEO</strong> · built by Jonathan
     </div>
     <div>
       <a href="mailto:jonathan@cascadelocalseo.com">jonathan@cascadelocalseo.com</a>
@@ -761,23 +693,6 @@
 </footer>
 
 <script>
-  // Benchmark table filter
-  const cityFilter = document.getElementById('bench-city');
-  const industryFilter = document.getElementById('bench-industry');
-  const benchRows = document.querySelectorAll('#bench-table tbody tr');
-  function applyFilter() {
-    const c = cityFilter.value.toLowerCase();
-    const i = industryFilter.value.toLowerCase();
-    benchRows.forEach(r => {
-      const cells = r.querySelectorAll('td');
-      const rowCity = cells[0].textContent.toLowerCase();
-      const rowInd = cells[1].textContent.toLowerCase();
-      r.style.display = (!c || rowCity === c) && (!i || rowInd === i) ? '' : 'none';
-    });
-  }
-  cityFilter.addEventListener('change', applyFilter);
-  industryFilter.addEventListener('change', applyFilter);
-
   // Form submission
   const form = document.getElementById('audit-form');
   const feedback = document.getElementById('form-feedback');
