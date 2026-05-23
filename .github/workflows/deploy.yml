@@ -21,4 +21,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # wrangler reads ./wrangler.jsonc automatically; nothing else to specify
+          wranglerVersion: "4"
+          command: deploy --verbose
+          # wrangler reads ./wrangler.jsonc automatically
