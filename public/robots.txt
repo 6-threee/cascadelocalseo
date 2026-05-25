@@ -4,3 +4,4 @@ Disallow: /dashboard
 Disallow: /approve
 
 Sitemap: https://cascadelocalseo.com/sitemap.xml
+Sitemap: https://cascadelocalseo.com/blog/sitemap.xml

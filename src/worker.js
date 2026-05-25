@@ -7,6 +7,7 @@ const SUPABASE_SELF_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/
 const SUPABASE_RENDER_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-audit";
 const SUPABASE_APPROVE_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/approve-audit";
 const SUPABASE_DASHBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/dashboard";
+const SUPABASE_RENDER_BLOG = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-blog";
 
 async function proxySelfAudit(request, url) {
   const target = `${SUPABASE_SELF_AUDIT}${url.search}`;
@@ -81,6 +82,23 @@ async function proxyDashboard(url) {
   });
 }
 
+async function proxyRenderBlog(path) {
+  let target;
+  if (path === "/blog") target = `${SUPABASE_RENDER_BLOG}?mode=index`;
+  else if (path === "/blog/sitemap.xml") target = `${SUPABASE_RENDER_BLOG}?mode=sitemap`;
+  else target = `${SUPABASE_RENDER_BLOG}?mode=post&slug=${encodeURIComponent(path.slice("/blog/".length))}`;
+  const upstream = await fetch(target);
+  const body = await upstream.text();
+  const isXml = path === "/blog/sitemap.xml";
+  return new Response(body, {
+    status: upstream.status,
+    headers: {
+      "content-type": isXml ? "application/xml; charset=utf-8" : "text/html; charset=utf-8",
+      "cache-control": "public, max-age=300",
+    },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -105,6 +123,10 @@ export default {
       return new Response("google-site-verification: google9fa7c234c0ae307a.html", {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
+    }
+
+    if (path === "/blog" || path.startsWith("/blog/")) {
+      return proxyRenderBlog(path);
     }
 
     const auditMatch = path.match(/^\/audits\/(\d+)$/);
