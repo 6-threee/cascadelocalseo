@@ -82,19 +82,22 @@ async function proxyDashboard(url) {
   });
 }
 
-async function proxyRenderBlog(path) {
+async function proxyRenderBlog(path, url) {
   let target;
   if (path === "/blog") target = `${SUPABASE_RENDER_BLOG}?mode=index`;
   else if (path === "/blog/sitemap.xml") target = `${SUPABASE_RENDER_BLOG}?mode=sitemap`;
+  else if (path === "/blog/approve") target = `${SUPABASE_RENDER_BLOG}?mode=approve&${url.searchParams.toString()}`;
+  else if (path.startsWith("/blog/preview/")) target = `${SUPABASE_RENDER_BLOG}?mode=post&preview=1&slug=${encodeURIComponent(path.slice("/blog/preview/".length))}`;
   else target = `${SUPABASE_RENDER_BLOG}?mode=post&slug=${encodeURIComponent(path.slice("/blog/".length))}`;
   const upstream = await fetch(target);
   const body = await upstream.text();
   const isXml = path === "/blog/sitemap.xml";
+  const noCache = path === "/blog/approve" || path.startsWith("/blog/preview/");
   return new Response(body, {
     status: upstream.status,
     headers: {
       "content-type": isXml ? "application/xml; charset=utf-8" : "text/html; charset=utf-8",
-      "cache-control": "public, max-age=300",
+      "cache-control": noCache ? "no-store" : "public, max-age=300",
     },
   });
 }
@@ -126,7 +129,7 @@ export default {
     }
 
     if (path === "/blog" || path.startsWith("/blog/")) {
-      return proxyRenderBlog(path);
+      return proxyRenderBlog(path, url);
     }
 
     const auditMatch = path.match(/^\/audits\/(\d+)$/);
