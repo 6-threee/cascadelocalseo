@@ -8,6 +8,7 @@ from __future__ import annotations
 import os
 from PIL import Image, ImageDraw, ImageFont
 from generate_favicon import draw_mark
+from generate_vertical_pages import VERTICALS
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "public")
 os.makedirs(OUT_DIR, exist_ok=True)
@@ -108,16 +109,9 @@ def main():
         "A free, specific local SEO audit.",
         "Where you actually rank, your three biggest gaps, and a 60-day plan. No pitch attached.",
     )
-    make_card(
-        "og-med-spas.png",
-        "Local SEO for med spas.",
-        "Get into the Google map pack for the treatment searches that actually book.",
-    )
-    make_card(
-        "og-chiropractors.png",
-        "Local SEO for chiropractors.",
-        "Own “chiropractor near me” in your town and win the new-patient searches.",
-    )
+    # One card per vertical, driven by the same source of truth as the pages.
+    for slug, v in VERTICALS.items():
+        make_card(f"og-{slug}.png", v["og_headline"], v["og_subline"])
 
 
 if __name__ == "__main__":
