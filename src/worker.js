@@ -98,6 +98,15 @@ export default {
       return proxyDashboard(url);
     }
 
+    // Google Search Console verification. Served straight from the Worker so the
+    // exact .html path returns 200 — static-asset html_handling would otherwise
+    // redirect /<file>.html → /<file>, which Google's file verifier rejects.
+    if (path === "/google9fa7c234c0ae307a.html") {
+      return new Response("google-site-verification: google9fa7c234c0ae307a.html", {
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+    }
+
     const auditMatch = path.match(/^\/audits\/(\d+)$/);
     if (auditMatch) {
       return proxyRenderAudit(auditMatch[1]);
