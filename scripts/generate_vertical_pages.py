@@ -712,6 +712,7 @@ def render(slug, v):
         starter=STARTER_LINK, standard=STANDARD_LINK,
         mailto_suffix=v["mailto_suffix"].replace(" ", "%20"), mailto_biz=v["mailto_biz"].replace(" ", "%20"),
     )
+    ai_noun = v["nav_meta"].replace("Local SEO for ", "")
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -851,6 +852,11 @@ def render(slug, v):
     <div class="how-footer">
       <strong>Same playbook as the bigger agencies — a fraction of the cost.</strong> Automation does the labor, I hold the quality bar, and you don't pay an account-manager markup.
     </div>
+  </section>
+
+  <section>
+    <h2>Built for how people search now</h2>
+    <p>More and more, customers don't scroll — they ask Google's AI or an assistant for the best {ai_noun} near them and trust whatever it answers. Those AI answers are built from the same signals as the map pack: your Google Business Profile, your reviews, and consistent business data. I tune for both, so you're the one that gets <strong>found and recommended</strong> — not just ranked.</p>
   </section>
 
 {pricing}
