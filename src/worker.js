@@ -8,6 +8,7 @@ const SUPABASE_RENDER_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/function
 const SUPABASE_APPROVE_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/approve-audit";
 const SUPABASE_DASHBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/dashboard";
 const SUPABASE_RENDER_BLOG = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-blog";
+const SUPABASE_GENERATE_SCHEMA = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/generate-schema";
 
 async function proxySelfAudit(request, url) {
   const target = `${SUPABASE_SELF_AUDIT}${url.search}`;
@@ -102,10 +103,34 @@ async function proxyRenderBlog(path, url) {
   });
 }
 
+// /schema?prospect_id=N (or ?client_id / direct params) → the AI-Ready Schema
+// Package deliverable. Forces format=html and serves it under the brand domain so
+// the audit's "Preview your structured data" link is on-brand (and renders for
+// everyone, including HTTPS-inspected machines that mangle raw supabase.co HTML).
+async function proxySchema(url) {
+  const params = new URLSearchParams(url.search);
+  params.set("format", "html");
+  const target = `${SUPABASE_GENERATE_SCHEMA}?${params.toString()}`;
+  const upstream = await fetch(target);
+  const body = await upstream.text();
+  return new Response(body, {
+    status: upstream.status,
+    headers: {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "no-store",
+      "x-robots-tag": "noindex, nofollow",
+    },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
+
+    if (path === "/schema") {
+      return proxySchema(url);
+    }
 
     if (path === "/audit") {
       return proxySelfAudit(request, url);
