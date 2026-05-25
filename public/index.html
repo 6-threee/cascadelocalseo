@@ -523,6 +523,40 @@
     }
     .portal-line a:hover { color: var(--green); border-bottom-color: var(--green); }
 
+    /* Foundations one-time on-ramp */
+    .foundations {
+      background: var(--green-dark);
+      color: #eaf3ec;
+      border-radius: 12px;
+      padding: 26px 28px;
+      margin: 22px 0 28px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+    @media (max-width: 640px) { .foundations { grid-template-columns: 1fr; gap: 18px; } }
+    .foundations .f-eyebrow {
+      font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #9ed3b1; font-weight: 600; margin-bottom: 8px;
+    }
+    .foundations h3 {
+      font-family: 'Lora', Georgia, serif; font-size: 1.35rem; font-weight: 600;
+      color: #fff; margin: 0 0 10px;
+    }
+    .foundations ul { margin: 0; padding-left: 18px; font-size: 0.9rem; }
+    .foundations ul li { margin-bottom: 6px; color: #cfe3d5; }
+    .foundations .f-buy { text-align: center; }
+    .foundations .f-price { font-family: 'Lora', Georgia, serif; font-size: 2rem; font-weight: 600; color: #fff; }
+    .foundations .f-price small { font-family: 'Inter', sans-serif; font-size: 0.5em; font-weight: 500; color: #9ed3b1; display: block; margin-top: 2px; letter-spacing: 0.5px; }
+    .foundations .cta {
+      display: block; text-align: center; background: #fff; color: var(--green-dark);
+      padding: 13px 18px; border-radius: 6px; font-size: 0.95rem; font-weight: 700;
+      margin-top: 14px; border-bottom: none; transition: background 0.15s;
+    }
+    .foundations .cta:hover { background: #d8eede; color: var(--green-dark); }
+    .foundations .f-note { font-size: 0.78rem; color: #9ed3b1; margin-top: 10px; }
+
     /* FAQ */
     .faq details {
       border-bottom: 1px solid var(--border);
@@ -802,18 +836,39 @@
 
   <section>
     <h2>If you want to hire me after the audit</h2>
-    <p>Most of what's in the audit, you can execute yourself in 60 days. If you'd rather not, here's what working together looks like — flat monthly, no contracts.</p>
+    <p>Most of what's in the audit, you can execute yourself in 60 days. If you'd rather not, here's what working together looks like. Start with a one-time foundation pass, or go straight to a monthly plan — no contracts either way.</p>
+
+    <div class="foundations">
+      <div class="f-info">
+        <div class="f-eyebrow">Start here · one-time</div>
+        <h3>Foundations — get your SEO up to AI-era standards</h3>
+        <p style="margin:0 0 12px; font-size:0.92rem; color:#cfe3d5;">Search changed. Google's AI and assistants now recommend businesses based on structured data, review detail, and first-party signals — not just a tidy address listing. This is a single pass that brings your foundation up to that standard, so you're eligible to be found <em>and</em> recommended.</p>
+        <ul>
+          <li>Structured schema (JSON-LD) built for your business — LocalBusiness, services, FAQ &amp; reviews</li>
+          <li>Google Business Profile modernized to current spec (categories, services, attributes, Q&amp;A)</li>
+          <li>NAP / citation consistency check across the directories that feed AI answers</li>
+          <li>Your AI-readiness baseline — a scored report of exactly where you stand and what's next</li>
+        </ul>
+      </div>
+      <div class="f-buy">
+        <div class="f-price">$500<small>one-time</small></div>
+        <a class="cta" href="https://buy.stripe.com/28E3cx3WH95SeZ9g200co0n">Get to standard — $500 →</a>
+        <div class="f-note">No subscription. Roll into a monthly plan anytime.</div>
+      </div>
+    </div>
+
+    <p class="small muted" style="margin:0 0 6px;">Or stay on retainer — every monthly plan below is built for how people search now (structured data, review optimization, and AI-answer targeting baked in):</p>
 
     <div class="pricing">
       <div class="tier recommended">
         <h3>Starter</h3>
         <div class="price">$1,000<small>/mo</small></div>
         <ul>
+          <li>Everything in Foundations — schema, GBP spec &amp; citations maintained, not just set once</li>
+          <li>AI-visibility optimization: reviews shaped for the detail AI pulls, first-party content built out, AI-answer targeting</li>
           <li>Daily review monitoring + drafted responses</li>
           <li>2× weekly GBP posts (Tues + Thurs)</li>
-          <li>Monthly progress report (1st of month)</li>
-          <li>One-time citation cleanup across 30-40 directory sites in your first 30 days</li>
-          <li>Rank tracking on your top keywords + alerts</li>
+          <li>Rank tracking + monthly AI-readiness re-score and progress report</li>
         </ul>
         <a class="cta" href="https://buy.stripe.com/28EaEZ0Kv2Hu18j9DC0co0e">Start Starter — $1,000/mo →</a>
       </div>
