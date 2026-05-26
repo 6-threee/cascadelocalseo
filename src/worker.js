@@ -8,6 +8,7 @@ const SUPABASE_RENDER_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/function
 const SUPABASE_APPROVE_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/approve-audit";
 const SUPABASE_DASHBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/dashboard";
 const SUPABASE_RENDER_BLOG = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-blog";
+const SUPABASE_RENDER_LEADERBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-leaderboard";
 const SUPABASE_GENERATE_SCHEMA = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/generate-schema";
 
 async function proxySelfAudit(request, url) {
@@ -103,6 +104,25 @@ async function proxyRenderBlog(path, url) {
   });
 }
 
+// /rankings, /rankings/<slug>, /rankings/sitemap.xml → public "Google Maps Power
+// Rankings" leaderboards, proxied to the Supabase render-leaderboard function.
+async function proxyRenderLeaderboard(path, url) {
+  let target;
+  if (path === "/rankings") target = `${SUPABASE_RENDER_LEADERBOARD}?mode=index`;
+  else if (path === "/rankings/sitemap.xml") target = `${SUPABASE_RENDER_LEADERBOARD}?mode=sitemap`;
+  else target = `${SUPABASE_RENDER_LEADERBOARD}?mode=board&slug=${encodeURIComponent(path.slice("/rankings/".length))}`;
+  const upstream = await fetch(target);
+  const body = await upstream.text();
+  const isXml = path === "/rankings/sitemap.xml";
+  return new Response(body, {
+    status: upstream.status,
+    headers: {
+      "content-type": isXml ? "application/xml; charset=utf-8" : "text/html; charset=utf-8",
+      "cache-control": "public, max-age=600",
+    },
+  });
+}
+
 // /schema?prospect_id=N (or ?client_id / direct params) → the AI-Ready Schema
 // Package deliverable. Forces format=html and serves it under the brand domain so
 // the audit's "Preview your structured data" link is on-brand (and renders for
@@ -155,6 +175,10 @@ export default {
 
     if (path === "/blog" || path.startsWith("/blog/")) {
       return proxyRenderBlog(path, url);
+    }
+
+    if (path === "/rankings" || path.startsWith("/rankings/")) {
+      return proxyRenderLeaderboard(path, url);
     }
 
     const auditMatch = path.match(/^\/audits\/(\d+)$/);
