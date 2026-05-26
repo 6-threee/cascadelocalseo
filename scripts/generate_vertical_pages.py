@@ -704,6 +704,14 @@ PRICING = """  <section id="pricing">
   </section>"""
 
 
+# Verticals that have a published /rankings board → deep-link to that industry section.
+# (vet / salon / auto-repair have no board data yet, so they get no rankings cross-link.)
+LB_ANCHOR = {
+    "med-spas": "med-spa", "chiropractors": "chiropractor", "dentists": "dentist",
+    "lawyers": "lawyer", "hvac": "hvac", "plumbers": "plumber", "roofers": "roofer",
+}
+
+
 def render(slug, v):
     url = f"{BASE}/local-seo-for-{slug}"
     og_img = f"{BASE}/og-{slug}.png"
@@ -713,6 +721,16 @@ def render(slug, v):
         mailto_suffix=v["mailto_suffix"].replace(" ", "%20"), mailto_biz=v["mailto_biz"].replace(" ", "%20"),
     )
     ai_noun = v["nav_meta"].replace("Local SEO for ", "")
+    rankings_anchor = LB_ANCHOR.get(slug)
+    rankings_section = f"""
+  <section>
+    <h2>See where you rank right now</h2>
+    <p>I publish live Google Map Pack rankings for {ai_noun} across 100+ U.S. markets — who owns the top three spots, their ratings and review counts, and who's stuck below the fold. Find your city and see exactly where you stand today.</p>
+    <div class="btn-row">
+      <a class="btn btn-ghost" href="/rankings#{rankings_anchor}">Find your city's rankings →</a>
+    </div>
+  </section>
+""" if rankings_anchor else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -858,7 +876,7 @@ def render(slug, v):
     <h2>Built for how people search now</h2>
     <p>More and more, customers don't scroll — they ask Google's AI or an assistant for the best {ai_noun} near them and trust whatever it answers. Those AI answers are built from the same signals as the map pack: your Google Business Profile, your reviews, and consistent business data. I tune for both, so you're the one that gets <strong>found and recommended</strong> — not just ranked.</p>
   </section>
-
+{rankings_section}
 {pricing}
 
   <section class="faq">
