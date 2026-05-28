@@ -20,7 +20,8 @@
   --rule: rgba(239, 228, 204, 0.12);      /* parchment hairlines for dividers */
   --gold: #dabe79;            /* WARM accent — action, decision, CTA, promoted tabs, hover */
   --gold-soft: #f4e3b5;
-  --ocean: #4ac4e0;           /* COOL accent — data, system, live, AI, numeric units */
+  --ocean: #4ac4e0;           /* COOL accent — data, system, live, AI, links, info CTAs */
+  --ocean-soft: #7dd4ea;
   --ocean-dim: #2596be;
   --good: #dabe79;
   --warn: #dabe79;
@@ -42,8 +43,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-a { color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; }
-a:hover { color: var(--gold-soft); }
+a { color: var(--ocean); text-decoration: none; border-bottom: 1px solid currentColor; }
+a:hover { color: var(--ocean-soft); }
 h1, h2, h3 {
   font-family: var(--display);
   font-weight: 700;
@@ -205,8 +206,8 @@ button.cta:disabled { background: var(--ink-faint); cursor: wait; color: var(--b
   font-size: 0.92rem;
   color: var(--ink-soft);
 }
-.form-alt a { font-weight: 600; color: var(--gold); }
-.form-alt a:hover { color: var(--gold-soft); }
+.form-alt a { font-weight: 600; color: var(--ocean); }
+.form-alt a:hover { color: var(--ocean-soft); }
 
 /* Sample audit preview */
 .sample-link {
@@ -216,7 +217,7 @@ button.cta:disabled { background: var(--ink-faint); cursor: wait; color: var(--b
   margin-top: 14px;
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--gold);
+  color: var(--ocean);
 }
 .sample-link::after { content: "→"; transition: transform 0.15s; }
 .sample-link:hover::after { transform: translateX(2px); }
@@ -334,10 +335,10 @@ button.cta:disabled { background: var(--ink-faint); cursor: wait; color: var(--b
 }
 .sample-cta-link {
   font-weight: 700;
-  color: var(--gold);
+  color: var(--ocean);
   font-size: 0.95rem;
 }
-.sample-cta-link:hover { color: var(--gold-soft); }
+.sample-cta-link:hover { color: var(--ocean-soft); }
 
 /* Benchmarks table */
 .bench-filter {
@@ -549,7 +550,7 @@ button.cta:disabled { background: var(--ink-faint); cursor: wait; color: var(--b
   color: var(--ink-soft);
   border-bottom: 1px dotted currentColor;
 }
-.portal-line a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+.portal-line a:hover { color: var(--ocean); border-bottom-color: var(--ocean); }
 
 /* FAQ */
 .faq details {
@@ -589,6 +590,6 @@ footer .wrap {
 }
 footer strong { color: var(--ink); font-weight: 700; font-family: var(--display); letter-spacing: -0.01em; }
 footer a { color: var(--ink-soft); border: none; }
-footer a:hover { color: var(--gold); }
+footer a:hover { color: var(--ocean); }
 </content>
 </invoke>

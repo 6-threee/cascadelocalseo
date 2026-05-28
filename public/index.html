@@ -47,7 +47,8 @@
       --rule: rgba(239, 228, 204, 0.12);   /* parchment hairlines for dividers */
       --gold: #dabe79;            /* WARM accent — action, decision, CTA, promoted tabs, hover */
       --gold-soft: #f4e3b5;
-      --ocean: #4ac4e0;           /* COOL accent — data, system, live, AI, numeric units */
+      --ocean: #4ac4e0;           /* COOL accent — data, system, live, AI, links, info CTAs */
+      --ocean-soft: #7dd4ea;
       --ocean-dim: #2596be;
       --good: #dabe79;
       --warn: #dabe79;
@@ -74,9 +75,9 @@
     }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
     .reading { max-width: var(--reading); margin: 0 auto; padding: 0 24px; }
-    a { color: var(--gold); text-decoration: none; }
+    a { color: var(--ocean); text-decoration: none; }
     a.inline { border-bottom: 1px solid currentColor; }
-    a:hover { color: var(--gold-soft); }
+    a:hover { color: var(--ocean-soft); }
     h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.1; color: var(--ink); letter-spacing: -0.02em; }
     p { margin: 0 0 1em; }
     .muted { color: var(--ink-soft); }
@@ -185,7 +186,7 @@
     .logo .word .dot { color: var(--gold); }
     .nav-links { display: flex; gap: 2rem; align-items: center; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 1.2px; text-transform: uppercase; }
     .nav-links a { color: var(--ink-soft); transition: color .25s; }
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover { color: var(--ocean); }
     .nav-cta { display: flex; align-items: center; gap: 1.1rem; }
     .btn {
       font-family: var(--sans); font-weight: 600; font-size: .9rem;
@@ -249,9 +250,9 @@
     }
     .hero h1 .line { display: block; }
     .hero h1 .line.two { margin-top: .05em; }
-    /* "found" — solid italic gold. Confidence over decoration (no gradients). */
+    /* "found" — solid italic ocean. Cool accent ties to the link/info system. */
     .hero h1 .accent {
-      color: var(--gold);
+      color: var(--ocean);
       font-style: italic;
       font-weight: 700;
     }
@@ -263,7 +264,7 @@
     }
     .hero h1 .stroke .dot {
       -webkit-text-stroke: 0; text-stroke: 0;
-      color: var(--gold);              /* punctuation = a tiny gold beat */
+      color: var(--ocean);             /* punctuation = a tiny ocean beat — matches "found" */
     }
     .hero .lede { font-size: 1.15rem; color: var(--ink-soft); max-width: 42ch; margin-bottom: 22px; line-height: 1.6; }
     .hero .trust { display: flex; flex-wrap: wrap; gap: 16px; font-family: var(--mono); font-size: .72rem; color: var(--ink-soft); font-weight: 400; letter-spacing: 0.5px; text-transform: uppercase; }
@@ -288,8 +289,8 @@
     #form-feedback.ok { display: block; background: rgba(218, 190, 121, 0.12); color: var(--gold); border: 1px solid var(--border); }
     #form-feedback.err { display: block; background: rgba(224, 122, 95, 0.12); color: var(--bad); border: 1px solid rgba(224,122,95,0.4); }
     .form-alt { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--ink-soft); }
-    .form-alt a { font-weight: 600; color: var(--gold); }
-    .form-alt a:hover { color: var(--gold-soft); }
+    .form-alt a { font-weight: 600; color: var(--ocean); }
+    .form-alt a:hover { color: var(--ocean-soft); }
 
     /* ---------- sections ---------- */
     section.band { padding: clamp(48px, 7vw, 76px) 0; }
@@ -349,8 +350,8 @@
     .sample-fade::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(180deg, rgba(10,61,36,0) 0%, var(--bg-2) 100%); }
     .sample-cta { padding: 20px 32px; background: rgba(218,190,121,0.06); border-top: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .sample-cta-text { font-size: 0.95rem; color: var(--ink-soft); }
-    .sample-cta-link { font-weight: 700; color: var(--gold); font-size: 0.95rem; }
-    .sample-cta-link:hover { color: var(--gold-soft); }
+    .sample-cta-link { font-weight: 700; color: var(--ocean); font-size: 0.95rem; }
+    .sample-cta-link:hover { color: var(--ocean-soft); }
 
     /* steps — flat dark cards, mono numbers in gold, hard hairline edges */
     .how-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; max-width: 980px; margin: 0 auto; }
@@ -418,7 +419,7 @@
     .tier.recommended::before { content: "Most popular"; position: absolute; top: -10px; left: 20px; background: var(--gold); color: var(--green-darker); font-family: var(--mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 0; }
     .portal-line { text-align: center; margin-top: 28px; font-size: 0.88rem; color: var(--ink-faint); }
     .portal-line a { color: var(--ink-soft); border-bottom: 1px dotted currentColor; }
-    .portal-line a:hover { color: var(--gold); }
+    .portal-line a:hover { color: var(--ocean); }
 
     /* faq — hairline dividers, mono summary marker */
     .faq { max-width: var(--reading); margin: 0 auto; }
@@ -433,7 +434,7 @@
     footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
     footer strong { color: var(--ink); font-weight: 700; font-family: var(--display); letter-spacing: -.01em; }
     footer a { color: var(--ink-soft); }
-    footer a:hover { color: var(--gold); }
+    footer a:hover { color: var(--ocean); }
 
     /* reveal */
     .obs { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
