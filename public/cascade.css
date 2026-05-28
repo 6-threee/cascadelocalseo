@@ -208,6 +208,38 @@ button.cta:disabled { background: var(--ink-faint); cursor: wait; color: var(--b
 }
 .form-alt a { font-weight: 600; color: var(--ocean); }
 .form-alt a:hover { color: var(--ocean-soft); }
+/* Optional secondary-CTA emphasis (mirrors homepage). Add to vertical-page form markup:
+   <div class="form-alt"><span class="form-alt-eyebrow">Or — tailored</span>
+     <a class="form-alt-cta" href="/audit">Get the full breakdown <span class="arr">→</span></a>
+     <span class="form-alt-note">5 min — I'll reply in 24h.</span></div> */
+.form-alt-eyebrow {
+  display: block;
+  font-family: var(--mono); font-size: 0.66rem; font-weight: 500;
+  letter-spacing: 1.8px; text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+.form-alt-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--ocean);
+  border: 1.5px solid var(--ocean);
+  padding: 11px 20px; border-radius: 0;
+  font-family: var(--sans); font-weight: 700; font-size: 0.95rem;
+  text-decoration: none; letter-spacing: 0.2px;
+  transition: background 0.15s, color 0.15s, transform 0.2s, border-color 0.15s;
+}
+.form-alt-cta:hover {
+  background: rgba(74, 196, 224, 0.10);
+  color: var(--ocean-soft); border-color: var(--ocean-soft);
+  transform: translateY(-1px);
+}
+.form-alt-cta .arr { transition: transform 0.2s; }
+.form-alt-cta:hover .arr { transform: translateX(3px); }
+.form-alt-note {
+  display: block;
+  font-size: 0.82rem; color: var(--ink-faint);
+  margin-top: 12px; line-height: 1.55;
+}
 
 /* Sample audit preview */
 .sample-link {
