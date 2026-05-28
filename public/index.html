@@ -288,9 +288,37 @@
     #form-feedback { margin-top: 14px; padding: 12px 14px; border-radius: 0; font-size: 0.92rem; display: none; }
     #form-feedback.ok { display: block; background: rgba(218, 190, 121, 0.12); color: var(--gold); border: 1px solid var(--border); }
     #form-feedback.err { display: block; background: rgba(224, 122, 95, 0.12); color: var(--bad); border: 1px solid rgba(224,122,95,0.4); }
-    .form-alt { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--ink-soft); }
-    .form-alt a { font-weight: 600; color: var(--ocean); }
-    .form-alt a:hover { color: var(--ocean-soft); }
+    /* form-alt: secondary path = tailored full breakdown. Outlined ocean CTA
+       so it reads as a real "second option" without competing with the gold primary. */
+    .form-alt { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--rule); text-align: center; }
+    .form-alt-eyebrow {
+      display: block;
+      font-family: var(--mono); font-size: 0.66rem; font-weight: 500;
+      letter-spacing: 1.8px; text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 12px;
+    }
+    .form-alt-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--ocean);
+      border: 1.5px solid var(--ocean);
+      padding: 11px 20px; border-radius: 0;
+      font-family: var(--sans); font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; letter-spacing: 0.2px;
+      transition: background 0.15s, color 0.15s, transform 0.2s, border-color 0.15s;
+    }
+    .form-alt-cta:hover {
+      background: rgba(74, 196, 224, 0.10);
+      color: var(--ocean-soft); border-color: var(--ocean-soft);
+      transform: translateY(-1px);
+    }
+    .form-alt-cta .arr { transition: transform 0.2s; }
+    .form-alt-cta:hover .arr { transform: translateX(3px); }
+    .form-alt-note {
+      display: block;
+      font-size: 0.82rem; color: var(--ink-faint);
+      margin-top: 12px; line-height: 1.55;
+    }
 
     /* ---------- sections ---------- */
     section.band { padding: clamp(48px, 7vw, 76px) 0; }
@@ -607,7 +635,9 @@
         <button class="cta" type="submit" id="submit-btn">Send me my audit</button>
         <div id="form-feedback"></div>
         <div class="form-alt">
-          Want something tailored to your goals? Take 5 minutes for <a class="inline" href="/audit">the full breakdown</a> — tell me about your business and I'll email back within 24 hours with a plan built around it.
+          <span class="form-alt-eyebrow">Or — tailored version</span>
+          <a class="form-alt-cta" href="/audit">Get the full breakdown <span class="arr">→</span></a>
+          <span class="form-alt-note">5 minutes — tell me about your business and goals. I'll email back within 24 hours with a plan built around it.</span>
         </div>
       </form>
     </div>
