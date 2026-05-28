@@ -159,11 +159,13 @@ def make_card(filename, eyebrow, headline, subline):
 
 
 def main():
+    # 2026-05-28: subline rewritten honest. The old "60-day plan / no pitch attached" line
+    # over-promised — the auto audit gives 3 moves, and the page does have pricing teasers.
     make_card(
         "og-default.png",
         eyebrow="Free local SEO audit",
         headline="A free, specific local SEO audit.",
-        subline="Where you actually rank, your three biggest gaps, and a 60-day plan. No pitch attached.",
+        subline="Real data on your rank, ratings, and the top 3 competitors — plus what to fix first.",
     )
     # One card per vertical, driven by the same source of truth as the pages.
     for slug, v in VERTICALS.items():
