@@ -131,27 +131,7 @@ _Confidence notes: the "1 send ≈ 15 likes" weighting is an industry estimate, 
 
 ### 3 ready-to-post launch captions
 
-**P1 (positioning):**
-> New here, so the short version: I help local service businesses get found AND recommended.
-> Found is the Google map pack, the 3 listings that show first for "[your service] near me."
-> Recommended is the newer part. When someone asks ChatGPT or Google's AI "who's the best dentist around here," something decides which names come back. Most local businesses are invisible there and don't know it.
-> Ranking high used to be enough. Now you need both gates open: the one that shows you, and the one that vouches for you.
-> Follow along for plain-English local SEO, no jargon. Free audit in the bio when you want to see where you stand.
-
-**P2 (education):**
-> Quick test. Open your Google Business Profile and check three things:
-> 1. Are all your service categories filled in, or just the primary one?
-> 2. Is your service area set to the towns you actually work in?
-> 3. When was your last post or photo upload?
-> Most owners are missing at least two. Google reads a complete, active profile as a stronger map-pack candidate. An empty one hands the spot to a competitor who filled theirs in.
-> None of this costs money. It costs an afternoon.
-> Want the full checklist? It's the first thing our free audit walks through. Link in bio.
-
-**P3 (proof):**
-> We track 118 local markets in public. No client logos, no testimonials (we're brand new, and I'd rather show real data than make some up).
-> The pattern across almost every category: the businesses holding the top 3 map-pack spots aren't the ones with the prettiest websites. They have more recent reviews, complete profiles, and consistent business info across the web.
-> Boring, repeatable, and most competitors aren't doing it.
-> See the standings yourself. Our public Google Maps Power Rankings live at cascadelocalseo.com/rankings. Look up what the top 3 in your category have that you don't.
+Paste-ready captions for all 3 launch posts AND the 4 reels are in `cascade-ig-captions.txt` (plain text, no quote bars, so they paste clean into Instagram). Concepts: P1 = the found-AND-recommended intro, P2 = the GBP three-field self-test, P3 = the honest leaderboard proof.
 
 ### 3 rotating hashtag sets (cycle A → B → C; swap C tags to match the post's vertical)
 - **A (core):** #localseo #googlebusinessprofile #mappack #localsearch #smallbusinessmarketing #localbusiness #seoforsmallbusiness #googlemaps #getfoundonline #localmarketing

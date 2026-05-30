@@ -235,6 +235,39 @@ def make_story(filename, eyebrow, headline, body, cue, accent=GOLD):
     print(f"wrote {out} {img.size}")
 
 
+def make_profile_circle(filename, w=1080):
+    """Borderless full-bleed mark for the IG profile pic. The ocean-bordered icon
+    gets its corners + border clipped by IG's circle crop; this fills the circle
+    cleanly: forest field + faint center glow + the gold wave centered."""
+    from generate_favicon import cubic_bezier
+    img = Image.new("RGB", (w, w), BG); px = img.load()
+    for y in range(w):
+        for x in range(w):
+            t = (x / w + y / w) / 2
+            px[x, y] = (int(BG[0] * (1 - t) + BG_2[0] * t),
+                        int(BG[1] * (1 - t) + BG_2[1] * t),
+                        int(BG[2] * (1 - t) + BG_2[2] * t))
+    glow = Image.new("RGBA", (w, w), (0, 0, 0, 0)); gd = ImageDraw.Draw(glow)
+    cx = cy = w // 2
+    for r, a in [(520, 8), (380, 10), (240, 13)]:
+        gd.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(GOLD[0], GOLD[1], GOLD[2], a))
+    img.paste(glow, (0, 0), glow)
+    d = ImageDraw.Draw(img)
+    k = (w * 0.62) / 22.0          # wave spans ~62% width, well inside the circle
+    ox = w / 2 - 13 * k; oy = w / 2 - 13 * k
+    def P(x, y):
+        return (ox + x * k, oy + y * k)
+    pts = cubic_bezier(P(2, 18), P(7, 8), P(11, 8), P(13, 13), steps=60) + \
+          cubic_bezier(P(13, 13), P(15, 18), P(19, 18), P(24, 8), steps=60)[1:]
+    sw = int(w * 0.062)
+    d.line(pts, fill=GOLD, width=sw, joint="curve")
+    r = sw // 2
+    for ex, ey in [pts[0], pts[-1]]:
+        d.ellipse([ex - r, ey - r, ex + r, ey + r], fill=GOLD)
+    out = os.path.join(OUT_DIR, filename); img.save(out, "PNG")
+    print(f"wrote {out} {img.size}")
+
+
 def main():
     # --- 3 feed tiles / carousel COVERS (1080x1080) ---
     make_tile("ig-1-positioning.png", "Found and recommended",
@@ -308,6 +341,9 @@ def main():
                "An agency that runs on AI agents.",
                "Watch an audit build itself, with a human approval gate before anything sends.",
                "Follow the build", accent=OCEAN)
+
+    # --- IG profile picture (borderless, circle-crop friendly) ---
+    make_profile_circle("ig-profile-circle.png")
 
 
 if __name__ == "__main__":
