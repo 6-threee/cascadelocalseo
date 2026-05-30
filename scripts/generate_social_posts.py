@@ -268,6 +268,34 @@ def make_profile_circle(filename, w=1080):
     print(f"wrote {out} {img.size}")
 
 
+def make_fiverr_cover(filename, eyebrow, headline, sub, badge, accent=GOLD, wordmark=True):
+    """1280x769 Fiverr gig gallery cover. NO url/domain (Fiverr bans external contact on gig images).
+    wordmark=False draws the mark only (for off-brand gigs that shouldn't carry the SEO wordmark)."""
+    W, H = 1280, 769
+    img = base_bg(W, H); d = ImageDraw.Draw(img)
+    if wordmark:
+        header(d, img, PAD)
+    else:
+        ms = 96; mk = draw_mark(ms); img.paste(mk, (PAD, PAD), mk)
+    eby = PAD + 96 + 50
+    eyebrow_row(d, eyebrow, eby, W - 2 * PAD)
+    hf = font(BRICOLAGE_BOLD, 82); lh = 90
+    y = eby + 58
+    for ln in wrap(d, headline, hf, W - 2 * PAD):
+        d.text((PAD, y), ln, font=hf, fill=INK); y += lh
+    y += 14
+    d.line([(PAD, y), (PAD + 120, y)], fill=accent, width=4); y += 36
+    sf = font(PLEX_SANS, 34); slh = 46
+    for ln in wrap(d, sub, sf, W - 2 * PAD - 80):
+        d.text((PAD, y), ln, font=sf, fill=INK_SOFT); y += slh
+    cf = font(JET_MONO, 26); bt = badge.upper(); tw = d.textlength(bt, font=cf)
+    px = PAD; py = H - PAD - 58
+    d.rectangle([px, py, px + tw + 56, py + 58], fill=accent)
+    d.text((px + 28, py + 16), bt, font=cf, fill=GOLD_DARK)
+    out = os.path.join(OUT_DIR, filename); img.save(out, "PNG")
+    print(f"wrote {out} {img.size}")
+
+
 def main():
     # --- 3 feed tiles / carousel COVERS (1080x1080) ---
     make_tile("ig-1-positioning.png", "Found and recommended",
