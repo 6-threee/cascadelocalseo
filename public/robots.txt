@@ -5,4 +5,4 @@ Disallow: /approve
 
 Sitemap: https://cascadelocalseo.com/sitemap.xml
 Sitemap: https://cascadelocalseo.com/blog/sitemap.xml
-Sitemap: https://cascadelocalseo.com/rankings/sitemap.xml
+Sitemap: https://cascadelocalseo.com/leaderboards/sitemap.xml

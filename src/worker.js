@@ -104,16 +104,17 @@ async function proxyRenderBlog(path, url) {
   });
 }
 
-// /rankings, /rankings/<slug>, /rankings/sitemap.xml → public "Google Maps Power
-// Rankings" leaderboards, proxied to the Supabase render-leaderboard function.
+// /leaderboards, /leaderboards/<slug>, /leaderboards/sitemap.xml → public "Google Maps Power
+// Rankings" boards, proxied to the Supabase render-leaderboard function. (Renamed from /rankings;
+// the old paths 301-redirect here, see the router below.)
 async function proxyRenderLeaderboard(path, url) {
   let target;
-  if (path === "/rankings") target = `${SUPABASE_RENDER_LEADERBOARD}?mode=index`;
-  else if (path === "/rankings/sitemap.xml") target = `${SUPABASE_RENDER_LEADERBOARD}?mode=sitemap`;
-  else target = `${SUPABASE_RENDER_LEADERBOARD}?mode=board&slug=${encodeURIComponent(path.slice("/rankings/".length))}`;
+  if (path === "/leaderboards") target = `${SUPABASE_RENDER_LEADERBOARD}?mode=index`;
+  else if (path === "/leaderboards/sitemap.xml") target = `${SUPABASE_RENDER_LEADERBOARD}?mode=sitemap`;
+  else target = `${SUPABASE_RENDER_LEADERBOARD}?mode=board&slug=${encodeURIComponent(path.slice("/leaderboards/".length))}`;
   const upstream = await fetch(target);
   const body = await upstream.text();
-  const isXml = path === "/rankings/sitemap.xml";
+  const isXml = path === "/leaderboards/sitemap.xml";
   return new Response(body, {
     status: upstream.status,
     headers: {
@@ -177,7 +178,11 @@ export default {
       return proxyRenderBlog(path, url);
     }
 
+    // Renamed /rankings to /leaderboards; 301 the old paths so indexed URLs migrate cleanly.
     if (path === "/rankings" || path.startsWith("/rankings/")) {
+      return Response.redirect(`${url.origin}/leaderboards${path.slice("/rankings".length)}${url.search}`, 301);
+    }
+    if (path === "/leaderboards" || path.startsWith("/leaderboards/")) {
       return proxyRenderLeaderboard(path, url);
     }
 
