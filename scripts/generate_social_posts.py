@@ -168,13 +168,19 @@ def make_slide(filename, kicker, index_label, title, body, accent=GOLD):
     print(f"wrote {out} {img.size}")
 
 
-def make_list_slide(filename, kicker, title, items, accent=GOLD):
-    """Title + bulleted list carousel slide (1080x1080)."""
+def make_list_slide(filename, kicker, title, items, accent=GOLD, index_label=""):
+    """Title + bulleted list carousel slide (1080x1080). Optional big index_label
+    (e.g. '03') matches the numbered point slides (make_slide)."""
     W = H = 1080
     img = base_bg(W, H); d = ImageDraw.Draw(img)
     eyebrow_row(d, kicker, PAD, W - 2 * PAD)
     corner_mark(d, img)
-    tf = font(BRICOLAGE_BOLD, 66); ty = PAD + 96
+    if index_label:
+        d.text((PAD, PAD + 62), index_label, font=font(BRICOLAGE_BOLD, 150), fill=accent)
+        ty = PAD + 62 + 168
+    else:
+        ty = PAD + 96
+    tf = font(BRICOLAGE_BOLD, 66)
     for ln in wrap(d, title, tf, W - 2 * PAD):
         d.text((PAD, ty), ln, font=tf, fill=INK); ty += 76
     ty += 30
@@ -333,7 +339,8 @@ def main():
                "You're either in the short list it reads back, or you're invisible. There is no page 2 in an AI answer.", GOLD)
     make_list_slide("ig-3-slide-03-list.png", K3, "What gets you named:",
                     ["Strong, recent reviews", "A complete, consistent profile",
-                     "Same name, address, phone everywhere", "Content that answers real questions"], GOLD)
+                     "Same name, address, phone everywhere", "Content that answers real questions"], GOLD,
+                    index_label="03")
     make_cta_slide("ig-3-slide-04-cta.png", K3, "We build for found AND recommended.",
                    "Your free audit includes an AI-readiness score, so you know where you stand.",
                    "Free audit · link in bio", GOLD)
