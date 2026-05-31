@@ -338,6 +338,46 @@ def main():
                    "Your free audit includes an AI-readiness score, so you know where you stand.",
                    "Free audit · link in bio", GOLD)
 
+    # --- Post 4 (Mon): your GBP is 80% of local SEO (education carousel) ---
+    make_tile("ig-4-gbp.png", "Local SEO playbook",
+              "Your Google profile is 80% of local SEO.",
+              "And most owners fill out barely half of it. Here's the part that quietly costs you the map pack.",
+              "Swipe for the gaps →", accent=GOLD)
+    K4 = "Your GBP, the 40% you skip"
+    make_slide("ig-4-slide-01.png", K4, "01", "List every service you offer.",
+               "Google matches searches to the services you list. An empty Services section makes you invisible for half the work you do.", GOLD)
+    make_slide("ig-4-slide-02.png", K4, "02", "Fill in Products and menu.",
+               "Photos, items, and prices feed both the map pack and what AI reads back about you. Most profiles leave it blank.", GOLD)
+    make_slide("ig-4-slide-03.png", K4, "03", "Seed your own Q&A.",
+               "You can ask AND answer questions on your own profile. Leave it empty and random guesses rank instead of your real answers.", GOLD)
+    make_slide("ig-4-slide-04.png", K4, "04", "Post weekly, keep it fresh.",
+               "An active profile signals an active business. Quiet profiles slide down the pack while competitors keep posting.", GOLD)
+    make_cta_slide("ig-4-slide-05-cta.png", K4, "You're using maybe 40% of your profile.",
+                   "The free audit shows exactly which fields are empty and which ones move the map pack first.",
+                   "Free audit · link in bio", GOLD)
+
+    # --- Post 5 (Wed): what the top 3 on the map have in common (honest leaderboard proof) ---
+    make_tile("ig-5-top3.png", "Proof, done honestly",
+              "What the top 3 on the map have in common.",
+              "We rank 1,000+ local markets in public. The pattern is the same almost everywhere, and it isn't a prettier website.",
+              "Swipe →", accent=OCEAN)
+    K5 = "What the top 3 share"
+    make_slide("ig-5-slide-01.png", K5, "01", "More reviews, fresher ones.",
+               "Volume and recency both count. The top 3 keep a steady drip of new reviews. The spots below them went quiet.", OCEAN)
+    make_slide("ig-5-slide-02.png", K5, "02", "A complete, consistent profile.",
+               "Categories, services, hours, and photos all filled in. Google ranks the listing it can fully read with more confidence.", OCEAN)
+    make_slide("ig-5-slide-03.png", K5, "03", "Same name, address, phone everywhere.",
+               "When your details match across the web, Google trusts you more. Mismatches quietly cost you the map pack.", OCEAN)
+    make_cta_slide("ig-5-slide-04-cta.png", K5, "See your market on the live board.",
+                   "Our public Google Maps Power Rankings, no login and no pitch. Look up what the top 3 in your category have that you don't.",
+                   "Link in bio · /rankings", OCEAN)
+
+    # --- Post 6 (Fri): the agent-run model (founder single) ---
+    make_tile("ig-6-agents.png", "How this works",
+              "I run this agency with AI agents.",
+              "They find the businesses, run the audits, and draft the fixes. A human approves before anything sends, so the savings reach you, not an agency markup.",
+              "Curious? DM me.", accent=OCEAN)
+
     # --- 3 story frames (1080x1920) --- add IG stickers over the clear lower third ---
     make_story("ig-story-1-poll.png", "Welcome",
                "We get local businesses found AND recommended.",
