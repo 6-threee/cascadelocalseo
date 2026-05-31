@@ -389,7 +389,7 @@ def main():
     make_story("ig-story-1-poll.png", "Welcome",
                "We get local businesses found AND recommended.",
                "On Google's map pack and the AI answers your customers now ask. Map pack. Google. ChatGPT.",
-               "Vote below ↓  do you know what you rank for?", accent=GOLD)
+               "Vote above ↑  do you know what you rank for?", accent=GOLD)
     make_story("ig-story-2-tip.png", "Quick win",
                "Add 3 photos to your Google profile this week.",
                "Profiles with fresh photos get more calls and direction requests. Two minutes, real impact.",
