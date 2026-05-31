@@ -392,6 +392,32 @@ def main():
                "A free, specific audit: your rank, ratings, top 3 competitors, and an AI-readiness score. No signup.",
                "Tap the link ↓", accent=GOLD)
 
+    # --- 6 more story frames (added 2026-05-31): rotating stock so stories don't repeat ---
+    make_story("ig-story-4-tip-reviews.png", "Quick win",
+               "Reply to every review, even the 5-star ones.",
+               "Google reads your replies as a ranking signal, and it shows future customers you're paying attention. Two minutes each.",
+               "Reply to 5 this week", accent=OCEAN)
+    make_story("ig-story-5-tip-category.png", "Quick win",
+               "Pick the most specific primary category.",
+               "Your primary Google category moves the map pack more than almost anything. Most owners pick something vague and leave money on the table.",
+               "Check yours today", accent=GOLD)
+    make_story("ig-story-6-tip-services.png", "Quick win",
+               "List every service you offer.",
+               "Google can only rank you for the services you actually list. An empty Services section makes you invisible for half your work.",
+               "Add 3 services today", accent=OCEAN)
+    make_story("ig-story-7-found-recommended.png", "The wedge",
+               "Found is not the same as recommended.",
+               "Found is showing up in the map pack. Recommended is the AI naming you when someone asks who's best. You need both gates open.",
+               "Which are you missing?", accent=GOLD)
+    make_story("ig-story-8-proof-board.png", "Proof, in public",
+               "We rank 1,000+ local markets in public.",
+               "Real Google Maps standings, no login and no pitch. Look up your category and see what the top 3 actually have.",
+               "Find your market ↓", accent=OCEAN)
+    make_story("ig-story-9-building.png", "Building in public",
+               "Month 1, building this in public.",
+               "Solo founder, AI agents doing the grunt work, zero clients yet. Everything here is real data or best practice, never invented results.",
+               "Follow the build", accent=GOLD)
+
     # --- 4 Reel hook/cover frames (1080x1920); B-roll = screen recordings per cascade-ig-reels.md ---
     make_story("ig-reel-1-cover.png", "Reel · The AI shift",
                "I asked AI for the best dentist near me.",
