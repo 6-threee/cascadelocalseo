@@ -4,6 +4,7 @@
 // - everything else                → static assets from ./public via env.ASSETS
 
 const SUPABASE_SELF_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/self-audit";
+const SUPABASE_AI_READINESS = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/ai-readiness";
 const SUPABASE_RENDER_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-audit";
 const SUPABASE_APPROVE_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/approve-audit";
 const SUPABASE_DASHBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/dashboard";
@@ -41,6 +42,29 @@ async function proxySelfAudit(request, url) {
       "content-type": "text/html; charset=utf-8",
       "cache-control": "no-store",
     },
+  });
+}
+
+// /ai-readiness (+ /ai-check alias) → free "is AI recommending you?" instant-score lead magnet,
+// proxied to the Supabase ai-readiness function. GET renders the form/score; POST captures email.
+async function proxyAiReadiness(request, url) {
+  const target = `${SUPABASE_AI_READINESS}${url.search}`;
+  const headers = new Headers(request.headers);
+  headers.delete("host");
+  headers.delete("cf-connecting-ip");
+  headers.delete("cf-ray");
+  headers.delete("cf-visitor");
+  headers.set("x-forwarded-host", url.host);
+  headers.set("x-forwarded-proto", "https");
+  const init = { method: request.method, headers, redirect: "manual" };
+  if (request.method !== "GET" && request.method !== "HEAD") {
+    init.body = await request.arrayBuffer();
+  }
+  const upstream = await fetch(target, init);
+  const body = await upstream.text();
+  return new Response(body, {
+    status: upstream.status,
+    headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" },
   });
 }
 
@@ -155,6 +179,10 @@ export default {
 
     if (path === "/audit") {
       return proxySelfAudit(request, url);
+    }
+
+    if (path === "/ai-readiness" || path === "/ai-check") {
+      return proxyAiReadiness(request, url);
     }
 
     if (path === "/approve") {
