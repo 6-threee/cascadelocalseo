@@ -131,7 +131,7 @@ _Confidence notes: the "1 send ≈ 15 likes" weighting is an industry estimate, 
 
 ### 3 ready-to-post launch captions
 
-Paste-ready captions for all 3 launch posts AND the 4 reels are in `cascade-ig-captions.txt` (plain text, no quote bars, so they paste clean into Instagram). Concepts: P1 = the found-AND-recommended intro, P2 = the GBP three-field self-test, P3 = the honest leaderboard proof.
+Paste-ready captions for all 3 launch posts AND the 4 reels are in `cascade-ig-captions.txt` (plain text, no quote bars, so they paste clean into Instagram). Concepts: P1 = the found-AND-recommended intro, P2 = "4 reasons you're #4 on the map", P3 = "the AI shift" (your next customer may never see the blue links). (Captions realigned to the rendered carousels 2026-05-30; the original GBP-test + leaderboard-proof captions moved to the REPURPOSE BANK at the bottom of cascade-ig-captions.txt.)
 
 ### 3 rotating hashtag sets (cycle A → B → C; swap C tags to match the post's vertical)
 - **A (core):** #localseo #googlebusinessprofile #mappack #localsearch #smallbusinessmarketing #localbusiness #seoforsmallbusiness #googlemaps #getfoundonline #localmarketing

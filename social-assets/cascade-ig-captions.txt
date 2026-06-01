@@ -18,33 +18,40 @@ Follow along for plain-English local SEO, no jargon. Free audit in the bio when 
 #localseo #googlebusinessprofile #mappack #getfoundonline #smallbusinessmarketing
 
 ============================================================
-POST 2   carousel: ig-2-mappack.png + ig-2-slide-01..05   |   Pillar: Education
+POST 2   carousel: ig-2-mappack.png (cover) + ig-2-slide-01..04 + ig-2-slide-05-cta   |   Pillar: Education   |   "4 reasons you're #4 on the map"
 ============================================================
-Quick test. Open your Google Business Profile and check three things:
-1. Are all your service categories filled in, or just the primary one?
-2. Is your service area set to the towns you actually work in?
-3. When was your last post or photo upload?
+Stuck at #4 on Google Maps while three competitors sit in the map pack above you? It usually isn't your website. The top 3 take 70%+ of local clicks, and four quiet things keep service businesses out:
 
-Most owners are missing at least two. Google reads a complete, active profile as a stronger map-pack candidate. An empty one hands the spot to a competitor who filled theirs in.
+1. A thin or stale Google profile. Half-filled categories, no services listed, old hours. Google can't recommend what it can't read.
 
-None of this costs money. It costs an afternoon.
+2. Fewer and older reviews than the top 3. Volume and recency both count.
 
-Want the full checklist? It's the first thing our free audit walks through. Link in bio.
+3. No recent photos or posts. An active profile signals an active business. Quiet profiles slide down the pack.
 
-#googlebusinessprofile #localseo #mappack #medspamarketing #smallbusinesstips
+4. Your site never says which city you serve. If your pages don't name your service area, Google guesses, and guessing costs you the pack.
+
+None of these cost money. They cost an afternoon. Fix them and #4 becomes top 3.
+
+Want to see which one is costing you the most calls right now? Free audit, link in bio.
+
+#localseo #googlebusinessprofile #mappack #localsearch #smallbusinessmarketing
 
 ============================================================
-POST 3   carousel: ig-3-aishift.png + ig-3-slide-01..04   |   Pillar: Proof (honest)
+POST 3   carousel: ig-3-aishift.png (cover) + ig-3-slide-01 + ig-3-slide-02 + ig-3-slide-03-list + ig-3-slide-04-cta   |   Pillar: Found AND Recommended   |   "The AI shift"
 ============================================================
-We track 118 local markets in public. No client logos, no testimonials (we're brand new, and I'd rather show real data than make some up).
+Your next customer may never see the blue links. They ask ChatGPT or Google's AI "who's the best [service] near me," and they take the answer.
 
-The pattern across almost every category: the businesses holding the top 3 map-pack spots aren't the ones with the prettiest websites. They have more recent reviews, complete profiles, and consistent business info across the web.
+Here's the shift:
 
-Boring, repeatable, and most competitors aren't doing it.
+They're asking AI, not scrolling Google. "Best med spa near me?" now gets answered by ChatGPT and Google's AI summary before anyone scrolls.
 
-See the standings yourself. Our public Google Maps Power Rankings live at cascadelocalseo.com/rankings. Look up what the top 3 in your category have that you don't.
+AI names a few businesses, not ten links. You're either in the short list it reads back or you're invisible. There is no page 2 in an AI answer.
 
-#localseo #googlemaps #mappack #localsearch #smallbusinessmarketing
+What gets you named: strong recent reviews, a complete and consistent profile, the same name, address, and phone everywhere, and content that answers the questions people actually ask.
+
+We build for found AND recommended. Our free audit includes an AI-readiness score so you know exactly where you stand. Link in bio.
+
+#localseo #aisearch #chatgpt #googlebusinessprofile #getfoundonline
 
 ============================================================
 REEL 1   cover: ig-reel-1-cover.png   |   "I asked AI for the best dentist near me"
@@ -80,3 +87,33 @@ HASHTAG SETS   (rotate A -> B -> C across posts; swap C tags to match the post's
 A core:     #localseo #googlebusinessprofile #mappack #localsearch #smallbusinessmarketing #localbusiness #seoforsmallbusiness #googlemaps #getfoundonline #localmarketing
 B owner:    #servicebusiness #homeservices #smallbusinesstips #localbusinessowner #marketingtips #googlereviews #morecustomers #onlinevisibility #aimarketing #searchmarketing
 C vertical: #medspamarketing #chiropractormarketing #dentalmarketing #lawfirmmarketing #hvacmarketing #plumbermarketing #roofingbusiness #veterinarymarketing #salonowner #autorepairshop
+
+============================================================
+REPURPOSE BANK   (good captions displaced 2026-05-30 when P2/P3 were realigned to match their rendered carousels. Reuse for other calendar slots, no asset rendered yet.)
+============================================================
+
+-- GBP three-field self-test (fits a GBP post, e.g. W2 Fri "Your GBP is 80% of your local SEO") --
+Quick test. Open your Google Business Profile and check three things:
+1. Are all your service categories filled in, or just the primary one?
+2. Is your service area set to the towns you actually work in?
+3. When was your last post or photo upload?
+
+Most owners are missing at least two. Google reads a complete, active profile as a stronger map-pack candidate. An empty one hands the spot to a competitor who filled theirs in.
+
+None of this costs money. It costs an afternoon.
+
+Want the full checklist? It's the first thing our free audit walks through. Link in bio.
+
+#googlebusinessprofile #localseo #mappack #medspamarketing #smallbusinesstips
+
+-- Honest leaderboard proof (fits a proof post, e.g. W2 Mon / W3 Fri leaderboard slots) --
+[NOTE before posting: "118" is stale. The leaderboard expanded this session, confirm the current live board count first.]
+We track 118 local markets in public. No client logos, no testimonials (we're brand new, and I'd rather show real data than make some up).
+
+The pattern across almost every category: the businesses holding the top 3 map-pack spots aren't the ones with the prettiest websites. They have more recent reviews, complete profiles, and consistent business info across the web.
+
+Boring, repeatable, and most competitors aren't doing it.
+
+See the standings yourself. Our public Google Maps Power Rankings live at cascadelocalseo.com/rankings. Look up what the top 3 in your category have that you don't.
+
+#localseo #googlemaps #mappack #localsearch #smallbusinessmarketing
