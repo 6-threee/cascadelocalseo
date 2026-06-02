@@ -661,6 +661,7 @@ def _unescape(s):
 
 
 PRICING = """  <section id="pricing">
+    <span class="eyebrow"><span class="sec">§ 06</span> Engagement</span>
     <h2>Plans &amp; pricing</h2>
     <p>Flat monthly, month-to-month, no contracts. Same plans as everything else I do.</p>
     <div class="pricing">
@@ -722,12 +723,14 @@ def render(slug, v):
     )
     ai_noun = v["nav_meta"].replace("Local SEO for ", "")
     rankings_anchor = LB_ANCHOR.get(slug)
-    rankings_section = f"""
+    rankings_section = f"""  <hr class="divider">
+
   <section>
+    <span class="eyebrow">Live rankings</span>
     <h2>See where you rank right now</h2>
     <p>I publish live Google Map Pack rankings for {ai_noun} across 100+ U.S. markets, who owns the top three spots, their ratings and review counts, and who's stuck below the fold. Find your city and see exactly where you stand today.</p>
     <div class="btn-row">
-      <a class="btn btn-ghost" href="/rankings#{rankings_anchor}">Find your city's rankings →</a>
+      <a class="btn btn-ghost" href="/leaderboards#{rankings_anchor}">Find your city's rankings <span class="arr">→</span></a>
     </div>
   </section>
 """ if rankings_anchor else ""
@@ -755,22 +758,11 @@ def render(slug, v):
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#0a3d24">
+  <meta name="theme-color" content="#062514">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/cascade.css">
-  <style>
-    .crumb {{ font-size: 0.8rem; color: var(--ink-faint); margin-bottom: 12px; }}
-    .crumb a {{ color: var(--ink-soft); border-bottom: none; }}
-    .crumb a:hover {{ color: var(--green); }}
-    .btn-row {{ display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }}
-    .btn {{ display: inline-block; background: var(--green); color: #fff; padding: 13px 22px; border-radius: 7px; font-weight: 600; border-bottom: none; letter-spacing: 0.2px; transition: background 0.15s; }}
-    .btn:hover {{ background: var(--green-dark); color: #fff; }}
-    .btn-ghost {{ background: transparent; color: var(--green-dark); border: 1px solid var(--border); }}
-    .btn-ghost:hover {{ background: var(--green-tint); color: var(--green-dark); }}
-    .lead-list li {{ margin: 8px 0; }}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vertical-v2.css">
 
   <script type="application/ld+json">
 {_graph(slug, v)}
@@ -778,29 +770,41 @@ def render(slug, v):
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="logo" href="/">Cascade Local SEO<span class="dot">.</span></a>
-    <div class="meta">{v['nav_meta']}</div>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img src="/assets/cascade-logo.png" alt="Cascade logo">
+      <span><b>Cascade</b><span class="dot">.</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="/#shift">The shift</a>
+      <a href="/#how">How it works</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/leaderboards">Rankings</a>
+      <a href="/audit">Free audit</a>
+    </nav>
+    <a class="btn btn-primary" href="/audit">Get my free audit <span class="arr">→</span></a>
   </div>
-</nav>
+</header>
 
-<div class="hero">
-  <div class="wrap">
-    <div class="crumb"><a href="/">Home</a> › {v['nav_meta']}</div>
-    <div class="tag">{v['nav_meta']}</div>
+<section class="hero">
+  <div class="spotlight" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="crumb"><a href="/">Home</a> <span class="sep">›</span> {v['nav_meta']}</div>
+    <span class="eyebrow"><span class="sec">§ 01</span> {v['nav_meta']}</span>
     <h1>{v['h1']}</h1>
     <p class="lede">{v['lede']}</p>
     <div class="btn-row">
-      <a class="btn" href="/audit">{v['cta_label']}</a>
+      <a class="btn btn-primary" href="/audit">{v['cta_label']}</a>
       <a class="btn btn-ghost" href="#pricing">See plans &amp; pricing</a>
     </div>
   </div>
-</div>
+</section>
 
 <main class="wrap">
 
   <section>
+    <span class="eyebrow"><span class="sec">§ 02</span> Why this vertical</span>
     <h2>{v['why_heading']}</h2>
     <p>{v['why_intro']}</p>
     <ul class="lead-list">
@@ -808,7 +812,10 @@ def render(slug, v):
     </ul>
   </section>
 
+  <hr class="divider">
+
   <section>
+    <span class="eyebrow"><span class="sec">§ 03</span> Sample</span>
     <h2>What your audit looks like</h2>
     <p>Roughly a one-page report built on your real numbers and your three closest local competitors. Below is the format, yours will be specific to your numbers and the businesses competing with you for top-3 visibility.</p>
 
@@ -844,7 +851,10 @@ def render(slug, v):
     </article>
   </section>
 
+  <hr class="divider">
+
   <section>
+    <span class="eyebrow"><span class="sec">§ 04</span> System</span>
     <h2>How this works</h2>
     <p>The recurring work agencies bill $2,500 to $5,000/mo for, review monitoring, weekly posts, rank tracking, citation cleanup, reporting, is mostly repetitive. Software does repetitive well; strategy still needs a human. Here's the split.</p>
     <div class="how-grid">
@@ -872,33 +882,56 @@ def render(slug, v):
     </div>
   </section>
 
+  <hr class="divider">
+
   <section>
+    <span class="eyebrow"><span class="sec">§ 05</span> AI era</span>
     <h2>Built for how people search now</h2>
     <p>More and more, customers don't scroll, they ask Google's AI or an assistant for the best {ai_noun} near them and trust whatever it answers. Those AI answers are built from the same signals as the map pack: your Google Business Profile, your reviews, and consistent business data. I tune for both, so you're the one that gets <strong>found and recommended</strong>, not just ranked.</p>
   </section>
 {rankings_section}
+  <hr class="divider">
 {pricing}
 
+  <hr class="divider">
+
   <section class="faq">
+    <span class="eyebrow"><span class="sec">§ 07</span> Answers</span>
     <h2>{v['faq_heading']}</h2>
 {_faq_details(v['faqs'])}
   </section>
 
+  <hr class="divider">
+
   <section>
+    <span class="eyebrow"><span class="sec">§ 08</span> Start here</span>
     <h2>Start with the audit</h2>
     <p>No call, no contract, no pitch. Tell me about your business and I'll send back exactly where you rank, your three biggest gaps, and a 60-day plan, usually within 24 hours.</p>
     <div class="btn-row">
-      <a class="btn" href="/audit">{v['cta_label']}</a>
+      <a class="btn btn-primary" href="/audit">{v['cta_label']}</a>
       <a class="btn btn-ghost" href="/">Back to home</a>
     </div>
   </section>
 
 </main>
 
-<footer>
+<footer class="footer">
   <div class="wrap">
-    <div><strong>Cascade Local SEO</strong> · built by Jonathan</div>
-    <div><a href="mailto:jonathan@cascadelocalseo.com">jonathan@cascadelocalseo.com</a></div>
+    <div class="footer-inner">
+      <a class="brand" href="/">
+        <img src="/assets/cascade-logo.png" alt="Cascade logo" style="width:34px;height:34px;border-radius:9px">
+        <span><b>Cascade</b><span class="dot">.</span></span>
+      </a>
+      <nav class="footer-links">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/leaderboards">Rankings</a>
+        <a href="/blog">Blog</a>
+        <a href="https://www.linkedin.com/in/jonathan-luis-917448b8" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="footer-mail" href="mailto:jonathan@cascadelocalseo.com">jonathan@cascadelocalseo.com</a>
+      </nav>
+    </div>
+    <p class="footer-fine">Cascade Local SEO · built by Jonathan Luis · free audits for service businesses, built for the AI era.</p>
   </div>
 </footer>
 

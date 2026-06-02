@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Cascade — Executive Dashboard</title>
+<meta name="theme-color" content="#062514" />
+<link rel="icon" type="image/png" href="/assets/cascade-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/exec-dashboard.css" />
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<header class="topbar">
+  <a class="brand" href="/">
+    <img src="/assets/cascade-logo.png" alt="Cascade logo" />
+    <span class="name"><b>Cascade</b><span class="dot">.</span></span>
+  </a>
+  <span class="sep"></span>
+  <span class="ctx">Executive Dashboard</span>
+  <div class="spacer"></div>
+  <div class="seg" id="rangeSeg" role="group" aria-label="Date range">
+    <button data-range="6">6M</button>
+    <button data-range="12" class="active">12M</button>
+  </div>
+  <span class="updated"><span class="live"></span> <span id="updatedLbl">Updated —</span></span>
+</header>
+
+<!-- ===== ILLUSTRATIVE / LIVE BANNER ===== -->
+<div class="illus-banner" id="illusBanner">
+  <div class="ib"><span class="rd"></span><span id="illusText">Revenue figures are an <b>illustrative model</b> until live MRR exists. Daily-operations data below is <b>live</b>.</span></div>
+</div>
+
+<main class="dash">
+
+  <!-- KPI ROW (illustrative until revenueLive) -->
+  <section class="row kpi-row" id="kpiRow"></section>
+
+  <!-- ROW A: MRR stacked area + plan mix -->
+  <section class="row row-a">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Recurring revenue by plan <span class="illus-tag">illustrative</span></h3>
+          <div class="sub">Monthly MRR · stacked by tier</div>
+        </div>
+        <div class="legend" id="mrrLegend"></div>
+      </div>
+      <div class="chart-wrap">
+        <div id="mrrChart"></div>
+        <div class="tooltip" id="mrrTip"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Plan mix <span class="illus-tag">illustrative</span></h3>
+          <div class="sub">Current MRR distribution</div>
+        </div>
+      </div>
+      <div class="donut-wrap">
+        <div id="donut"></div>
+        <div class="donut-legend" id="donutLegend"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROW B: revenue vs ad spend + flow -->
+  <section class="row row-b">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Revenue vs. ad spend <span class="illus-tag">illustrative</span></h3>
+          <div class="sub">Total revenue (bars) · ad spend (line)</div>
+        </div>
+        <div class="legend">
+          <button style="cursor:default"><span class="sw" style="background:var(--tan)"></span>Total revenue</button>
+          <button style="cursor:default"><span class="sw" style="background:var(--coral)"></span>Ad spend</button>
+        </div>
+      </div>
+      <div class="chart-wrap"><div id="revChart"></div></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>MRR movement <span class="illus-tag">illustrative</span></h3>
+          <div class="sub">New + expansion vs. churned, per month</div>
+        </div>
+        <div class="legend">
+          <button style="cursor:default"><span class="sw" style="background:var(--up)"></span>New + expansion</button>
+          <button style="cursor:default"><span class="sw" style="background:var(--down)"></span>Churned</button>
+        </div>
+      </div>
+      <div class="chart-wrap"><div id="flowChart"></div></div>
+    </div>
+  </section>
+
+  <!-- UNIT ECONOMICS -->
+  <section class="row">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Unit economics <span class="illus-tag">illustrative</span></h3>
+          <div class="sub">Current period · trailing month</div>
+        </div>
+      </div>
+      <div class="metrics" id="metrics"></div>
+    </div>
+  </section>
+
+  <!-- ROW C: industries -->
+  <section class="row row-c">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Revenue by industry <span class="illus-tag">illustrative</span></h3>
+          <div class="sub">MRR contribution · month-over-month</div>
+        </div>
+      </div>
+      <table class="tbl" id="indTable">
+        <thead><tr><th>Industry</th><th class="r">Clients</th><th class="r">MRR</th><th class="r">MoM</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>The narrative <span class="illus-tag">illustrative</span></h3>
+          <div class="sub">What the numbers would say at scale</div>
+        </div>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:16px">
+        <li style="display:flex;gap:13px;align-items:flex-start">
+          <span style="width:30px;height:30px;border-radius:8px;background:rgba(121,214,166,0.12);color:var(--up);display:grid;place-items:center;flex:none">▲</span>
+          <span style="color:var(--muted);font-size:14px"><b style="color:var(--cream)">Model: MRR crossing $76.5K</b> — up 8.5% MoM. ARR run-rate $918K, on pace to clear $1M by Q3. This is the target trajectory, not current actuals.</span>
+        </li>
+        <li style="display:flex;gap:13px;align-items:flex-start">
+          <span style="width:30px;height:30px;border-radius:8px;background:rgba(74,196,224,0.12);color:var(--blue);display:grid;place-items:center;flex:none">◆</span>
+          <span style="color:var(--muted);font-size:14px"><b style="color:var(--cream)">Standard is the modeled engine.</b> 19 clients at $1.5K would drive 37% of MRR. Pushing Starters → Standard is the highest-leverage expansion path.</span>
+        </li>
+        <li style="display:flex;gap:13px;align-items:flex-start">
+          <span style="width:30px;height:30px;border-radius:8px;background:rgba(218,190,121,0.12);color:var(--tan);display:grid;place-items:center;flex:none">$</span>
+          <span style="color:var(--muted);font-size:14px"><b style="color:var(--cream)">Acquisition stays cheap.</b> Blended CAC $700 against ~$42K LTV — payback under a month. Ad spend has room to scale once the funnel converts.</span>
+        </li>
+        <li style="display:flex;gap:13px;align-items:flex-start">
+          <span style="width:30px;height:30px;border-radius:8px;background:rgba(231,140,99,0.12);color:var(--coral);display:grid;place-items:center;flex:none">!</span>
+          <span style="color:var(--muted);font-size:14px"><b style="color:var(--cream)">Today's real constraint is demand.</b> The machine is built; the live numbers below are what to move this week — backlog, sends, replies.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DAILY OPERATIONS (live data) -->
+  <div class="ops-head">
+    <h2>Daily operations</h2>
+    <span class="sub">What needs you today · live</span>
+  </div>
+
+  <section class="row row-ops">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Needs you today<span class="live-tag">live</span></h3>
+          <div class="sub">Nothing publishes without your review</div>
+        </div>
+      </div>
+      <div class="task-list" id="taskList"></div>
+      <div class="task-foot">
+        <div class="tf-bar"><i id="taskBar"></i></div>
+        <span class="tf-lbl" id="taskLbl"></span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>This month · goals<span class="live-tag">live</span></h3>
+          <div class="sub" id="goalsSub">Targets</div>
+        </div>
+      </div>
+      <div class="goal-list" id="goalList"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Audit pipeline<span class="live-tag">live</span></h3>
+          <div class="sub">Last 7 days</div>
+        </div>
+      </div>
+      <div class="funnel" id="pipeline"></div>
+      <div class="fn-conv" id="pipeConv"></div>
+    </div>
+  </section>
+
+  <!-- LAST 24H + OUTREACH HEALTH + MONEY WATCH (live data) -->
+  <section class="row row-24">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Last 24 hours<span class="live-tag">live</span></h3>
+          <div class="sub" id="last24Sub">Automated activity</div>
+        </div>
+      </div>
+      <div class="mr-grid" id="last24"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Cold outreach · 7-day health<span class="live-tag">live</span></h3>
+          <div class="sub">Top-of-funnel deliverability</div>
+        </div>
+      </div>
+      <div class="health" id="health"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Money watch<span class="live-tag">live</span></h3>
+          <div class="sub">Coverage &amp; backlog</div>
+        </div>
+      </div>
+      <div class="watch" id="watch"></div>
+    </div>
+  </section>
+
+  <!-- ACTIVITY FEED (live data) -->
+  <section class="row">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Activity<span class="live-tag">live</span></h3>
+          <div class="sub">Most recent first</div>
+        </div>
+      </div>
+      <div class="feed" id="feed"></div>
+    </div>
+  </section>
+
+</main>
+
+<p class="foot">Cascade Local SEO · Executive view · revenue panels are an illustrative model until live MRR exists · daily-operations data is live · built for Jonathan Luis</p>
+
+<script src="/exec-dashboard.js"></script>
+</body>
+</html>

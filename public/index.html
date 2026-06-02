@@ -1,623 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cascade Local SEO: Free local SEO audits</title>
-  <meta name="description" content="Free, specific, no-pitch local SEO audits for service businesses. Honest data on where you actually stand and what to do about it.">
-  <link rel="canonical" href="https://cascadelocalseo.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Cascade Local SEO">
-  <meta property="og:title" content="Cascade Local SEO: Free local SEO audits for service businesses">
-  <meta property="og:description" content="A specific, no-pitch local SEO audit: where you actually rank, the three biggest gaps, and a 60-day plan. Most audits land within 24 hours.">
-  <meta property="og:url" content="https://cascadelocalseo.com/">
-  <meta property="og:image" content="https://cascadelocalseo.com/og-default.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cascade Local SEO: Free local SEO audits">
-  <meta name="twitter:description" content="A specific, no-pitch local SEO audit: where you rank, your three biggest gaps, and a 60-day plan.">
-  <meta name="twitter:image" content="https://cascadelocalseo.com/og-default.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#0a3d24">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cascade Local SEO — Get found &amp; recommended</title>
+<meta name="description" content="Free, specific, no-pitch local SEO audits for service businesses. Honest data on where you actually stand and a 60-day plan — tuned for the Google map pack and the AI era." />
+<link rel="canonical" href="https://cascadelocalseo.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Cascade Local SEO" />
+<meta property="og:title" content="Cascade Local SEO: Free local SEO audits for service businesses" />
+<meta property="og:description" content="A specific, no-pitch local SEO audit: where you actually rank, the three biggest gaps, and a 60-day plan. Most audits land within 24 hours." />
+<meta property="og:url" content="https://cascadelocalseo.com/" />
+<meta property="og:image" content="https://cascadelocalseo.com/og-default.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cascade Local SEO: Free local SEO audits" />
+<meta name="twitter:description" content="A specific, no-pitch local SEO audit: where you rank, your three biggest gaps, and a 60-day plan." />
+<meta name="twitter:image" content="https://cascadelocalseo.com/og-default.png" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="theme-color" content="#062514" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/cascade-v2.css" />
+<style>
+  /* page-specific: audit-form feedback states (matches design tokens) */
+  #form-feedback { margin-top: 14px; padding: 12px 14px; border-radius: 11px; font-size: 14px; display: none; line-height: 1.5; }
+  #form-feedback.ok { display: block; background: rgba(74,196,224,0.10); color: var(--blue); border: 1px solid var(--line-blue); }
+  #form-feedback.err { display: block; background: rgba(231,140,99,0.12); color: #E78C63; border: 1px solid rgba(231,140,99,0.4); }
+</style>
 
-  <style>
-    :root {
-      /* DARK-MODE PIVOT: deep forest green dominates; parchment type; gold = the sharp accent.
-         Legacy var names kept so the cascade reaches every section without renames. */
-      --bg: #062514;             /* deep forest, near-black */
-      --bg-2: #0a3d24;            /* one step lighter — cards / elevated surfaces */
-      --paper: #0a3d24;           /* card stock = elevated forest */
-      --ink: #efe4cc;             /* parchment cream — primary type */
-      --ink-soft: #b6c5b8;        /* faded sage */
-      --ink-faint: #7a8c82;
-      --green: #0a6b3f;           /* brand mid-green — kept for icons, marks, links */
-      --green-dark: #0a3d24;      /* used as second elevation surface */
-      --green-darker: #062514;
-      --green-tint: #0e3a23;      /* highlight bg on dark (was a light tint) */
-      --green-pale: #08321d;      /* alternate band bg, very subtle */
-      --border: rgba(218, 190, 121, 0.22); /* gold hairlines — replaces shadows */
-      --rule: rgba(239, 228, 204, 0.12);   /* parchment hairlines for dividers */
-      --gold: #dabe79;            /* WARM accent — action, decision, CTA, promoted tabs, hover */
-      --gold-soft: #f4e3b5;
-      --ocean: #4ac4e0;           /* COOL accent — data, system, live, AI, links, info CTAs */
-      --ocean-soft: #7dd4ea;
-      --ocean-dim: #2596be;
-      --good: #dabe79;
-      --warn: #dabe79;
-      --bad: #e07a5f;
-      --max: 1080px;
-      --reading: 760px;
-      --serif: 'Bricolage Grotesque', system-ui, sans-serif;
-      --display: 'Bricolage Grotesque', system-ui, sans-serif;
-      --sans: 'IBM Plex Sans', -apple-system, sans-serif;
-      --mono: 'JetBrains Mono', ui-monospace, monospace;
-      --ease: cubic-bezier(.2,.7,.2,1);
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://cascadelocalseo.com/#org",
+      "name": "Cascade Local SEO",
+      "url": "https://cascadelocalseo.com/",
+      "description": "Local SEO for service businesses. Get found in the Google Maps local pack and on Search with rank tracking, review monitoring, Google Business Profile content, and citation cleanup.",
+      "image": "https://cascadelocalseo.com/icon-512.png",
+      "logo": "https://cascadelocalseo.com/icon-512.png",
+      "email": "jonathan@cascadelocalseo.com",
+      "priceRange": "$1,000 to $3,000/mo",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "founder": { "@type": "Person", "name": "Jonathan", "sameAs": "https://www.linkedin.com/in/jonathan-luis-917448b8" },
+      "serviceType": ["Local SEO", "Google Business Profile management", "Local rank tracking", "Online review management", "Local citation building"]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cascadelocalseo.com/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "How does the audit actually work?", "acceptedAnswer": { "@type": "Answer", "text": "You submit your business. My system pulls your current rank, review profile, and the top 3 competitors in your area for your primary keyword. I write up three specific gaps and three specific actions. You get the audit by email, usually within 24 hours, sometimes within an hour." } },
+        { "@type": "Question", "name": "Why is the audit free?", "acceptedAnswer": { "@type": "Answer", "text": "Two reasons. First, it's mostly automated, it costs me about a dollar to generate. Second, most cold sales feel terrible because they ask before they give. I'd rather give first. If the audit is useful and you want help executing on it, hire me. If not, no harm done." } },
+        { "@type": "Question", "name": "Can you help businesses outside chiropractic, dentistry, HVAC or law?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The audit logic adapts to any service business with local search demand, vets, med spas, auto shops, real estate agents, gyms, salons, accountants. If your customers find you on Google Maps, the same playbook applies." } },
+        { "@type": "Question", "name": "How fast can I expect results?", "acceptedAnswer": { "@type": "Answer", "text": "For most local pack improvements: 30 to 90 days. Reviews compound; one strong review month moves the needle. Top-3 ranking changes typically happen in months 2 to 4 once the basics are fixed. If your business is brand new with no Google Business Profile listing, the timeline doubles." } },
+        { "@type": "Question", "name": "What if I already have an SEO agency?", "acceptedAnswer": { "@type": "Answer", "text": "Get the audit anyway. Use it to ask your agency hard questions. If they're doing their job, they'll appreciate the second set of eyes. If not, you'll know." } },
+        { "@type": "Question", "name": "Will you spam me?", "acceptedAnswer": { "@type": "Answer", "text": "No. The audit comes once. If you don't reply, you'll get one short check-in a week later and one final note a week after that. Then I stop. Three emails total, max." } },
+        { "@type": "Question", "name": "Do you sign contracts?", "acceptedAnswer": { "@type": "Answer", "text": "Month-to-month only. If I can't keep delivering value, you should be able to leave." } }
+      ]
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--sans);
-      font-size: 17px;
-      line-height: 1.65;
-      color: var(--ink);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-    .reading { max-width: var(--reading); margin: 0 auto; padding: 0 24px; }
-    a { color: var(--ocean); text-decoration: none; }
-    a.inline { border-bottom: 1px solid currentColor; }
-    a:hover { color: var(--ocean-soft); }
-    h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.1; color: var(--ink); letter-spacing: -0.02em; }
-    p { margin: 0 0 1em; }
-    .muted { color: var(--ink-soft); }
-    .small { font-size: 0.9rem; }
-    em { font-style: italic; }
-
-    /* eyebrow = compositor's mark: gold hairline + mono folio label */
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 0.7em;
-      font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 16px;
-    }
-    .eyebrow::before {
-      content: ""; width: 30px; height: 1px;
-      background: var(--gold); opacity: 0.55;
-    }
-
-    /* ---------- 2026 ATMOSPHERICS ---------- */
-    /* scroll progress — gold hairline at the absolute top, fills as you scroll */
-    #scroll-progress {
-      position: fixed; top: 0; left: 0; height: 2px;
-      background: var(--gold); width: 0%; z-index: 999;
-      transition: width 0.08s linear;
-      box-shadow: 0 0 8px rgba(218, 190, 121, 0.5);
-    }
-
-    /* utility bar — system status at the absolute top of the page */
-    .utility-bar {
-      background: var(--green-darker);
-      border-bottom: 1px solid var(--rule);
-      padding: 8px 0;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--ink-soft);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-    .utility-bar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
-    .utility-bar .live { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); }
-    .utility-bar .live .dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--ocean);
-      box-shadow: 0 0 0 0 rgba(74, 196, 224, 0.6);
-      animation: pulseDot 2.4s ease-out infinite;
-    }
-    .utility-bar .meta { color: var(--ink-faint); }
-    .utility-bar .meta b { color: var(--ink-soft); font-weight: 500; }
-    @keyframes pulseDot {
-      0%   { box-shadow: 0 0 0 0 rgba(74, 196, 224, 0.55); }
-      70%  { box-shadow: 0 0 0 12px rgba(74, 196, 224, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(74, 196, 224, 0); }
-    }
-    @media (prefers-reduced-motion: reduce){ .utility-bar .live .dot { animation: none; } }
-    @media (max-width: 640px){ .utility-bar .meta { display: none; } }
-
-    /* stats band — operational data row between hero and content */
-    .stats-band {
-      background: var(--bg);
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      padding: 28px 0;
-    }
-    .stats-band .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    @media (max-width: 720px){ .stats-band .stats-row { grid-template-columns: 1fr; gap: 22px; } }
-    .stats-band .stat { display: flex; flex-direction: column; gap: 4px; }
-    .stats-band .stat .num {
-      font-family: var(--display); font-weight: 700;
-      font-size: clamp(1.7rem, 3vw, 2.1rem);
-      color: var(--ink); letter-spacing: -.028em;
-      font-variant-numeric: tabular-nums;
-      line-height: 1;
-    }
-    .stats-band .stat .num .unit {
-      font-family: var(--mono); font-size: 0.42em; font-weight: 500;
-      color: var(--ocean); letter-spacing: 1.5px; text-transform: uppercase;
-      margin-left: 6px;
-    }
-    .stats-band .stat .lbl {
-      font-family: var(--mono); font-size: 0.66rem; font-weight: 400;
-      color: var(--ink-faint); letter-spacing: 1.5px; text-transform: uppercase;
-      margin-top: 6px;
-    }
-
-    /* form card — drop the full border, use viewfinder brackets in 4 corners */
-    .form-card { border: none !important; }
-    .form-card .bracket { position: absolute; width: 18px; height: 18px; border: 1.5px solid var(--gold); pointer-events: none; }
-    .form-card .bracket.tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
-    .form-card .bracket.tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
-    .form-card .bracket.bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
-    .form-card .bracket.br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
-    .form-card { position: relative; }
-
-    /* ---------- top bar — dark, hard, mono-flavored ---------- */
-    header {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--rule);
-      transition: border-color .4s, background .4s;
-    }
-    header.scrolled { border-bottom-color: var(--border); background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 18px; }
-    .logo { display: flex; align-items: center; gap: .62em; color: var(--ink); }
-    .logo .mark path { stroke: var(--gold); }
-    .logo .word { font-family: var(--display); font-weight: 700; font-size: 1.3rem; letter-spacing: -.02em; }
-    .logo .word .dot { color: var(--gold); }
-    .nav-links { display: flex; gap: 2rem; align-items: center; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 1.2px; text-transform: uppercase; }
-    .nav-links a { color: var(--ink-soft); transition: color .25s; }
-    .nav-links a:hover { color: var(--ocean); }
-    .nav-cta { display: flex; align-items: center; gap: 1.1rem; }
-    .btn {
-      font-family: var(--sans); font-weight: 600; font-size: .9rem;
-      padding: .78em 1.4em; border-radius: 0; border: 0; cursor: pointer;
-      display: inline-flex; align-items: center; gap: .5em;
-      transition: transform .3s var(--ease), background .25s;
-      letter-spacing: .01em;
-    }
-    .btn .arr { transition: transform .3s var(--ease); }
-    .btn:hover .arr { transform: translateX(3px); }
-    .btn-gold {
-      background: var(--gold);
-      color: var(--green-darker);
-    }
-    .btn-gold:hover { transform: translateY(-2px); background: var(--gold-soft); color: var(--green-darker); }
-    .btn-green { background: transparent; color: var(--ink); border: 1px solid var(--border); padding: calc(.78em - 1px) calc(1.4em - 1px); }
-    .btn-green:hover { background: rgba(218,190,121,0.08); border-color: var(--gold); color: var(--gold); }
-    @media (max-width: 820px){ .nav-links { display: none; } }
-
-    /* ---------- hero ---------- */
-    /* Engineering blueprint grid replaces the wellness-y wavy topo.
-       Two layered gradient grids — primary 72px square, secondary 1/3 sub-grid for depth.
-       Plus a softly radiating gold "system pulse" anchored bottom-right.
-       Whole thing reads as a live operational console, not a brochure. */
-    .hero {
-      position: relative; overflow: hidden;
-      background-color: var(--bg);
-      background-image:
-        radial-gradient(ellipse 60% 50% at 92% 110%, rgba(218,190,121,0.10), transparent 60%),
-        linear-gradient(to right, rgba(218,190,121,0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(218,190,121,0.05) 1px, transparent 1px),
-        linear-gradient(to right, rgba(218,190,121,0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(218,190,121,0.025) 1px, transparent 1px);
-      background-size: 100% 100%, 72px 72px, 72px 72px, 24px 24px, 24px 24px;
-      background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    /* contours retained as an empty rule for any markup that still references it; visually neutralized */
-    .hero-contours { display: none; }
-    /* hero corner folio mark — top-right, like a magazine spread folio */
-    .hero .folio-mark {
-      position: absolute; top: 22px; right: 24px; z-index: 3;
-      font-family: var(--mono); font-size: 0.62rem; font-weight: 500;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint);
-    }
-    .hero .folio-mark b { color: var(--gold); font-weight: 500; }
-    @media (max-width: 640px){ .hero .folio-mark { display: none; } }
-    .hero-grid {
-      position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center;
-      padding: 64px 0 52px;
-    }
-    @media (max-width: 900px){ .hero-grid { grid-template-columns: 1fr; gap: 30px; padding: 44px 0 36px; } }
-    .hero h1 {
-      font-family: var(--display); font-weight: 700;
-      font-size: clamp(2.5rem, 6vw, 4.2rem);
-      line-height: 0.98; margin: 0 0 .5em;
-      letter-spacing: -.025em;
-      color: var(--ink);                /* parchment */
-      font-variation-settings: "opsz" 96;
-    }
-    .hero h1 .line { display: block; }
-    .hero h1 .line.two { margin-top: .05em; }
-    /* "found" — solid italic ocean. Cool accent ties to the link/info system. */
-    .hero h1 .accent {
-      color: var(--ocean);
-      font-style: italic;
-      font-weight: 700;
-    }
-    /* "recommended." — stroked parchment. Easy to read on dark; 8% interior fill warms it. */
-    .hero h1 .stroke {
-      color: rgba(239, 228, 204, 0.08);
-      -webkit-text-stroke: 1.6px var(--ink);
-      text-stroke: 1.6px var(--ink);
-    }
-    .hero h1 .stroke .dot {
-      -webkit-text-stroke: 0; text-stroke: 0;
-      color: var(--ocean);             /* punctuation = a tiny ocean beat — matches "found" */
-    }
-    .hero .lede { font-size: 1.15rem; color: var(--ink-soft); max-width: 42ch; margin-bottom: 22px; line-height: 1.6; }
-    .hero .trust { display: flex; flex-wrap: wrap; gap: 16px; font-family: var(--mono); font-size: .72rem; color: var(--ink-soft); font-weight: 400; letter-spacing: 0.5px; text-transform: uppercase; }
-    .hero .trust span { display: inline-flex; align-items: center; gap: 7px; }
-    .hero .trust svg { color: var(--gold); }
-
-    /* audit form — dark elevated, hard edges, gold hairline */
-    .form-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 0; padding: 30px; box-shadow: none; }
-    .form-card h3 { font-family: var(--display); font-size: 1.4rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -.015em; color: var(--ink); }
-    .form-card .small { color: var(--ink-soft); margin-bottom: 20px; }
-    .form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-    .form-row label { font-family: var(--mono); font-size: 0.7rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 1.5px; text-transform: uppercase; }
-    .form-row input, .form-row select { font: inherit; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 0; background: rgba(0,0,0,.18); color: var(--ink); }
-    .form-row input::placeholder { color: var(--ink-faint); }
-    .form-row input:focus, .form-row select:focus { outline: none; border-color: var(--ocean); background: rgba(0,0,0,.32); box-shadow: 0 0 0 2px rgba(74,196,224,0.18); }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    @media (max-width: 540px){ .form-grid { grid-template-columns: 1fr; } }
-    button.cta { background: var(--gold); color: var(--green-darker); border: none; padding: 15px 22px; font: inherit; font-weight: 700; border-radius: 0; cursor: pointer; width: 100%; transition: background .15s, transform .2s; letter-spacing: .01em; }
-    button.cta:hover { background: var(--gold-soft); transform: translateY(-1px); }
-    button.cta:disabled { background: var(--ink-faint); cursor: wait; transform: none; color: var(--bg); }
-    #form-feedback { margin-top: 14px; padding: 12px 14px; border-radius: 0; font-size: 0.92rem; display: none; }
-    #form-feedback.ok { display: block; background: rgba(218, 190, 121, 0.12); color: var(--gold); border: 1px solid var(--border); }
-    #form-feedback.err { display: block; background: rgba(224, 122, 95, 0.12); color: var(--bad); border: 1px solid rgba(224,122,95,0.4); }
-    /* form-alt: secondary path = tailored full breakdown. Outlined ocean CTA
-       so it reads as a real "second option" without competing with the gold primary. */
-    .form-alt { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--rule); text-align: center; }
-    .form-alt-eyebrow {
-      display: block;
-      font-family: var(--mono); font-size: 0.66rem; font-weight: 500;
-      letter-spacing: 1.8px; text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 12px;
-    }
-    .form-alt-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--ocean);
-      border: 1.5px solid var(--ocean);
-      padding: 11px 20px; border-radius: 0;
-      font-family: var(--sans); font-weight: 700; font-size: 0.95rem;
-      text-decoration: none; letter-spacing: 0.2px;
-      transition: background 0.15s, color 0.15s, transform 0.2s, border-color 0.15s;
-    }
-    .form-alt-cta:hover {
-      background: rgba(74, 196, 224, 0.10);
-      color: var(--ocean-soft); border-color: var(--ocean-soft);
-      transform: translateY(-1px);
-    }
-    .form-alt-cta .arr { transition: transform 0.2s; }
-    .form-alt-cta:hover .arr { transform: translateX(3px); }
-    .form-alt-note {
-      display: block;
-      font-size: 0.82rem; color: var(--ink-faint);
-      margin-top: 12px; line-height: 1.55;
-    }
-
-    /* ---------- sections ---------- */
-    section.band { padding: clamp(48px, 7vw, 76px) 0; }
-    .section-head { max-width: 640px; margin: 0 auto 40px; text-align: center; }
-    .section-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 3.8vw, 2.6rem); margin: 0; color: var(--ink); letter-spacing: -.025em; line-height: 1.05; }
-    .section-head p { color: var(--ink-soft); margin-top: 14px; font-size: 1.06rem; }
-    .section-head .eyebrow { color: var(--gold); }
-    .band.tint { background: var(--green-pale); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-
-    /* dual proof — dark elevated, hard edges, gold hairlines */
-    .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 920px; margin: 0 auto; }
-    @media (max-width: 820px){ .panels { grid-template-columns: 1fr; } }
-    .panel { background: var(--bg-2); border: 1px solid var(--border); border-radius: 0; padding: 24px; box-shadow: none; transition: transform .45s var(--ease), border-color .45s; }
-    .panel:hover { transform: translateY(-4px); border-color: var(--gold); }
-    .panel .tag { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 500; display: block; margin-bottom: 18px; }
-    .searchbar { display: flex; align-items: center; gap: .6em; background: rgba(0,0,0,.25); border: 1px solid var(--rule); border-radius: 0; padding: .7em 1em; font-size: .9rem; color: var(--ink-soft); margin-bottom: 14px; }
-    .result { display: flex; align-items: center; gap: .8rem; padding: .75rem .8rem; border-radius: 0; border: 1px solid transparent; }
-    .result + .result { margin-top: .3rem; }
-    .result .rank { font-family: var(--mono); font-weight: 500; font-size: .85rem; color: var(--ink-faint); width: 1.3em; font-variant-numeric: tabular-nums; }
-    .result .pin { width: 30px; height: 30px; border-radius: 0; display: grid; place-items: center; background: rgba(218, 190, 121, 0.12); color: var(--gold); font-family: var(--mono); font-weight: 500; font-size: .8rem; flex: none; }
-    .result .biz { flex: 1; line-height: 1.32; }
-    .result .biz b { font-weight: 600; font-size: .96rem; color: var(--ink); }
-    .result .biz .stars { color: var(--gold); font-size: .8rem; letter-spacing: .08em; }
-    .result .biz .meta { color: var(--ink-faint); font-size: .76rem; }
-    .result.you { background: rgba(218, 190, 121, 0.08); border-color: var(--gold); }
-    .result.you .rank { color: var(--gold); }
-    .result.you .pin { background: var(--gold); color: var(--green-darker); }
-    .badge-you { font-family: var(--mono); font-size: .6rem; font-weight: 500; letter-spacing: 1.5px; color: var(--green-darker); background: var(--gold); padding: .35em .65em; border-radius: 0; }
-    .ai-q { font-size: .92rem; color: var(--ink); display: flex; gap: .55em; margin-bottom: 14px; }
-    .ai-q .who { font-family: var(--mono); font-size: .62rem; font-weight: 500; letter-spacing: 1.5px; color: var(--ink-faint); padding-top: .35em; flex: none; }
-    .ai-ans { background: rgba(0,0,0,.25); border: 1px solid var(--rule); border-radius: 0; padding: 18px 20px; font-size: .96rem; line-height: 1.6; color: var(--ink); }
-    .ai-ans .who { font-family: var(--mono); display: block; font-size: .62rem; font-weight: 500; letter-spacing: 1.5px; color: var(--ocean); margin-bottom: 10px; }
-    .ai-ans mark { background: transparent; color: var(--ocean); font-weight: 700; }
-    .cursor { display: inline-block; width: 7px; height: 1.05em; background: var(--ocean); margin-left: 2px; vertical-align: -2px; animation: blink 1.1s steps(2) infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
-    .panels-note { text-align: center; color: var(--ink-faint); font-size: .82rem; margin: 22px auto 0; max-width: 60ch; }
-
-    /* sample audit preview — dark elevated; hairline divider stats; gold accent on stat numbers */
-    .sample-preview { max-width: var(--reading); margin: 0 auto; background: var(--bg-2); border: 1px solid var(--border); border-radius: 0; box-shadow: none; overflow: hidden; }
-    .sample-header { padding: 26px 32px 20px; border-bottom: 1px solid var(--rule); background: linear-gradient(180deg, rgba(218,190,121,0.10) 0%, var(--bg-2) 100%); }
-    .sample-eyebrow { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
-    .sample-title { font-family: var(--display); font-size: 1.55rem; font-weight: 700; margin: 0 0 2px; letter-spacing: -.02em; color: var(--ink); }
-    .sample-sub { font-size: 0.92rem; color: var(--ink-soft); margin: 0; }
-    .sample-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border-bottom: 1px solid var(--rule); }
-    .sample-stat { background: var(--bg-2); padding: 18px 20px; }
-    .sample-stat .label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; margin-bottom: 6px; }
-    .sample-stat .value { font-family: var(--display); font-size: 1.7rem; font-weight: 700; line-height: 1.1; color: var(--ink); letter-spacing: -.02em; }
-    .sample-stat.warn .value { color: var(--warn); }
-    .sample-stat.bad .value { color: var(--bad); }
-    .sample-body { padding: 26px 32px 30px; }
-    .sample-body h4 { font-family: var(--display); font-size: 1.12rem; font-weight: 700; color: var(--gold); margin: 20px 0 10px; letter-spacing: -.01em; }
-    .sample-body h4:first-child { margin-top: 4px; }
-    .sample-body ul { padding-left: 22px; margin: 10px 0 18px; font-size: 0.95rem; }
-    .sample-body ul li { margin: 7px 0; color: var(--ink); }
-    .sample-body ul li strong { color: var(--ink); font-weight: 700; }
-    .sample-fade { position: relative; max-height: 200px; overflow: hidden; }
-    .sample-fade::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(180deg, rgba(10,61,36,0) 0%, var(--bg-2) 100%); }
-    .sample-cta { padding: 20px 32px; background: rgba(218,190,121,0.06); border-top: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .sample-cta-text { font-size: 0.95rem; color: var(--ink-soft); }
-    .sample-cta-link { font-weight: 700; color: var(--ocean); font-size: 0.95rem; }
-    .sample-cta-link:hover { color: var(--ocean-soft); }
-
-    /* steps — flat dark cards, mono numbers in gold, hard hairline edges */
-    .how-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; max-width: 980px; margin: 0 auto; }
-    @media (max-width: 820px){ .how-grid { grid-template-columns: 1fr; } }
-    .how-step { background: var(--bg-2); border: 1px solid var(--border); border-radius: 0; padding: 28px 26px; transition: transform .45s var(--ease), border-color .45s; }
-    .how-step:hover { transform: translateY(-4px); border-color: var(--gold); }
-    .how-num { width: 38px; height: 38px; border-radius: 0; background: transparent; border: 1px solid var(--gold); color: var(--gold); font-family: var(--mono); font-weight: 500; font-size: .95rem; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
-    .how-tag { font-family: var(--mono); display: inline-block; font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
-    .how-step h3 { font-family: var(--display); font-size: 1.18rem; font-weight: 700; color: var(--ink); margin: 0 0 10px; letter-spacing: -.015em; }
-    .how-step p { color: var(--ink-soft); font-size: 0.93rem; line-height: 1.62; margin: 0; }
-    .how-footer { background: rgba(218,190,121,0.06); border-left: 2px solid var(--gold); border-radius: 0; padding: 18px 22px; margin: 28px auto 0; max-width: 980px; font-size: 0.95rem; color: var(--ink-soft); }
-    .how-footer strong { color: var(--ink); }
-
-    /* AI-era + industries reading blocks */
-    .prose h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.7rem,3.6vw,2.4rem); color: var(--ink); margin: 0 0 .5em; letter-spacing: -.025em; }
-    .prose p { color: var(--ink); }
-    .prose p.muted, .prose .muted { color: var(--ink-soft); }
-    .prose strong { color: var(--ink); font-weight: 700; }
-    .prose ul { padding-left: 22px; }
-    .prose ul li { margin: 8px 0; color: var(--ink); }
-    .ind-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0 14px; }
-    @media (max-width: 720px){ .ind-grid { grid-template-columns: 1fr; } }
-    .ind-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 0; padding: 26px; transition: transform .45s var(--ease), border-color .45s; }
-    .ind-card:hover { transform: translateY(-4px); border-color: var(--gold); }
-    .ind-card h3 { margin: 6px 0 10px; font-size: 1.18rem; font-family: var(--display); font-weight: 700; letter-spacing: -.015em; }
-    .ind-card h3 a { color: var(--ink); }
-    .ind-card h3 a:hover { color: var(--gold); }
-    .ind-card p { color: var(--ink-soft); font-size: 0.93rem; margin: 0; }
-
-    /* pricing — flat dark cards, gold for primary CTAs, mono prices */
-    .foundations { background: var(--green-dark); color: var(--ink); border: 1.5px solid var(--gold); border-radius: 0; padding: 32px 32px; margin: 14px auto 22px; max-width: 980px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: center; position: relative; }
-    .foundations::before {
-      content: "AI-readiness";
-      position: absolute; top: -10px; left: 20px;
-      background: var(--gold); color: var(--green-darker);
-      font-family: var(--mono); font-size: 0.62rem; font-weight: 500;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 4px 10px; border-radius: 0;
-    }
-    @media (max-width: 640px){ .foundations { grid-template-columns: 1fr; gap: 18px; } }
-    .foundations .f-eyebrow { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 10px; }
-    .foundations h3 { font-family: var(--display); font-size: 1.45rem; font-weight: 700; color: var(--ink); margin: 0 0 10px; letter-spacing: -.02em; }
-    .foundations ul { margin: 0; padding-left: 18px; font-size: 0.9rem; }
-    .foundations ul li { margin-bottom: 7px; color: var(--ink-soft); }
-    .foundations .f-buy { text-align: center; }
-    .foundations .f-price { font-family: var(--display); font-size: 2.2rem; font-weight: 700; color: var(--ink); letter-spacing: -.03em; }
-    .foundations .f-price small { font-family: var(--mono); font-size: 0.42em; font-weight: 500; color: var(--ink-faint); display: block; margin-top: 4px; letter-spacing: 1.5px; text-transform: uppercase; }
-    .foundations .cta-link { display: block; text-align: center; background: var(--gold); color: var(--green-darker); padding: 14px 18px; border-radius: 0; font-size: 0.95rem; font-weight: 700; margin-top: 14px; transition: background .15s, transform .2s; }
-    .foundations .cta-link:hover { background: var(--gold-soft); color: var(--green-darker); transform: translateY(-1px); }
-    .foundations .f-note { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); margin-top: 12px; letter-spacing: 0.5px; }
-    .pricing { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; max-width: 980px; margin: 0 auto 10px; }
-    @media (max-width: 720px){ .pricing { grid-template-columns: 1fr; } }
-    .tier { background: var(--bg-2); border: 1px solid var(--border); border-radius: 0; padding: 26px; transition: transform .45s var(--ease), border-color .45s; display: flex; flex-direction: column; }
-    .tier:hover { transform: translateY(-4px); border-color: var(--gold); }
-    .tier h3 { margin: 0 0 6px; font-family: var(--display); font-size: 1.25rem; font-weight: 700; color: var(--ink); letter-spacing: -.015em; }
-    .tier .price { font-family: var(--display); font-size: 1.9rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; letter-spacing: -.025em; }
-    .tier .price small { font-family: var(--mono); font-size: 0.42em; font-weight: 500; color: var(--ink-faint); letter-spacing: 1.5px; text-transform: uppercase; margin-left: 4px; }
-    .tier ul { padding-left: 20px; margin: 0 0 20px; font-size: 0.92rem; }
-    .tier ul li { margin-bottom: 8px; color: var(--ink-soft); }
-    .tier .cta-link { display: block; text-align: center; background: var(--gold); color: var(--green-darker); padding: 13px 18px; border-radius: 0; font-size: 0.95rem; font-weight: 700; margin-top: auto; transition: background .15s, transform .2s; }
-    .tier .cta-link:hover { background: var(--gold-soft); color: var(--green-darker); transform: translateY(-1px); }
-    .tier .cta-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border); font-weight: 600; }
-    .tier .cta-secondary:hover { background: rgba(218,190,121,0.08); color: var(--gold); border-color: var(--gold); }
-    .tier.recommended { border-color: var(--gold); border-width: 1.5px; position: relative; }
-    .tier.recommended::before { content: "Most popular"; position: absolute; top: -10px; left: 20px; background: var(--gold); color: var(--green-darker); font-family: var(--mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 0; }
-    .portal-line { text-align: center; margin-top: 28px; font-size: 0.88rem; color: var(--ink-faint); }
-    .portal-line a { color: var(--ink-soft); border-bottom: 1px dotted currentColor; }
-    .portal-line a:hover { color: var(--ocean); }
-
-    /* faq — hairline dividers, mono summary marker */
-    .faq { max-width: var(--reading); margin: 0 auto; }
-    .faq details { border-bottom: 1px solid var(--rule); padding: 18px 0; }
-    .faq summary { font-family: var(--display); font-size: 1.05rem; color: var(--ink); cursor: pointer; font-weight: 700; list-style: revert; letter-spacing: -.01em; }
-    .faq summary::-webkit-details-marker { color: var(--gold); }
-    .faq summary::marker { color: var(--gold); }
-    .faq details p { color: var(--ink-soft); margin: 12px 0 6px; }
-
-    /* footer — settles into the dark; gold hairline */
-    footer { margin-top: 0; padding: 42px 0 48px; background: var(--green-darker); color: var(--ink-soft); font-size: 0.88rem; border-top: 1px solid var(--rule); }
-    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-    footer strong { color: var(--ink); font-weight: 700; font-family: var(--display); letter-spacing: -.01em; }
-    footer a { color: var(--ink-soft); }
-    footer a:hover { color: var(--ocean); }
-
-    /* reveal */
-    .obs { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
-    .obs.in { opacity: 1; transform: none; }
-    .reveal-up { opacity: 0; transform: translateY(20px); animation: revealUp .85s var(--ease) forwards; }
-    @keyframes revealUp { to { opacity: 1; transform: none; } }
-    .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.28s}.d4{animation-delay:.4s}
-    @media (prefers-reduced-motion: reduce){ *,*::before,*::after{ animation:none!important; transition:none!important } .obs,.reveal-up{ opacity:1; transform:none } }
-
-    /* structured data preserved below in JSON-LD */
-  </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ProfessionalService",
-        "@id": "https://cascadelocalseo.com/#org",
-        "name": "Cascade Local SEO",
-        "url": "https://cascadelocalseo.com/",
-        "description": "Local SEO for service businesses. Get found in the Google Maps local pack and on Search with rank tracking, review monitoring, Google Business Profile content, and citation cleanup.",
-        "image": "https://cascadelocalseo.com/icon-512.png",
-        "logo": "https://cascadelocalseo.com/icon-512.png",
-        "email": "jonathan@cascadelocalseo.com",
-        "priceRange": "$1,000 to $3,000/mo",
-        "areaServed": { "@type": "Country", "name": "United States" },
-        "founder": { "@type": "Person", "name": "Jonathan", "sameAs": "https://www.linkedin.com/in/jonathan-luis-917448b8" },
-        "serviceType": ["Local SEO", "Google Business Profile management", "Local rank tracking", "Online review management", "Local citation building"]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cascadelocalseo.com/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Where do I rank on Google Maps?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Maybe already on my public rankings, I track the Google Map Pack for local businesses across 1,186 city and industry markets. Find your city at cascadelocalseo.com/leaderboards to see exactly where you land, who owns the top three, and the gaps holding you back. Don't see your market yet? The free audit covers any business." }
-          },
-          {
-            "@type": "Question",
-            "name": "How does the audit actually work?",
-            "acceptedAnswer": { "@type": "Answer", "text": "You submit your business. My system pulls your current rank, review profile, and the top 3 competitors in your area for your primary keyword. I write up three specific gaps and three specific actions. You get the audit by email, usually within 24 hours, sometimes within an hour." }
-          },
-          {
-            "@type": "Question",
-            "name": "Why is the audit free?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Two reasons. First, it's mostly automated, it costs me about a dollar to generate. Second, most cold sales feel terrible because they ask before they give. I'd rather give first. If the audit is useful and you want help executing on it, hire me. If not, no harm done." }
-          },
-          {
-            "@type": "Question",
-            "name": "Can you help businesses outside chiropractic, dentistry, HVAC or law?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. The audit logic adapts to any service business with local search demand, vets, med spas, auto shops, real estate agents, gyms, salons, accountants. If your customers find you on Google Maps, the same playbook applies." }
-          },
-          {
-            "@type": "Question",
-            "name": "How fast can I expect results?",
-            "acceptedAnswer": { "@type": "Answer", "text": "For most local pack improvements: 30 to 90 days. Reviews compound; one strong review month moves the needle. Top-3 ranking changes typically happen in months 2 to 4 once the basics are fixed. If your business is brand new with no Google Business Profile listing, the timeline doubles." }
-          },
-          {
-            "@type": "Question",
-            "name": "What if I already have an SEO agency?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Get the audit anyway. Use it to ask your agency hard questions. If they're doing their job, they'll appreciate the second set of eyes. If not, you'll know." }
-          },
-          {
-            "@type": "Question",
-            "name": "Will you spam me?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. The audit comes once. If you don't reply, you'll get one short check-in a week later and one final note a week after that. Then I stop. Three emails total, max." }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you sign contracts?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Month-to-month only. If I can't keep delivering value, you should be able to leave." }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
+  ]
+}
+</script>
 </head>
 <body>
 
-<!-- ===== SYSTEM ATMOSPHERICS (2026 layer) ===== -->
-<div id="scroll-progress"></div>
+<div class="progress"></div>
 
-<!-- ===== UTILITY BAR — live system status ===== -->
-<div class="utility-bar">
-  <div class="wrap">
-    <!-- MANUAL SYNC REQUIRED: hardcoded leaderboard count. Verify against the live /leaderboards index before each deploy; keep this and the stats-row "1,186 tracked" value (below) in sync. -->
-    <span class="live"><span class="dot"></span>Tracking 1,186 leaderboards</span>
-    <span class="meta"><b>Cascade Local SEO</b> / built for the AI era</span>
-  </div>
-</div>
+<nav class="scroll-rail" aria-label="Section navigation">
+  <a href="#top" data-label="Top" class="active"></a>
+  <a href="#shift" data-label="The shift"></a>
+  <a href="#audit" data-label="Free audit"></a>
+  <a href="#sample" data-label="Sample"></a>
+  <a href="#how" data-label="How it works"></a>
+  <a href="#pricing" data-label="Pricing"></a>
+  <a href="#who" data-label="Who I am"></a>
+  <a href="#faq" data-label="FAQ"></a>
+</nav>
 
-<!-- ===== TOP BAR ===== -->
-<header id="hdr">
-  <div class="wrap">
-    <nav>
-      <a class="logo" href="/">
-        <svg class="mark" width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-          <path d="M2 18 C 7 8, 11 8, 13 13 S 19 18, 24 8" stroke-width="2" stroke-linecap="round"/>
-          <path d="M2 23 C 7 13, 11 13, 13 18 S 19 23, 24 13" stroke-width="2" stroke-linecap="round" opacity=".5"/>
-        </svg>
-        <span class="word">Cascade<span class="dot">.</span></span>
-      </a>
-      <div class="nav-links">
-        <a href="#proof">The shift</a>
-        <a href="#how">How it works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="/leaderboards">Rankings</a>
-      </div>
-      <div class="nav-cta">
-        <a href="#pricing" class="btn btn-gold">See pricing <span class="arr">↓</span></a>
-      </div>
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <img src="/assets/cascade-logo.png" alt="Cascade logo" />
+      <span><b>Cascade</b><span class="dot">.</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#shift">The shift</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="/leaderboards">Rankings</a>
+      <a href="#who">Who I am</a>
     </nav>
+    <span class="nav-badge"><span class="pulse"></span> Tracking 1,186 leaderboards</span>
+    <a class="btn btn-primary" href="#foundations">See pricing <span class="arr-dn">↓</span></a>
+    <button class="menu-btn" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
   </div>
 </header>
+<div class="mobile-menu">
+  <a href="#shift">The shift</a>
+  <a href="#how">How it works</a>
+  <a href="#pricing">Pricing</a>
+  <a href="/leaderboards">Rankings</a>
+  <a href="#who">Who I am</a>
+  <a href="#audit">Free audit</a>
+</div>
 
-<!-- ===== HERO ===== -->
+<main id="top">
+
+<!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="folio-mark">§ <b>01</b> · Request audit</div>
+  <div class="waves" aria-hidden="true">
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="none" style="top:6%; animation: drift1 22s linear infinite;">
+      <path class="wave-path" stroke="var(--tan)" style="opacity:.5" d="M0,300 C180,220 320,380 480,300 C640,220 780,380 960,300 C1140,220 1280,380 1440,300 C1620,220 1760,380 1920,300" />
+    </svg>
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="none" style="top:22%; animation: drift2 30s linear infinite;">
+      <path class="wave-path" stroke="var(--blue)" style="opacity:.45" d="M0,320 C200,420 360,240 540,320 C720,400 880,240 1080,320 C1280,400 1420,240 1620,320 C1820,400 1980,240 2160,320" />
+    </svg>
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="none" style="top:40%; animation: drift1 38s linear infinite reverse;">
+      <path class="wave-path" stroke="var(--tan)" style="opacity:.28" d="M0,300 C220,360 380,250 560,300 C740,350 900,250 1100,300 C1300,350 1440,250 1640,300" />
+    </svg>
+  </div>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-tracker"><span class="pulse"></span> Tracking <b id="htNum">1,186</b> local leaderboards <span class="ht-sep">·</span> <span class="ht-live">updated live</span></div>
+      <span class="eyebrow"><span class="sec">§ 01</span> Free audit · AI-era local SEO</span>
+      <h1>
+        <span class="line"><span>Get found</span></span>
+        <span class="line"><span><span class="amp">&amp;</span> recommended.</span></span>
+      </h1>
+      <p class="lead">Tell me your business. I send back a one-page audit with three specific gaps, the data behind them, and a 60-day plan — tuned for how customers find you now: the Google map pack <span class="serif it">and</span> the AI answers they're starting to trust. No pitch attached.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#audit">Get my free audit <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <div class="chips">
+        <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> No call required</span>
+        <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Month-to-month</span>
+        <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Real numbers, not boilerplate</span>
+      </div>
+    </div>
+
+    <!-- live rank-climb demo -->
+    <div class="demo">
+      <div class="demo-card">
+        <div class="demo-head">
+          <span class="q"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> "med spa near me"</span>
+          <span class="live"><span class="pulse"></span> Live map pack</span>
+        </div>
+        <div class="rank-list"></div>
+        <p class="demo-foot">Watch a real client climb as the signals improve — reviews, rating, consistency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAT BAND ============ -->
+<section class="statband" style="padding-block:0">
   <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow reveal-up d1">Free audit / AI-era local SEO</span>
-        <h1 class="reveal-up d2">
-          <span class="line">Get <span class="accent">found</span></span>
-          <span class="line two">&amp; <span class="stroke">recommended<span class="dot">.</span></span></span>
-        </h1>
-        <p class="lede reveal-up d3">Tell me your business. I send back a one-page audit with three specific gaps, the data behind them, and a 60-day action plan, tuned for how customers find you now: the Google map pack <em>and</em> the AI answers they're starting to trust. No pitch attached. Most audits land within 24 hours.</p>
-        <div class="trust reveal-up d4">
-          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> No call required</span>
-          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Month-to-month, no contracts</span>
-          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Real numbers, not boilerplate</span>
+    <div class="stat"><div class="n"><span data-count="1186">1,186</span></div><div class="l">leaderboards tracked</div></div>
+    <div class="stat"><div class="n"><span data-count="24">24</span><span class="u">h</span></div><div class="l">audit turnaround</div></div>
+    <div class="stat"><div class="n"><span data-count="70">70</span><span class="u">%</span></div><div class="l">of clicks go to the top 3</div></div>
+    <div class="stat"><div class="n"><span data-count="60">60</span><span class="u">d</span></div><div class="l">to a working plan</div></div>
+  </div>
+</section>
+
+<!-- ============ THE SHIFT ============ -->
+<section id="shift">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="sec">§ 02</span> The shift</span>
+      <h2>Customers find you two ways now.<br />Most SEO still chases <span class="it">one</span>.</h2>
+      <p class="lead">Ranking on page one isn't the finish line anymore. You have to win the Google map pack <span class="serif it">and</span> get named when someone asks an AI assistant. Both run on the same signals — and I tune for both.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="card surface reveal">
+        <span class="badge"><span class="n">1</span> Google map pack</span>
+        <div class="search-bar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> med spa near me<span class="cursor"></span></div>
+        <div class="mini-row you">
+          <span class="pin">1A</span>
+          <div><div class="biz">Glow Aesthetics</div><div class="meta"><span class="stars">★★★★★</span> 5.0 · 214 reviews · Open now</div></div>
+          <span class="yt">YOU</span>
+        </div>
+        <div class="mini-row">
+          <span class="pin">2B</span>
+          <div><div class="biz">Lumen Skin Bar</div><div class="meta"><span class="stars">★★★★☆</span> 4.6 · 88 reviews</div></div>
+        </div>
+        <div class="mini-row">
+          <span class="pin">3C</span>
+          <div><div class="biz">Radiance Med Spa</div><div class="meta"><span class="stars">★★★★☆</span> 4.4 · 51 reviews</div></div>
         </div>
       </div>
 
-      <form class="form-card reveal-up d3" id="audit-form">
-        <span class="bracket tl"></span><span class="bracket tr"></span>
-        <span class="bracket bl"></span><span class="bracket br"></span>
-        <h3>Request your audit</h3>
-        <p class="small">No spam. No call required. Just a useful report.</p>
-        <div class="form-row">
+      <div class="card surface reveal" data-d="1">
+        <span class="badge"><span class="n">2</span> AI recommendation</span>
+        <div class="ai-q"><b>ASK</b>"What's the best med spa near me for a first visit?"</div>
+        <p class="ai-a" data-typewriter></p>
+      </div>
+    </div>
+    <p class="fineprint">Illustrative example. Win the signals behind both surfaces and you're the answer in each — that's exactly what the audit measures.</p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ============ AUDIT BAND ============ -->
+<section class="audit-band" id="audit">
+  <div class="wrap audit-grid">
+    <div class="reveal">
+      <span class="eyebrow"><span class="sec">§ 03</span> Request your audit</span>
+      <h2>A one-page read on where you <span class="it">actually</span> stand.</h2>
+      <p class="lead">Real numbers from your actual Google Business Profile plus live competitor data. No fluff, no sales angle. Most land within 24 hours.</p>
+      <ul class="audit-list">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Where you rank for your primary keyword today</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Your three biggest, most closeable gaps</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> A 60-day action plan, plus an AI-visibility read</li>
+      </ul>
+    </div>
+
+    <div class="card audit-card reveal" data-d="1">
+      <span class="tag">Free audit</span>
+      <h3>Tell me about your business</h3>
+      <p class="sub">No spam. No call required. Just a useful report.</p>
+      <form id="auditForm">
+        <div class="field">
           <label for="business_name">Business name</label>
-          <input type="text" id="business_name" name="business_name" required placeholder="e.g. Drew Family Dentistry">
+          <input id="business_name" name="business_name" type="text" placeholder="e.g. Glow Aesthetics" required />
         </div>
-        <div class="form-grid">
-          <div class="form-row">
+        <div class="field-row">
+          <div class="field">
             <label for="city">City</label>
-            <input type="text" id="city" name="city" required placeholder="e.g. Phoenix, AZ">
+            <input id="city" name="city" type="text" placeholder="Portland, OR" required />
           </div>
-          <div class="form-row">
+          <div class="field">
             <label for="industry">Industry</label>
             <select id="industry" name="industry" required>
-              <option value="">Choose</option>
+              <option value="" selected disabled>Choose</option>
               <option value="chiropractor">Chiropractor</option>
               <option value="med_spa">Med spa / aesthetics</option>
               <option value="dentist">Dentist</option>
@@ -629,369 +259,308 @@
             </select>
           </div>
         </div>
-        <div class="form-row">
+        <div class="field">
           <label for="email">Email (where to send the audit)</label>
-          <input type="email" id="email" name="email" required placeholder="you@yourbusiness.com">
+          <input id="email" name="email" type="email" placeholder="you@business.com" required />
         </div>
-        <button class="cta" type="submit" id="submit-btn">Send me my audit</button>
+        <button class="btn btn-primary btn-block" type="submit">Send me my audit</button>
         <div id="form-feedback"></div>
-        <div class="form-alt">
-          <span class="form-alt-eyebrow">Or the tailored version</span>
-          <a class="form-alt-cta" href="/audit">Get the full breakdown <span class="arr">→</span></a>
-          <span class="form-alt-note">5 minutes, tell me about your business and goals. I'll email back within 24 hours with a plan built around it.</span>
-        </div>
       </form>
+      <p class="audit-foot">Want the tailored version? The <b style="color:var(--cream)">5-minute full breakdown</b> — tell me about your business and goals, and I'll email back within 24 hours with a plan built around it.<br /><a href="/audit" style="display:inline-block;margin-top:8px;color:var(--blue)">Get the full breakdown →</a></p>
     </div>
   </div>
 </section>
 
-<!-- ===== STATS BAND — operational data row ===== -->
-<section class="stats-band">
+<!-- ============ SAMPLE AUDIT ============ -->
+<section id="sample">
   <div class="wrap">
-    <div class="stats-row">
-      <div class="stat">
-        <!-- MANUAL SYNC REQUIRED: hardcoded leaderboard count. Keep in sync with the utility-bar "Tracking 1,186 leaderboards" value (above) and the live /leaderboards index. -->
-        <div class="num">1,186<span class="unit">tracked</span></div>
-        <div class="lbl">Live leaderboards</div>
-      </div>
-      <div class="stat">
-        <div class="num">24h<span class="unit">SLA</span></div>
-        <div class="lbl">Audit turnaround</div>
-      </div>
-      <div class="stat">
-        <div class="num">30 to 90d<span class="unit">typical</span></div>
-        <div class="lbl">Time to map-pack moves</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== DUAL PROOF ===== -->
-<section class="band tint" id="proof">
-  <div class="wrap">
-    <div class="section-head obs">
-      <span class="eyebrow">§ 02 · The shift</span>
-      <h2>Customers find you two ways now. Most SEO still chases one.</h2>
-      <p>Ranking on page one isn't the finish line anymore. You have to win the Google map pack <em>and</em> get named when someone asks an AI assistant. Both run on the same signals, and I tune for both.</p>
-    </div>
-    <div class="panels">
-      <div class="panel obs">
-        <span class="tag">01 · Google map pack</span>
-        <div class="searchbar">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0a6b3f" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
-          med spa near me
-        </div>
-        <div class="result you">
-          <span class="rank">1</span><span class="pin">A</span>
-          <span class="biz"><b>Glow Aesthetics</b> <span class="stars">★★★★★</span><br><span class="meta">5.0 · 214 reviews · Open now</span></span>
-          <span class="badge-you">YOU</span>
-        </div>
-        <div class="result">
-          <span class="rank">2</span><span class="pin">B</span>
-          <span class="biz"><b>Lumen Skin Bar</b> <span class="stars">★★★★☆</span><br><span class="meta">4.6 · 88 reviews</span></span>
-        </div>
-        <div class="result">
-          <span class="rank">3</span><span class="pin">C</span>
-          <span class="biz"><b>Radiance Med Spa</b> <span class="stars">★★★★☆</span><br><span class="meta">4.4 · 51 reviews</span></span>
-        </div>
-      </div>
-      <div class="panel obs">
-        <span class="tag">02 · AI recommendation</span>
-        <div class="ai-q"><span class="who">ASK</span><span>"What's the best med spa near me for a first visit?"</span></div>
-        <div class="ai-ans">
-          <span class="who">AI ANSWERS</span>
-          For a first visit, <mark>Glow Aesthetics</mark> is the standout, a 5.0 rating across 200+ reviews, clear first-time pricing, and clients consistently mention how thorough the consultation is. A great place to start.<span class="cursor"></span>
-        </div>
-      </div>
-    </div>
-    <p class="panels-note">Illustrative example. Win the signals behind both surfaces and you're the answer in each, that's what the audit measures.</p>
-  </div>
-</section>
-
-<!-- ===== WHAT YOU'LL GET BACK ===== -->
-<section class="band">
-  <div class="wrap">
-    <div class="section-head obs">
-      <span class="eyebrow">§ 03 · Sample</span>
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="sec">§ 04</span> Sample</span>
       <h2>What you'll get back</h2>
-      <p>Roughly a one-page audit. Real numbers from your actual Google Business Profile + live competitor data, no fluff, no sales angle. Below is an example layout; yours will be specific to your real numbers and the businesses competing with you for top-3 visibility.</p>
+      <p class="lead">Here's the format — yours will be specific to your real numbers and the businesses competing with you for top-3 visibility.</p>
     </div>
-    <article class="sample-preview obs">
-      <header class="sample-header">
-        <div class="sample-eyebrow">Sample audit · format preview</div>
-        <h3 class="sample-title">Pinecrest Family Dental</h3>
-        <p class="sample-sub">Family dentistry · <em>(example business, not a real prospect)</em></p>
-      </header>
-      <div class="sample-stats">
-        <div class="sample-stat warn"><div class="label">Google Rating</div><div class="value">4.1★</div></div>
-        <div class="sample-stat warn"><div class="label">Reviews</div><div class="value">12</div></div>
-        <div class="sample-stat bad"><div class="label">Rank for "dentist"</div><div class="value">#9</div></div>
+
+    <div class="card audit-sample reveal">
+      <div class="as-left">
+        <span class="label">Sample audit · format preview</span>
+        <h3>Pinecrest Family Dental</h3>
+        <p class="cat">Family dentistry · <span class="it">example, not a real prospect</span></p>
+        <div class="metrics">
+          <div class="metric"><div class="v">4.1<small>★</small></div><div class="k">Google rating</div></div>
+          <div class="metric bad"><div class="v">12</div><div class="k">Reviews</div></div>
+          <div class="metric bad"><div class="v">#9</div><div class="k">Rank · "dentist"</div></div>
+        </div>
       </div>
-      <div class="sample-body">
+      <div class="as-right">
         <h4>Where you're losing visibility</h4>
-        <ul>
-          <li><strong>Review volume:</strong> 12 reviews vs the top-3 average of 87. Google weighs review volume heavily for local pack visibility, this is the single biggest closeable gap.</li>
-          <li><strong>Rating threshold:</strong> 4.1★ is below the 4.3★ threshold Google uses to filter the top-3 pack. Top businesses average 4.8★.</li>
-          <li><strong>Local pack position:</strong> #9, page 1 but outside the top 3 that capture ~70% of clicks.</li>
+        <ul class="as-list">
+          <li><b>Review volume:</b> 12 reviews vs the top-3 average of 87. Google weighs volume heavily — the single biggest closeable gap.</li>
+          <li><b>Rating threshold:</b> 4.1★ sits below the 4.3★ filter for the top-3 pack. Leaders average 4.8★.</li>
+          <li><b>Local pack position:</b> #9 — page 1, but outside the top 3 that capture ~70% of clicks.</li>
         </ul>
         <h4>Three levers that would move the needle</h4>
-        <div class="sample-fade">
-          <ul>
-            <li><strong>Review velocity:</strong> closing the gap to top-3 means a structured monthly collection system plus responses to every existing review.</li>
-            <li><strong>GBP post + service cadence:</strong> Google rewards weekly fresh content. Your service list also needs to map to specialty searches.</li>
-            <li><strong>Citation footprint + NAP alignment:</strong> consistent name/address/phone across 30-40 directory sites, silent ranking ceiling if mismatched.</li>
-          </ul>
+        <ul class="as-list">
+          <li><b>Review velocity:</b> a structured monthly collection system plus responses to every existing review.</li>
+          <li><b>GBP post + service cadence:</b> Google rewards weekly fresh content; your service list needs to map to specialty searches.</li>
+          <li><b>Citation footprint + NAP alignment:</b> consistent name/address/phone across 30–40 directories — a silent ceiling if mismatched.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="sec">§ 05</span> System</span>
+      <h2>How this works</h2>
+      <p class="lead">The recurring work agencies bill $2,500–$5,000/mo for — review monitoring, weekly posts, citation cleanup, rank tracking, reporting — is mostly repetitive. Software does repetitive well. Strategy still needs a human.</p>
+    </div>
+
+    <div class="steps">
+      <div class="card step reveal">
+        <div class="num">1</div>
+        <div class="when">Week 1</div>
+        <h3>Discovery + onboarding</h3>
+        <p>You fill out the 5-minute breakdown. I review every submission personally and reply within 24 hours. Week one sets up tracked keywords, your GBP audit, citation baseline, and brand voice.</p>
+      </div>
+      <div class="card step reveal" data-d="1">
+        <div class="num">2</div>
+        <div class="when">Daily, ongoing</div>
+        <h3>Automated delivery</h3>
+        <p>Automated systems handle the recurring work: review monitoring + drafted responses, GBP posts in your voice, rank tracking, competitor scans, citation building. On schedule, at your tier's cadence.</p>
+      </div>
+      <div class="card step reveal" data-d="2">
+        <div class="num">3</div>
+        <div class="when">Before publish + monthly</div>
+        <h3>Human review + reporting</h3>
+        <p>Nothing publishes without me reviewing it first. On the 1st of every month you get a real progress report: rank changes, review-count delta, what moved, and what's next.</p>
+      </div>
+    </div>
+
+    <div class="callout reveal">This is why I can charge <b>$1,000–$3,000/mo</b> instead of $2,500–$5,000. Automation does the labor. I do the strategy and the quality bar — same playbook as the big agencies, a fraction of the cost.</div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ============ AI ERA + INDUSTRIES ============ -->
+<section id="ai">
+  <div class="wrap">
+    <div class="two-col" style="align-items:start;gap:clamp(36px,5vw,80px)">
+      <div class="reveal">
+        <span class="eyebrow"><span class="sec">§ 06</span> AI era</span>
+        <h2 style="font-size:clamp(28px,3.6vw,44px);margin:20px 0 12px;font-family:var(--ff-display);font-weight:500">Local SEO in the AI era</h2>
+        <p class="lead" style="margin-bottom:4px">AI Overviews answer before anyone scrolls, and more people just ask an assistant to "find me a good dentist nearby." Those answers are built from the <span class="serif it">same signals as the map pack</span> — so every audit now includes an AI-visibility read.</p>
+        <ul class="feat">
+          <li><span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span class="t"><b>Profile + categories</b> — the source of truth an AI reads before it recommends anyone.</span></li>
+          <li><span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 3 7 7 .5-5.5 4.5 2 7L12 17l-6.5 4 2-7L2 9.5 9 9z"/></svg></span><span class="t"><b>Review velocity, recency &amp; sentiment</b> — what "best [service] near me" answers weigh most.</span></li>
+          <li><span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18 22 12 16 6M8 6 2 12l6 6"/></svg></span><span class="t"><b>Structured data &amp; entity consistency</b> — so machines can parse you and pick you with confidence.</span></li>
+          <li><span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><span class="t"><b>AI-answer presence</b> — whether you show up when someone asks Google's AI for your service.</span></li>
+        </ul>
+      </div>
+
+      <div class="reveal" data-d="1">
+        <span class="eyebrow">Industries I know well</span>
+        <div class="ind-grid" style="margin-top:20px">
+          <a class="card ind" href="/local-seo-for-med-spas">
+            <span class="k">Aesthetics</span>
+            <h3>Local SEO for med spas <span class="arr">→</span></h3>
+            <p>Treatment-level searches ("botox near me", "lip filler [city]"), review velocity, and competing with dermatology and plastic-surgery groups for the map pack.</p>
+          </a>
+          <a class="card ind" href="/local-seo-for-chiropractors">
+            <span class="k">Healthcare</span>
+            <h3>Local SEO for chiropractors <span class="arr">→</span></h3>
+            <p>Owning "chiropractor near me", new-patient intent, and the local pack in towns where five practices fight over the same three spots.</p>
+          </a>
+        </div>
+        <div class="marquee">
+          <div class="marquee-track">
+            <a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=dentists" target="_blank" rel="noopener">Dentists</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=lawyers" target="_blank" rel="noopener">Law firms</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=hvac" target="_blank" rel="noopener">HVAC</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=plumbers" target="_blank" rel="noopener">Plumbers</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=roofers" target="_blank" rel="noopener">Roofers</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=veterinarians" target="_blank" rel="noopener">Veterinarians</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=salons" target="_blank" rel="noopener">Hair salons</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=auto-repair" target="_blank" rel="noopener">Auto repair</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=gyms" target="_blank" rel="noopener">Gyms</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=accountants" target="_blank" rel="noopener">Accountants</a>
+            <a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=dentists" target="_blank" rel="noopener">Dentists</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=lawyers" target="_blank" rel="noopener">Law firms</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=hvac" target="_blank" rel="noopener">HVAC</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=plumbers" target="_blank" rel="noopener">Plumbers</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=roofers" target="_blank" rel="noopener">Roofers</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=veterinarians" target="_blank" rel="noopener">Veterinarians</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=salons" target="_blank" rel="noopener">Hair salons</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=auto-repair" target="_blank" rel="noopener">Auto repair</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=gyms" target="_blank" rel="noopener">Gyms</a><a class="tagpill" href="https://cascadelocalseo.com/leaderboards?industry=accountants" target="_blank" rel="noopener">Accountants</a>
+          </div>
         </div>
       </div>
-      <div class="sample-cta">
-        <div class="sample-cta-text">Get yours, uses your real numbers + competitors</div>
-        <div class="sample-cta-or" style="font-family:var(--mono);font-size:0.72rem;letter-spacing:1px;text-transform:uppercase;color:var(--ink-faint);margin:8px 0 2px;">or, want the full breakdown?</div>
-        <a class="sample-cta-link" href="/audit">Get the full breakdown →</a>
-      </div>
-    </article>
+    </div>
   </div>
 </section>
 
-<!-- ===== HOW THIS WORKS ===== -->
-<section class="band tint" id="how">
+<hr class="divider" />
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
   <div class="wrap">
-    <div class="section-head obs">
-      <span class="eyebrow">§ 04 · System</span>
-      <h2>How this works</h2>
-      <p>The work most SEO agencies bill $2,500 to $5,000/mo for, daily review monitoring, weekly GBP posts, citation cleanup, rank tracking, content drafts, monthly reports, most of it is repetitive. Repetitive work is what software does well. Strategy still needs a human. Here's the split.</p>
-    </div>
-    <div class="how-grid">
-      <div class="how-step obs">
-        <div class="how-num">1</div>
-        <span class="how-tag">Week 1</span>
-        <h3>Discovery + onboarding</h3>
-        <p>You fill out the 5-minute full breakdown, a few questions about your business. I review every submission personally and reply within 24 hours. If we work together, week one sets up your tracked keywords, GBP audit, citation baseline, and brand voice, all from what you told me on the form.</p>
-      </div>
-      <div class="how-step obs">
-        <div class="how-num">2</div>
-        <span class="how-tag">Daily, ongoing</span>
-        <h3>Automated delivery</h3>
-        <p>From day one, automated systems handle the recurring work: monitoring your GBP for new reviews and drafting responses, generating GBP posts in your voice, tracking rank changes, scanning competitors, building out citations. The work happens on schedule, your tier sets the cadence.</p>
-      </div>
-      <div class="how-step obs">
-        <div class="how-num">3</div>
-        <span class="how-tag">Before publish + monthly</span>
-        <h3>Human review + reporting</h3>
-        <p>Nothing publishes without me reviewing it first. Drafted review responses, GBP posts, content briefs, they all hit my queue before they hit your customers. On the 1st of every month you get a real progress report: rank changes, review-count delta, what moved, what's next.</p>
-      </div>
-    </div>
-    <div class="how-footer obs"><strong>This is why I can charge $1,000 to $3,000/mo instead of $2,500 to $5,000.</strong> Automation does the labor. I do the strategy and the quality bar. Same playbook as the bigger agencies, fraction of the cost, faster turnaround, no account-manager markup.</div>
-  </div>
-</section>
-
-<!-- ===== AI ERA ===== -->
-<section class="band">
-  <div class="reading prose obs">
-    <h2>Local SEO in the AI era</h2>
-    <p>Search changed. AI Overviews answer before anyone scrolls, and more people just ask an assistant to "find me a good <em>[dentist]</em> nearby." Here's the part most owners miss: those AI answers are built from the <strong>same signals as the map pack</strong>, your Google Business Profile, your review momentum, your structured data, and how consistent your business details are across the web.</p>
-    <p>Get those right and you win both surfaces. Get them wrong and you're invisible in the one that's growing fastest. So every audit now includes an <strong>AI-visibility read</strong>:</p>
-    <ul>
-      <li><strong>Profile + categories</strong>, the source of truth an AI reads before it recommends anyone.</li>
-      <li><strong>Review velocity, recency &amp; sentiment</strong>, what "best [service] near me" answers weigh most.</li>
-      <li><strong>Structured data &amp; entity consistency</strong>, so machines can parse you and pick you with confidence.</li>
-      <li><strong>AI-answer presence</strong>, whether you actually show up when someone asks Google's AI for your service.</li>
-    </ul>
-    <p class="muted small">Most local SEO still chases "rank #1 on Google." I tune for getting <strong>found and recommended</strong> wherever your customers now look, the map pack and AI answers alike.</p>
-  </div>
-</section>
-
-<!-- ===== INDUSTRIES ===== -->
-<section class="band tint">
-  <div class="reading prose obs">
-    <h2>Industries I know well</h2>
-    <p>The playbook is the same for any local service business, but the searches, the competitors, and the gaps that actually move the needle differ by industry. Two I work in a lot:</p>
-    <div class="ind-grid">
-      <div class="ind-card">
-        <span class="how-tag">Aesthetics</span>
-        <h3><a href="/local-seo-for-med-spas">Local SEO for med spas →</a></h3>
-        <p>Treatment-level searches ("botox near me", "lip filler [city]"), review velocity, and competing with dermatology and plastic-surgery groups for the map pack.</p>
-      </div>
-      <div class="ind-card">
-        <span class="how-tag">Healthcare</span>
-        <h3><a href="/local-seo-for-chiropractors">Local SEO for chiropractors →</a></h3>
-        <p>Owning "chiropractor near me", new-patient intent, and the local pack in towns where five practices are fighting over the same three spots.</p>
-      </div>
-    </div>
-    <p class="small muted">Also: <a class="inline" href="/local-seo-for-dentists">dentists</a> · <a class="inline" href="/local-seo-for-lawyers">law firms</a> · <a class="inline" href="/local-seo-for-hvac">HVAC companies</a> · <a class="inline" href="/local-seo-for-plumbers">plumbers</a> · <a class="inline" href="/local-seo-for-roofers">roofers</a> · <a class="inline" href="/local-seo-for-veterinarians">veterinarians</a> · <a class="inline" href="/local-seo-for-salons">hair salons</a> · <a class="inline" href="/local-seo-for-auto-repair">auto repair shops</a>. The same audit applies to most other local service businesses too.</p>
-  </div>
-</section>
-
-<!-- ===== PRICING ===== -->
-<section class="band" id="pricing">
-  <div class="wrap">
-    <div class="section-head obs">
-      <span class="eyebrow">§ 05 · Engagement</span>
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="sec">§ 07</span> Engagement</span>
       <h2>If you want to hire me after the audit</h2>
-      <p>Most of what's in the audit, you can execute yourself in 60 days. If you'd rather not, here's what working together looks like. Start with a one-time foundation pass, or go straight to a monthly plan, no contracts either way.</p>
+      <p class="lead">Most of what's in the audit you can execute yourself in 60 days. If you'd rather not — start with a one-time foundation pass, or go straight to a monthly plan. No contracts either way.</p>
     </div>
 
-    <div class="foundations obs">
-      <div class="f-info">
-        <div class="f-eyebrow">Start here · one-time</div>
+    <div class="card found reveal" id="foundations">
+      <div>
+        <span class="k">Start here · one-time</span>
         <h3>Foundations: get your SEO up to AI-era standards</h3>
-        <p style="margin:0 0 12px; font-size:0.92rem; color:#cfe3d5;">Search changed. Google's AI and assistants now recommend businesses based on structured data, review detail, and first-party signals, not just a tidy address listing. This is a single pass that brings your foundation up to that standard, so you're eligible to be found <em>and</em> recommended.</p>
-        <ul>
-          <li>Structured schema (JSON-LD) built for your business, LocalBusiness, services, FAQ &amp; reviews</li>
-          <li>Google Business Profile modernized to current spec (categories, services, attributes, Q&amp;A)</li>
-          <li>NAP / citation consistency check across the directories that feed AI answers</li>
-          <li>Your AI-readiness baseline, a scored report of exactly where you stand and what's next</li>
-        </ul>
+        <p>A single pass that brings your foundation up to current spec — structured schema, a modernized Google Business Profile, NAP/citation consistency, and a scored AI-readiness baseline.</p>
+        <a class="btn btn-primary" href="https://buy.stripe.com/28E3cx3WH95SeZ9g200co0n">Get AI-ready · $500 <span class="arr">→</span></a>
       </div>
-      <div class="f-buy">
-        <div class="f-price">$500<small>one-time</small></div>
-        <a class="cta-link" href="https://buy.stripe.com/28E3cx3WH95SeZ9g200co0n">Get AI-ready, $500 →</a>
-        <div class="f-note">No subscription. Roll into a monthly plan anytime.</div>
+      <div class="side">
+        <div class="price">$500<small> one-time</small></div>
+        <p style="margin-top:10px;font-size:13px;font-family:var(--ff-mono);color:var(--muted-2)">No subscription.<br />Roll into a plan anytime.</p>
       </div>
     </div>
 
-    <p class="small muted" style="text-align:center; max-width:760px; margin:0 auto 18px;">Or stay on retainer, every monthly plan below is built for how people search now (structured data, review optimization, and AI-answer targeting baked in):</p>
-
-    <div class="pricing">
-      <div class="tier recommended obs">
-        <h3>Starter</h3>
+    <div class="tiers">
+      <div class="card tier reveal">
+        <div class="name">Starter</div>
         <div class="price">$1,000<small>/mo</small></div>
         <ul>
-          <li>Everything in Foundations, schema, GBP spec &amp; citations maintained, not just set once</li>
-          <li>AI-visibility optimization: reviews shaped for the detail AI pulls, first-party content built out, AI-answer targeting</li>
+          <li>Everything in Foundations — maintained, not just set once</li>
+          <li>AI-visibility optimization &amp; AI-answer targeting</li>
           <li>Daily review monitoring + drafted responses</li>
-          <li>2× weekly GBP posts (Tues + Thurs)</li>
-          <li>Rank tracking + monthly AI-readiness re-score and progress report</li>
+          <li>2× weekly GBP posts (Tue + Thu)</li>
+          <li>Rank tracking + monthly AI-readiness re-score</li>
         </ul>
-        <a class="cta-link" href="https://buy.stripe.com/28EaEZ0Kv2Hu18j9DC0co0e">Start Starter, $1,000/mo →</a>
+        <a class="btn btn-ghost btn-block" href="https://buy.stripe.com/28EaEZ0Kv2Hu18j9DC0co0e">Start Starter <span class="arr">→</span></a>
       </div>
-      <div class="tier obs">
-        <h3>Standard</h3>
+
+      <div class="card tier feature reveal" data-d="1">
+        <span class="ribbon">Most popular</span>
+        <div class="name">Standard</div>
         <div class="price">$1,500<small>/mo</small></div>
         <ul>
           <li>Everything in Starter</li>
           <li>3× weekly GBP posts (Mon + Wed + Fri)</li>
           <li>Bi-weekly competitor scan with specific actions</li>
-          <li>Quarterly keyword expansion (5 new long-tail keywords every 90 days)</li>
+          <li>Quarterly keyword expansion (5 new long-tails / 90 days)</li>
         </ul>
-        <a class="cta-link cta-secondary" href="https://buy.stripe.com/7sY9AV78Ta9W5oz1760co0i">Start Standard, $1,500/mo →</a>
+        <a class="btn btn-primary btn-block" href="https://buy.stripe.com/7sY9AV78Ta9W5oz1760co0i">Start Standard <span class="arr">→</span></a>
       </div>
-      <div class="tier obs">
-        <h3>Full retainer</h3>
+
+      <div class="card tier reveal" data-d="2">
+        <div class="name">Full retainer</div>
         <div class="price">$3,000<small>/mo</small></div>
         <ul>
           <li>Everything in Standard</li>
           <li>5× weekly GBP posts (every weekday)</li>
-          <li>Weekly content briefs + 2 SEO blog posts written for you each month (1,500-2,500 words)</li>
+          <li>Weekly content briefs + 2 SEO blog posts / mo</li>
           <li>Bi-monthly reports (1st + 15th)</li>
           <li>Monthly 30-min strategy call</li>
         </ul>
-        <a class="cta-link cta-secondary" href="https://cal.com/jonathan541?utm_source=cascadelocalseo.com&utm_medium=pricing-cta&utm_content=full-retainer-3k&notes=Full%20retainer%20(%243%2C000%2Fmo)%20inquiry%20from%20the%20homepage%20pricing%20section.">Talk to Jonathan →</a>
+        <a class="btn btn-ghost btn-block" href="https://cal.com/jonathan541?utm_source=cascadelocalseo.com&amp;utm_medium=pricing-cta&amp;utm_content=full-retainer-3k&amp;notes=Full%20retainer%20(%243%2C000%2Fmo)%20inquiry%20from%20the%20homepage%20pricing%20section.">Talk to Jonathan <span class="arr">→</span></a>
       </div>
     </div>
-    <p class="small muted" style="text-align:center;">Month-to-month. Cancel anytime. No setup fees. Stripe Customer Portal lets you update your card or cancel yourself, no calls required.</p>
-    <p class="portal-line">Already a customer? <a href="https://billing.stripe.com/p/login/00w4gB1Ozdm8eZ96rq0co00">Manage your subscription →</a></p>
+    <p class="pricing-foot">Month-to-month. Cancel anytime. No setup fees. <a href="https://billing.stripe.com/p/login/00w4gB1Ozdm8eZ96rq0co00">Manage your subscription →</a></p>
   </div>
 </section>
 
-<!-- ===== WHO I AM ===== -->
-<section class="band tint">
-  <div class="reading prose obs">
-    <h2>Who I am</h2>
-    <p>I'm Jonathan, a one-person operation. I run a system of automated routines that handle the rank tracking, review monitoring, content drafting, and reporting, the work most agencies overcharge for and do by hand. That means I can keep prices reasonable and take on more clients than a typical SEO consultant.</p>
-    <p>This page exists because cold-pitching local businesses on SEO services feels gross. I'd rather show you the data, give you a real audit, and let you decide whether you want help executing on it. Most don't. That's fine.</p>
+<hr class="divider" />
+
+<!-- ============ WHO I AM ============ -->
+<section id="who">
+  <div class="wrap who solo">
+    <div class="reveal">
+      <span class="eyebrow">Who I am</span>
+      <h2>A one-person operation — by design.</h2>
+      <p>I'm Jonathan. I run a system of automated routines that handle the rank tracking, review monitoring, content drafting, and reporting — the work most agencies overcharge for and do by hand. That lets me keep prices reasonable and take on more clients than a typical consultant.</p>
+      <p>This page exists because cold-pitching local businesses on SEO feels gross. I'd rather show you the data, give you a real audit, and let you decide whether you want help executing on it. Most don't. That's fine.</p>
+      <div class="sig">— Jonathan Luis</div>
+    </div>
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
-<section class="band">
-  <div class="reading">
-    <div class="section-head obs" style="text-align:left; margin-bottom:18px;">
-      <span class="eyebrow">§ 06 · Answers</span>
+<hr class="divider" />
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="sec">§ 08</span> Answers</span>
       <h2>FAQ</h2>
     </div>
-    <div class="faq obs">
-      <details><summary>Where do I rank on Google Maps?</summary><p>Maybe already on my public rankings, I track the Google Map Pack for local businesses across 1,186 city and industry markets. <a class="inline" href="/leaderboards">Find your city</a> and see exactly where you land, who owns the top three, and the gaps holding you back. Don't see your market yet? The free audit covers any business.</p></details>
-      <details><summary>How does the audit actually work?</summary><p>You submit your business. My system pulls your current rank, review profile, and the top 3 competitors in your area for your primary keyword. I write up three specific gaps and three specific actions. You get the audit by email, usually within 24 hours, sometimes within an hour.</p></details>
-      <details><summary>Why is the audit free?</summary><p>Two reasons. First, it's mostly automated, it costs me about a dollar to generate. Second, most cold sales feel terrible because they ask before they give. I'd rather give first. If the audit is useful and you want help executing on it, hire me. If not, no harm done.</p></details>
-      <details><summary>I'm not a chiropractor/dentist/HVAC/lawyer/etc. Can you still help?</summary><p>Yes. The audit logic adapts to any service business with local search demand, vets, med spas, auto shops, real estate agents, gyms, salons, accountants. If your customers find you on Google Maps, the same playbook applies.</p></details>
-      <details><summary>How fast can I expect results?</summary><p>For most local pack improvements: 30 to 90 days. Reviews compound; one strong review month moves the needle. Top-3 ranking changes typically happen in months 2 to 4 once the basics are fixed. If your business is brand new with no GBP listing, the timeline doubles. I'll be honest about timing in your audit.</p></details>
-      <details><summary>What if I already have an SEO agency?</summary><p>Get the audit anyway. Use it to ask your agency hard questions. If they're doing their job, they'll appreciate the second set of eyes. If not, you'll know.</p></details>
-      <details><summary>Will you spam me?</summary><p>No. The audit comes once. If you don't reply, you'll get one short check-in a week later and one final note a week after that. Then I stop and you never hear from me again. Three emails total, max.</p></details>
-      <details><summary>Do you sign contracts?</summary><p>Month-to-month only. If I can't keep delivering value, you should be able to leave.</p></details>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">How does the audit actually work?<span class="pm"></span></button>
+        <div class="faq-a"><p>You submit your business. My system pulls your current rank, review profile, and the top-3 competitors in your area for your primary keyword. I write up three specific gaps and three specific actions. You get it by email, usually within 24 hours — sometimes within an hour.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Why is the audit free?<span class="pm"></span></button>
+        <div class="faq-a"><p>Two reasons. First, it's mostly automated — it costs me about a dollar to generate. Second, most cold sales feel terrible because they ask before they give. I'd rather give first. If it's useful and you want help executing, hire me. If not, no harm done.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">I'm not a chiropractor / dentist / HVAC / lawyer. Can you still help?<span class="pm"></span></button>
+        <div class="faq-a"><p>Yes. The audit logic adapts to any service business with local search demand — vets, med spas, auto shops, real estate agents, gyms, salons, accountants. If your customers find you on Google Maps, the same playbook applies.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How fast can I expect results?<span class="pm"></span></button>
+        <div class="faq-a"><p>For most local-pack improvements: 30 to 90 days. Reviews compound; one strong review month moves the needle. Top-3 ranking changes typically happen in months 2 to 4 once the basics are fixed. Brand-new businesses with no GBP listing roughly double that. I'll be honest about timing in your audit.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if I already have an SEO agency?<span class="pm"></span></button>
+        <div class="faq-a"><p>Get the audit anyway. Use it to ask your agency hard questions. If they're doing their job, they'll appreciate the second set of eyes. If not, you'll know.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will you spam me?<span class="pm"></span></button>
+        <div class="faq-a"><p>No. The audit comes once. If you don't reply, you'll get one short check-in a week later and one final note a week after that. Then I stop, and you never hear from me again. Three emails total, max.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you sign contracts?<span class="pm"></span></button>
+        <div class="faq-a"><p>Month-to-month only. If I can't keep delivering value, you should be able to leave.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer>
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="waves" aria-hidden="true">
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="none" style="top:20%; animation: drift1 26s linear infinite;">
+      <path class="wave-path" stroke="var(--accent)" style="opacity:.4" d="M0,300 C200,220 360,380 540,300 C720,220 880,380 1080,300 C1280,220 1420,380 1620,300 C1820,220 1980,380 2160,300" />
+    </svg>
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="none" style="top:42%; animation: drift2 34s linear infinite;">
+      <path class="wave-path" stroke="var(--blue)" style="opacity:.3" d="M0,320 C220,400 380,240 560,320 C740,400 900,240 1100,320 C1300,400 1440,240 1640,320" />
+    </svg>
+  </div>
+  <div class="wrap final-inner">
+    <div class="reveal">
+      <h2>See where you actually <span class="it">stand</span>.</h2>
+      <p class="lead">A specific, no-pitch audit: where you rank, your three biggest gaps, and a 60-day plan. Most land within 24 hours.</p>
+      <a class="btn btn-primary" href="#audit" style="font-size:17px;padding:17px 32px">Get your free audit <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
   <div class="wrap">
-    <div><strong>Cascade Local SEO</strong> · built by <a href="https://www.linkedin.com/in/jonathan-luis-917448b8" target="_blank" rel="noopener">Jonathan Luis</a> · <a href="/blog">Blog</a> · <a href="/leaderboards">Rankings</a></div>
-    <div><a href="mailto:jonathan@cascadelocalseo.com">jonathan@cascadelocalseo.com</a></div>
+    <div class="footer-inner">
+      <a class="brand" href="#top">
+        <img src="/assets/cascade-logo.png" alt="Cascade logo" style="width:34px;height:34px;border-radius:9px" />
+        <span><b>Cascade</b><span class="dot">.</span></span>
+      </a>
+      <nav class="footer-links">
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/leaderboards">Rankings</a>
+        <a href="/blog">Blog</a>
+        <a href="https://www.linkedin.com/in/jonathan-luis-917448b8" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="footer-mail" href="mailto:jonathan@cascadelocalseo.com">jonathan@cascadelocalseo.com</a>
+      </nav>
+    </div>
+    <p class="footer-fine">Cascade Local SEO · built by Jonathan Luis · free audits for service businesses, built for the AI era.</p>
   </div>
 </footer>
 
-<script>
-  // nav shadow + scroll progress bar (gold hairline at the very top fills as you scroll)
-  const hdr = document.getElementById('hdr');
-  const progress = document.getElementById('scroll-progress');
-  function onScroll() {
-    hdr.classList.toggle('scrolled', scrollY > 8);
-    const max = (document.documentElement.scrollHeight - innerHeight) || 1;
-    progress.style.width = (Math.min(scrollY / max, 1) * 100) + '%';
-  }
-  addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+<!-- wave keyframes -->
+<style>
+  @keyframes drift1 { from { transform: translateX(0); } to { transform: translateX(-25%); } }
+  @keyframes drift2 { from { transform: translateX(-12%); } to { transform: translateX(-37%); } }
+</style>
 
-  // scroll reveals
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: .14 });
-  document.querySelectorAll('.obs').forEach(el => io.observe(el));
-
-  // Audit form submission, preserved from live site
-  const form = document.getElementById('audit-form');
-  const feedback = document.getElementById('form-feedback');
-  const btn = document.getElementById('submit-btn');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    feedback.className = '';
-    feedback.textContent = '';
-
-    const payload = {
-      business_name: form.business_name.value.trim(),
-      city: form.city.value,
-      industry: form.industry.value,
-      email: form.email.value.trim().toLowerCase(),
-      submitted_at: new Date().toISOString(),
-      source: 'cascadelocalseo.com',
-    };
-
-    try {
-      const r = await fetch('https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/audit-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const j = await r.json();
-      if (j.success) {
-        feedback.className = 'ok';
-        feedback.textContent = 'Thanks. Your audit is queued. Check ' + payload.email + ' within 24 hours. If you don\'t see it, check spam.';
-        form.reset();
-      } else {
-        feedback.className = 'err';
-        feedback.textContent = 'Something went wrong: ' + (j.error || 'unknown error') + '. Email jonathan@cascadelocalseo.com and I\'ll handle it manually.';
-      }
-    } catch (err) {
-      feedback.className = 'err';
-      feedback.textContent = 'Network error. Email jonathan@cascadelocalseo.com and I\'ll handle it manually.';
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Send me my audit';
-    }
-  });
-</script>
-
+<script src="/app-v2.js"></script>
 </body>
 </html>

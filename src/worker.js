@@ -193,6 +193,29 @@ export default {
       return proxyDashboard(url);
     }
 
+    // /exec-dashboard → token-walled executive dashboard (static shell in ./public, live ops data
+    // fetched client-side from the exec-dashboard-data edge fn). The .html form would hit ASSETS'
+    // html_handling redirect and drop ?token, so redirect it ourselves preserving the query; gate
+    // the extensionless path (ASSETS serves the .html content there directly, 200). The
+    // /exec-dashboard.css and .js assets are intentionally NOT gated (no secret data) so styling/
+    // scripts load for an authorized viewer. Gate = SHA-256(token) vs a baked-in hash, so no Worker
+    // secret is needed (deploy.py replaces bindings on every PUT, which would wipe a secret); only
+    // the hash lives in source and the 40-hex-char token is not recoverable from it. The same token
+    // value is stored in config.exec_dashboard_token for the data fn.
+    if (path === "/exec-dashboard.html") {
+      return Response.redirect(`${url.origin}/exec-dashboard${url.search}`, 301);
+    }
+    if (path === "/exec-dashboard") {
+      const EXEC_TOKEN_SHA256 = "9f1c37b7e6131334705cf2e96a3fdc427e0a70a5320604332b8e22d61580afd7";
+      const supplied = url.searchParams.get("token") || "";
+      const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(supplied));
+      const hex = Array.from(new Uint8Array(digest)).map((b) => b.toString(16).padStart(2, "0")).join("");
+      if (hex !== EXEC_TOKEN_SHA256) {
+        return new Response("Not found", { status: 404 });
+      }
+      return env.ASSETS.fetch(request);
+    }
+
     // Google Search Console verification. Served straight from the Worker so the
     // exact .html path returns 200 — static-asset html_handling would otherwise
     // redirect /<file>.html → /<file>, which Google's file verifier rejects.
