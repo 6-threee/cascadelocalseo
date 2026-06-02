@@ -400,7 +400,7 @@ section { padding-block: clamp(64px, 9vw, 128px); position: relative; }
   .as-left { border-right: 0; border-bottom: 1px solid var(--line); }
   .found .side { text-align: left; }
   .nav-links, .nav-badge, .scroll-rail { display: none; }
-  .nav .btn-primary { margin-left: auto; }
+  .nav .btn-primary { margin-left: auto; padding: 8px 14px; font-size: 13px; }
   .menu-btn { display: inline-grid; place-items: center; }
   .demo { margin-top: 8px; }
 }
