@@ -68,8 +68,9 @@ async function proxyAiReadiness(request, url) {
   });
 }
 
-async function proxyRenderAudit(id) {
-  const target = `${SUPABASE_RENDER_AUDIT}?id=${encodeURIComponent(id)}`;
+async function proxyRenderAudit(id, url) {
+  const flyer = url && url.searchParams.get("flyer") === "1" ? "&flyer=1" : "";
+  const target = `${SUPABASE_RENDER_AUDIT}?id=${encodeURIComponent(id)}${flyer}`;
   const upstream = await fetch(target);
   const body = await upstream.text();
   return new Response(body, {
@@ -239,7 +240,7 @@ export default {
 
     const auditMatch = path.match(/^\/audits\/(\d+)$/);
     if (auditMatch) {
-      return proxyRenderAudit(auditMatch[1]);
+      return proxyRenderAudit(auditMatch[1], url);
     }
 
     if (env.ASSETS && typeof env.ASSETS.fetch === "function") {
