@@ -33,6 +33,10 @@
   #form-feedback { margin-top: 14px; padding: 12px 14px; border-radius: 11px; font-size: 14px; display: none; line-height: 1.5; }
   #form-feedback.ok { display: block; background: rgba(74,196,224,0.10); color: var(--blue); border: 1px solid var(--line-blue); }
   #form-feedback.err { display: block; background: rgba(231,140,99,0.12); color: #E78C63; border: 1px solid rgba(231,140,99,0.4); }
+  /* leaderboards-tracker links → rankings page (hover cue) */
+  a.nav-badge, a.hero-tracker { cursor: pointer; transition: border-color .2s, color .2s; }
+  a.nav-badge:hover { color: var(--blue); }
+  a.hero-tracker:hover { border-color: var(--blue); }
 </style>
 
 <script type="application/ld+json">
@@ -99,7 +103,7 @@
       <a href="/leaderboards">Rankings</a>
       <a href="#who">Who I am</a>
     </nav>
-    <span class="nav-badge"><span class="pulse"></span> Tracking 1,186 leaderboards</span>
+    <a class="nav-badge" href="/leaderboards" title="See the live Google Maps rankings"><span class="pulse"></span> Tracking 1,186 leaderboards</a>
     <a class="btn btn-primary" href="#foundations">See pricing <span class="arr-dn">↓</span></a>
     <button class="menu-btn" aria-label="Menu">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -134,7 +138,7 @@
 
   <div class="wrap hero-grid">
     <div>
-      <div class="hero-tracker"><span class="pulse"></span> Tracking <b id="htNum">1,186</b> local leaderboards <span class="ht-sep">·</span> <span class="ht-live">updated live</span></div>
+      <a class="hero-tracker" href="/leaderboards" title="See the live Google Maps rankings"><span class="pulse"></span> Tracking <b id="htNum">1,186</b> local leaderboards <span class="ht-sep">·</span> <span class="ht-live">updated live</span></a>
       <span class="eyebrow"><span class="sec">§ 01</span> Free audit · AI-era local SEO</span>
       <h1>
         <span class="line"><span>Get found</span></span>
