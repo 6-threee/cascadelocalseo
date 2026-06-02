@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      # No submodules: the deploy only needs wrangler.jsonc + public/ + src/worker.js. Fetching the
+      # gstack skills submodule (recursive) was failing the checkout and breaking the deploy.
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
       - name: Set up Python
         uses: actions/setup-python@v5

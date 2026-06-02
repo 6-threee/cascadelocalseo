@@ -130,7 +130,10 @@ def deploy_worker(script_name, main_module_name, main_module_content, completion
         "compatibility_date": compatibility_date,
         "compatibility_flags": compatibility_flags,
         "bindings": [{"type": "assets", "name": "ASSETS"}],
-        "assets": {"jwt": completion_jwt, "config": {}},
+        # run_worker_first: the Worker fetch handler runs before static-asset serving, so routes
+        # like the /exec-dashboard token-wall execute even when a matching asset exists. The handler
+        # falls through to env.ASSETS.fetch for everything else, so normal asset serving is unchanged.
+        "assets": {"jwt": completion_jwt, "config": {"run_worker_first": True}},
     }
     boundary = f"----CF{uuid.uuid4().hex}"
     parts = [
