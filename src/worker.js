@@ -174,6 +174,14 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
 
+    // /gbp was the standalone $299 GBP Optimization Pass LP. That offer folded into the
+    // $199 AI-Ready Foundations on-ramp (2026-06-04), so funnel the old paid path to it
+    // instead of serving a page whose Stripe link is now deactivated. (/gbp-thanks, the
+    // post-checkout success page, is a different path and is intentionally not caught.)
+    if (path === "/gbp") {
+      return Response.redirect(`${url.origin}/#foundations`, 302);
+    }
+
     if (path === "/schema") {
       return proxySchema(url);
     }
