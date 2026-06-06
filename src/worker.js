@@ -188,8 +188,22 @@ async function proxySchema(url) {
   });
 }
 
-export default {
-  async fetch(request, env) {
+// PostHog product analytics. Injected into every HTML response below (static pages + proxied
+// edge-fn pages: audits, leaderboards, blog, client dashboards) via HTMLRewriter, so all current
+// and future pages are covered from one place. The project API key is a public, write-only client
+// key, safe in page source. US region. Preserving ?gclid/utm through the /gbp redirect (below) lets
+// PostHog attribute Google Ads clicks to where they land and convert.
+const POSTHOG_SNIPPET = `<script>(function(){var s=document.createElement("script");s.async=true;s.crossOrigin="anonymous";s.src="https://us-assets.i.posthog.com/static/array.js";s.onload=function(){window.posthog&&window.posthog.init("phc_un8mjm6sUKd2cGdcv4SdwopNigauxvU68KYik2GQGe84",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only"})};document.head.appendChild(s);})();</script>`;
+
+// Append the snippet to <head> on HTML responses only (skips redirects, XML, JSON, plain-text 404s;
+// responses without a <head>, like the GSC verification string, pass through untouched).
+function injectAnalytics(res) {
+  const ct = res.headers.get("content-type") || "";
+  if (!ct.includes("text/html")) return res;
+  return new HTMLRewriter().on("head", { element(el) { el.append(POSTHOG_SNIPPET, { html: true }); } }).transform(res);
+}
+
+async function route(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
 
@@ -198,7 +212,9 @@ export default {
     // instead of serving a page whose Stripe link is now deactivated. (/gbp-thanks, the
     // post-checkout success page, is a different path and is intentionally not caught.)
     if (path === "/gbp") {
-      return Response.redirect(`${url.origin}/#foundations`, 302);
+      // Keep the query string (gclid/utm) and put it before the #fragment so Google Ads
+      // attribution survives the redirect and PostHog can read it on the landing page.
+      return Response.redirect(`${url.origin}/${url.search}#foundations`, 302);
     }
 
     if (path === "/schema") {
@@ -278,5 +294,10 @@ export default {
       return env.ASSETS.fetch(request);
     }
     return new Response("Not found", { status: 404 });
+}
+
+export default {
+  async fetch(request, env) {
+    return injectAnalytics(await route(request, env));
   },
 };
