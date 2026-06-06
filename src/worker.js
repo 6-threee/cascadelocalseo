@@ -10,6 +10,7 @@ const SUPABASE_APPROVE_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functio
 const SUPABASE_DASHBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/dashboard";
 const SUPABASE_RENDER_BLOG = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-blog";
 const SUPABASE_RENDER_LEADERBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-leaderboard";
+const SUPABASE_CLIENT_DASHBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-client-dashboard";
 const SUPABASE_GENERATE_SCHEMA = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/generate-schema";
 
 async function proxySelfAudit(request, url) {
@@ -97,6 +98,24 @@ async function proxyApproveAudit(url) {
 
 async function proxyDashboard(url) {
   const target = `${SUPABASE_DASHBOARD}${url.search}`;
+  const upstream = await fetch(target);
+  const body = await upstream.text();
+  return new Response(body, {
+    status: upstream.status,
+    headers: {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "no-store",
+      "x-robots-tag": "noindex, nofollow",
+    },
+  });
+}
+
+// /client/<token> → a retainer client's private, token-gated live results dashboard, proxied to
+// the Supabase render-client-dashboard function. The unguessable token IS the key; the function
+// 404s on a bad/missing one. no-store + noindex so these private pages are never cached or crawled.
+async function proxyClientDashboard(path) {
+  const token = path.slice("/client/".length).split("/")[0];
+  const target = `${SUPABASE_CLIENT_DASHBOARD}?token=${encodeURIComponent(token)}`;
   const upstream = await fetch(target);
   const body = await upstream.text();
   return new Response(body, {
@@ -200,6 +219,10 @@ export default {
 
     if (path === "/dashboard") {
       return proxyDashboard(url);
+    }
+
+    if (path.startsWith("/client/")) {
+      return proxyClientDashboard(path);
     }
 
     // /exec-dashboard → token-walled executive dashboard (static shell in ./public, live ops data
