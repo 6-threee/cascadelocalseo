@@ -885,9 +885,9 @@ def render(slug, v):
   <hr class="divider">
 
   <section>
-    <span class="eyebrow"><span class="sec">§ 05</span> AI era</span>
+    <span class="eyebrow"><span class="sec">§ 05</span> AEO + GEO</span>
     <h2>Built for how people search now</h2>
-    <p>More and more, customers don't scroll, they ask Google's AI or an assistant for the best {ai_noun} near them and trust whatever it answers. Those AI answers are built from the same signals as the map pack: your Google Business Profile, your reviews, and consistent business data. I tune for both, so you're the one that gets <strong>found and recommended</strong>, not just ranked.</p>
+    <p>More and more, customers don't scroll, they ask Google's AI or an assistant for the best {ai_noun} near them and trust whatever it answers. That new layer has a name, AEO and GEO (Answer and Generative Engine Optimization), and it runs on the same signals as the map pack: your Google Business Profile, your reviews, and consistent business data. I tune for both, so you're the one that gets <strong>found and recommended</strong>, not just ranked.</p>
   </section>
 {rankings_section}
   <hr class="divider">
