@@ -212,9 +212,10 @@ async function route(request, env) {
     // instead of serving a page whose Stripe link is now deactivated. (/gbp-thanks, the
     // post-checkout success page, is a different path and is intentionally not caught.)
     if (path === "/gbp") {
-      // Keep the query string (gclid/utm) and put it before the #fragment so Google Ads
-      // attribution survives the redirect and PostHog can read it on the landing page.
-      return Response.redirect(`${url.origin}/${url.search}#foundations`, 302);
+      // Land ad traffic at the top of the homepage (the hero + free-audit hook), NOT jumped
+      // to #foundations, which auto-scrolled past the pitch and read as pushy. Keep the query
+      // string (gclid/utm) so Google Ads attribution survives the redirect for PostHog.
+      return Response.redirect(`${url.origin}/${url.search}`, 302);
     }
 
     if (path === "/schema") {
