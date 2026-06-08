@@ -195,12 +195,18 @@ async function proxySchema(url) {
 // PostHog attribute Google Ads clicks to where they land and convert.
 const POSTHOG_SNIPPET = `<script>(function(){var s=document.createElement("script");s.async=true;s.crossOrigin="anonymous";s.src="https://us-assets.i.posthog.com/static/array.js";s.onload=function(){window.posthog&&window.posthog.init("phc_un8mjm6sUKd2cGdcv4SdwopNigauxvU68KYik2GQGe84",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only"})};document.head.appendChild(s);})();</script>`;
 
+// Conversion-intent capture, site-wide (covers homepage + every vertical landing page from one place):
+// any click on an external Stripe payment link (buy.stripe.com) fires a `checkout_started` event,
+// so the funnel can read ad -> audit_requested -> checkout_started. (Completed `purchase` would come
+// from the Stripe webhook, not here, since payment finishes off-site.)
+const EVENTS_SNIPPET = `<script>(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="buy.stripe.com"]');if(!a||!window.posthog)return;try{posthog.capture("checkout_started",{href:a.href,label:(a.textContent||"").trim().slice(0,80)});}catch(_){}},true);})();</script>`;
+
 // Append the snippet to <head> on HTML responses only (skips redirects, XML, JSON, plain-text 404s;
 // responses without a <head>, like the GSC verification string, pass through untouched).
 function injectAnalytics(res) {
   const ct = res.headers.get("content-type") || "";
   if (!ct.includes("text/html")) return res;
-  return new HTMLRewriter().on("head", { element(el) { el.append(POSTHOG_SNIPPET, { html: true }); } }).transform(res);
+  return new HTMLRewriter().on("head", { element(el) { el.append(POSTHOG_SNIPPET + EVENTS_SNIPPET, { html: true }); } }).transform(res);
 }
 
 async function route(request, env) {

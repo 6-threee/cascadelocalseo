@@ -266,6 +266,7 @@
         .then(function (r) { return r.json(); })
         .then(function (j) {
           if (j && j.success) {
+            if (window.posthog) { try { posthog.identify(email); posthog.capture("audit_requested", { industry: payload.industry, city: payload.city, source: payload.source }); } catch (e) {} }
             if (fb) { fb.className = "ok"; fb.textContent = "Thanks. Your audit is queued. Check " + email + " within 24 hours. If you don't see it, check spam."; }
             form.reset();
           } else {
