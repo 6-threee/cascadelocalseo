@@ -1,5 +1,5 @@
 /* ============================================================
-   CASCADE — Executive Dashboard logic
+   CASCADE - Executive Dashboard logic
    Revenue half = illustrative model (arrays below).
    Ops half = LIVE data fetched from exec-dashboard-data edge fn.
    ============================================================ */
@@ -318,7 +318,7 @@
   }
 
   /* ============================================================
-     DAILY OPERATIONS — LIVE (fall back to defaults if no LIVE)
+     DAILY OPERATIONS - LIVE (fall back to defaults if no LIVE)
      ============================================================ */
   const DEF = {
     tasks: [
@@ -421,7 +421,7 @@
     const txt = $("#illusText"), upd = $("#updatedLbl");
     if (LIVE && LIVE.generatedPT) upd.textContent = "Updated " + LIVE.generatedPT;
     // The revenue panels use a fixed illustrative MODEL (not yet wired to real MRR), so they stay
-    // labeled "illustrative" regardless of revenueLive — never present modeled numbers as live.
+    // labeled "illustrative" regardless of revenueLive - never present modeled numbers as live.
     // When the revenue arrays are wired to live MRR later, drop the tags + flip this message then.
     txt.innerHTML = "Revenue panels are an <b>illustrative model</b>; daily-operations data below is <b>live</b>.";
   }
