@@ -1,5 +1,5 @@
 /* ============================================================
-   CASCADE LOCAL SEO — v2 interactions
+   CASCADE LOCAL SEO - v2 interactions
    ============================================================ */
 (function () {
   "use strict";
@@ -176,9 +176,9 @@
     var segments = [
       { t: "For a first visit, ", mark: false },
       { t: "Glow Aesthetics", mark: true },
-      { t: " is the standout — a 5.0 rating across 200+ reviews, clear first-time pricing, and clients consistently mention how thorough the consultation is. A great place to start.", mark: false }
+      { t: " is the standout, a 5.0 rating across 200+ reviews, clear first-time pricing, and clients consistently mention how thorough the consultation is. A great place to start.", mark: false }
     ];
-    var fullHTML = '<span class="tlabel">AI ANSWERS</span>For a first visit, <mark>Glow Aesthetics</mark> is the standout — a 5.0 rating across 200+ reviews, clear first-time pricing, and clients consistently mention how thorough the consultation is. A great place to start.';
+    var fullHTML = '<span class="tlabel">AI ANSWERS</span>For a first visit, <mark>Glow Aesthetics</mark> is the standout, a 5.0 rating across 200+ reviews, clear first-time pricing, and clients consistently mention how thorough the consultation is. A great place to start.';
 
     function typeOut() {
       aiEl.innerHTML = '<span class="tlabel">AI ANSWERS</span><span class="body"></span><span class="tw-cursor"></span>';
@@ -266,7 +266,7 @@
         .then(function (r) { return r.json(); })
         .then(function (j) {
           if (j && j.success) {
-            if (fb) { fb.className = "ok"; fb.textContent = "Thanks. Your audit is queued. Check " + email + " within 24 hours — if you don't see it, check spam."; }
+            if (fb) { fb.className = "ok"; fb.textContent = "Thanks. Your audit is queued. Check " + email + " within 24 hours. If you don't see it, check spam."; }
             form.reset();
           } else {
             if (fb) { fb.className = "err"; fb.textContent = "Something went wrong: " + ((j && j.error) || "unknown error") + ". Email jonathan@cascadelocalseo.com and I'll handle it manually."; }

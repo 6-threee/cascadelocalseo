@@ -266,7 +266,7 @@ async function route(request, env) {
     }
 
     // Google Search Console verification. Served straight from the Worker so the
-    // exact .html path returns 200 — static-asset html_handling would otherwise
+    // exact .html path returns 200, static-asset html_handling would otherwise
     // redirect /<file>.html → /<file>, which Google's file verifier rejects.
     if (path === "/google9fa7c234c0ae307a.html") {
       return new Response("google-site-verification: google9fa7c234c0ae307a.html", {

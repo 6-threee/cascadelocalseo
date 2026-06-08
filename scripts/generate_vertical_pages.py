@@ -836,7 +836,7 @@ def render(slug, v):
 {_sample_bullets(v['sample']['losing'])}
         </ul>
 
-        <h4>Three levers that would move the needle</h4>
+        <h4>Three changes that would move you up</h4>
         <div class="sample-fade">
           <ul>
 {_sample_bullets(v['sample']['levers'])}
@@ -856,7 +856,7 @@ def render(slug, v):
   <section>
     <span class="eyebrow"><span class="sec">§ 04</span> System</span>
     <h2>How this works</h2>
-    <p>The recurring work agencies bill $2,500 to $5,000/mo for, review monitoring, weekly posts, rank tracking, citation cleanup, reporting, is mostly repetitive. Software does repetitive well; strategy still needs a human. Here's the split.</p>
+    <p>The recurring work agencies bill roughly $2,500 to $5,000/mo for, review monitoring, weekly posts, rank tracking, citation cleanup, reporting, is mostly repetitive. Software does repetitive well; strategy still needs a human. Here's the split.</p>
     <div class="how-grid">
       <div class="how-step">
         <div class="how-num">1</div>
@@ -878,7 +878,7 @@ def render(slug, v):
       </div>
     </div>
     <div class="how-footer">
-      <strong>Same playbook as the bigger agencies, a fraction of the cost.</strong> Automation does the labor, I hold the quality bar, and you don't pay an account-manager markup.
+      <strong>Same playbook as the bigger agencies.</strong> Automation does the labor, I hold the quality bar, and you don't pay an account-manager markup.
     </div>
   </section>
 
