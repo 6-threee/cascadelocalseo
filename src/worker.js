@@ -208,9 +208,8 @@ async function route(request, env) {
     const path = url.pathname.replace(/\/+$/, "") || "/";
 
     // /gbp was the standalone $299 GBP Optimization Pass LP. That offer folded into the
-    // $199 AI-Ready Foundations on-ramp (2026-06-04), so funnel the old paid path to it
-    // instead of serving a page whose Stripe link is now deactivated. (/gbp-thanks, the
-    // post-checkout success page, is a different path and is intentionally not caught.)
+    // $199 AI-Ready Foundations on-ramp (2026-06-04), so funnel the old paid path to it.
+    // The dead gbp.html LP and its gbp-thanks.html success page were deleted 2026-06-08.
     if (path === "/gbp") {
       // Land ad traffic at the top of the homepage (the hero + free-audit hook), NOT jumped
       // to #foundations, which auto-scrolled past the pitch and read as pushy. Keep the query
