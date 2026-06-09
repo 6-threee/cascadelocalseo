@@ -7,7 +7,6 @@ const SUPABASE_SELF_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/
 const SUPABASE_AI_READINESS = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/ai-readiness";
 const SUPABASE_RENDER_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-audit";
 const SUPABASE_APPROVE_AUDIT = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/approve-audit";
-const SUPABASE_DASHBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/dashboard";
 const SUPABASE_RENDER_BLOG = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-blog";
 const SUPABASE_RENDER_LEADERBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-leaderboard";
 const SUPABASE_CLIENT_DASHBOARD = "https://ijpgsoeajxyeyqkjivhi.supabase.co/functions/v1/render-client-dashboard";
@@ -96,19 +95,6 @@ async function proxyApproveAudit(url) {
   });
 }
 
-async function proxyDashboard(url) {
-  const target = `${SUPABASE_DASHBOARD}${url.search}`;
-  const upstream = await fetch(target);
-  const body = await upstream.text();
-  return new Response(body, {
-    status: upstream.status,
-    headers: {
-      "content-type": "text/html; charset=utf-8",
-      "cache-control": "no-store",
-      "x-robots-tag": "noindex, nofollow",
-    },
-  });
-}
 
 // /client/<token> → a retainer client's private, token-gated live results dashboard, proxied to
 // the Supabase render-client-dashboard function. The unguessable token IS the key; the function
@@ -240,7 +226,7 @@ async function route(request, env) {
     }
 
     if (path === "/dashboard") {
-      return proxyDashboard(url);
+      return Response.redirect(`${url.origin}/exec-dashboard`, 301);
     }
 
     if (path.startsWith("/client/")) {
