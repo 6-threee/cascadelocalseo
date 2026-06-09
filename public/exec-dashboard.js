@@ -56,6 +56,69 @@
   let RANGE = 12;
   function sliceIdx() { const s = MONTHS.length - RANGE; return { s, n: RANGE }; }
 
+  /* ---------------- LIVE-SNAPSHOT HELPERS (ported from old internal dashboard, recolored) ---------------- */
+  // Absence-safe reads for the NEW top-level JSON fields. LIVE may be null (pre-fetch) or a
+  // field may be missing entirely; both tolerate cleanly so the page never breaks.
+  function liveNum(key) { const v = LIVE && LIVE[key]; return typeof v === "number" ? v : 0; }
+  function liveArr(key) { const v = LIVE && LIVE[key]; return Array.isArray(v) ? v : []; }
+  function liveObj(key) { const v = LIVE && LIVE[key]; return (v && typeof v === "object") ? v : {}; }
+
+  function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function fmtCents(cents) { return "$" + (cents / 100).toLocaleString(undefined, { maximumFractionDigits: 0 }); }
+  function hoursSince(ts) { if (!ts) return null; return (Date.now() - new Date(ts).getTime()) / 3600000; }
+
+  function nextMilestoneCents(mrr) {
+    if (mrr < 100000) return { target: 100000, label: "$1k MRR" };
+    if (mrr < 250000) return { target: 250000, label: "$2.5k MRR" };
+    if (mrr < 500000) return { target: 500000, label: "$5k MRR" };
+    if (mrr < 1000000) return { target: 1000000, label: "$10k MRR" };
+    const t = Math.ceil(mrr / 500000 + 1) * 500000;
+    return { target: t, label: "$" + (t / 100000) + "k MRR" };
+  }
+
+  // Ported sparkline (line + area), keyed to theme. Distinct from the illustrative sparkline above.
+  function snapSpark(data, stroke, fill, height) {
+    const w = 400, h = height || 60;
+    if (!data.length) return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" class="spark"></svg>`;
+    const max = Math.max(1, ...data);
+    const step = w / Math.max(1, data.length - 1);
+    const pts = data.map((v, i) => `${(i * step).toFixed(1)},${(h - 6 - (v / max) * (h - 12)).toFixed(1)}`);
+    const areaPts = `0,${h} ${pts.join(" ")} ${w},${h}`;
+    const li = data.length - 1;
+    const lx = li * step, ly = h - 6 - (data[li] / max) * (h - 12);
+    return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" class="spark">
+      <polygon points="${areaPts}" fill="${fill}" opacity="0.22"/>
+      <polyline points="${pts.join(" ")}" fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="3.5" fill="${stroke}" stroke="var(--panel)" stroke-width="2"/>
+    </svg>`;
+  }
+  function snapBars(data, color, height) {
+    const w = 400, h = height || 70;
+    if (!data.length) return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" class="barchart"></svg>`;
+    const max = Math.max(1, ...data);
+    const bw = (w / data.length) * 0.72, gap = (w / data.length) * 0.28;
+    const bars = data.map((v, i) => {
+      const bh = (v / max) * (h - 8), x = i * (bw + gap) + gap / 2, y = h - bh;
+      return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(2, bh).toFixed(1)}" fill="${color}" opacity="${v === 0 ? 0.18 : 1}"/>`;
+    }).join("");
+    return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" class="barchart">${bars}</svg>`;
+  }
+  function proportionBar(segments) {
+    const total = segments.reduce((s, x) => s + x.value, 0);
+    if (total === 0) return `<div class="prop-bar empty">No data yet</div>`;
+    const w = 800, h = 28; let cursor = 0;
+    const rects = segments.map(seg => {
+      const segW = (seg.value / total) * w;
+      const r = `<rect x="${cursor.toFixed(1)}" y="0" width="${segW.toFixed(1)}" height="${h}" fill="${seg.color}"/>`;
+      cursor += segW; return r;
+    }).join("");
+    const legend = segments.map(seg => {
+      const p = Math.round((seg.value / total) * 100);
+      return `<span class="prop-legend-item"><span class="prop-dot" style="background:${seg.color}"></span>${esc(seg.label)} <b>${seg.value}</b> <span class="prop-pct">${p}%</span></span>`;
+    }).join("");
+    return `<div class="prop-bar"><svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" class="prop-svg">${rects}</svg><div class="prop-legend">${legend}</div></div>`;
+  }
+
   /* ---------------- KPI TILES (illustrative) ---------------- */
   function sparkline(values, color) {
     const w = 100, h = 30, min = Math.min(...values), max = Math.max(...values), span = max - min || 1;
@@ -412,9 +475,200 @@
     $("#watch").innerHTML = html;
   }
 
+  /* ============================================================
+     LIVE BUSINESS SNAPSHOT - ported sections (always live, absence-safe)
+     ============================================================ */
+
+  // 1 + live-MRR gating. Show the live hero/deltas/milestone ONLY when mrr_cents > 0.
+  // When mrr_cents is 0 (or the field is missing), keep the illustrative revenue display
+  // as-is and leave these live blocks hidden, so the page never headlines $0.
+  function renderMrrHero() {
+    const mrr = liveNum("mrr_cents");
+    const heroRow = $("#mrrHeroRow"), deltaRow = $("#mrrDeltaRow");
+    if (mrr <= 0) {
+      heroRow.classList.remove("show");
+      deltaRow.classList.remove("show");
+      return;
+    }
+    const activeClients = liveNum("starter_count") + liveNum("standard_count") + liveNum("full_count");
+    const newClients = liveNum("new_clients_30d");
+    const churnedCohort = liveNum("churned_30d");
+    const newMrr = liveNum("new_mrr_30d_cents");
+    const churnedMrr = liveNum("churned_mrr_30d_cents");
+    const net30 = newMrr - churnedMrr;
+    const ms = nextMilestoneCents(mrr);
+    const progress = Math.min(100, Math.round((mrr / ms.target) * 100));
+    const remaining = Math.max(0, ms.target - mrr);
+
+    $("#mrrHero").innerHTML = `
+      <div>
+        <div class="hero-label">Active MRR</div>
+        <div class="hero-amount num">${fmtCents(mrr)}<span class="unit">/mo</span></div>
+        <div class="hero-sub"><b>${activeClients}</b> paying ${activeClients === 1 ? "customer" : "customers"} · <b>${newClients}</b> new in 30d · <b>${churnedCohort}</b> of recent signups since churned</div>
+      </div>
+      <div class="mrr-milestone">
+        <div class="ml-label">Next milestone</div>
+        <div class="ml-target">${esc(ms.label)}</div>
+        <div class="ml-bar"><div class="ml-fill" style="width:${progress}%"></div></div>
+        <div class="ml-text">${progress}% there · <b>${fmtCents(remaining)}</b> remaining</div>
+      </div>`;
+
+    $("#mrrDeltaRow").innerHTML = `
+      <div class="delta-card"><div class="dc-label">New MRR (30d)</div><div class="dc-value good num">+${fmtCents(newMrr)}</div><div class="dc-sub">${newClients} signups</div></div>
+      <div class="delta-card"><div class="dc-label">Lost MRR (recent cohort)</div><div class="dc-value ${churnedMrr > 0 ? "bad" : ""} num">${churnedMrr > 0 ? "-" : ""}${fmtCents(churnedMrr)}</div><div class="dc-sub">${churnedCohort} of recent signups since churned</div></div>
+      <div class="delta-card"><div class="dc-label">Net change (30d)</div><div class="dc-value ${net30 > 0 ? "good" : net30 < 0 ? "bad" : ""} num">${net30 >= 0 ? "+" : "-"}${fmtCents(Math.abs(net30))}</div><div class="dc-sub">trailing 30 days</div></div>
+      <div class="delta-card"><div class="dc-label">Active clients</div><div class="dc-value num">${activeClients}</div><div class="dc-sub">across all tiers</div></div>`;
+
+    heroRow.classList.add("show");
+    deltaRow.classList.add("show");
+  }
+
+  // Section 1: sending pulse (14-day bar + sparkline)
+  function renderSendingPulse() {
+    const daily = liveArr("daily_sent_14d").map(d => (d && typeof d.count === "number") ? d.count : 0);
+    const total = daily.reduce((s, n) => s + n, 0);
+    const peak = daily.length ? Math.max(...daily) : 0;
+    $("#sentTotal14").innerHTML = total + `<span class="stat-sub">14d</span>`;
+    $("#sentBar").innerHTML = snapBars(daily, "var(--blue)", 70);
+    $("#sentBarFoot").innerHTML = `<span>14d ago</span><span>Peak <b>${peak}</b>/day</span><span>Today</span>`;
+    $("#sentPace").innerHTML = (daily.length ? (total / daily.length).toFixed(1) : "0") + `<span class="stat-sub">/day avg</span>`;
+    $("#sentSpark").innerHTML = snapSpark(daily, "var(--tan)", "var(--tan)", 60);
+    $("#sentSparkFoot").innerHTML = `<span>Smoothed line view</span><span><b>${total}</b> sent in 14d</span>`;
+  }
+
+  // Section 2: system health (freshness table)
+  function renderHealthCheck() {
+    const h = liveObj("health_data");
+    const checks = [
+      { name: "prospect-audit", cron: "daily 10am", last: h.last_audit, max_age_h: 30 },
+      { name: "send-approved-outreach", cron: "weekday 8am", last: h.last_sent, max_age_h: 80 },
+      { name: "prospect-enrichment", cron: "weekday 6am", last: h.last_enriched, max_age_h: 80 },
+      { name: "prospect-discovery", cron: "Sun 6am", last: h.last_captured, max_age_h: 8 * 24 },
+      { name: "review-monitor", cron: "Daily 8:30am PT", last: h.last_review, max_age_h: 30 },
+      { name: "self-audit-responder", cron: "every 6h", last: h.last_ai_draft, max_age_h: 9999, sigDep: true },
+      { name: "stripe-webhook", cron: "event-driven", last: h.last_stripe_event, max_age_h: 9999, sigDep: true }
+    ];
+    let problems = 0;
+    const rows = checks.map(c => {
+      const age = hoursSince(c.last);
+      let status;
+      if (c.sigDep) status = "sig";
+      else if (age === null) { status = "never"; problems++; }
+      else if (age > c.max_age_h) { status = "stale"; problems++; }
+      else status = "ok";
+      const dotCls = status === "ok" ? "dot-ok" : status === "sig" ? "dot-sig" : "dot-bad";
+      const statusText = status === "ok" ? "OK" : status === "sig" ? "IDLE" : status === "stale" ? "STALE" : "n/a";
+      const statusCls = status === "ok" ? "hc-status-ok" : status === "sig" ? "hc-status-sig" : "hc-status-bad";
+      const ageStr = age === null ? "n/a" : age < 1 ? Math.round(age * 60) + "m" : age < 24 ? Math.round(age) + "h" : Math.round(age / 24) + "d";
+      return `<tr><td><span class="hc-dot ${dotCls}"></span>${esc(c.name)}</td><td class="hc-cron">${esc(c.cron)}</td><td class="hc-age">${esc(ageStr)}</td><td class="${statusCls}">${statusText}</td></tr>`;
+    }).join("");
+    const healthy = problems === 0;
+    $("#hcSummary").innerHTML = `<span class="pill ${healthy ? "healthy" : "alert"}">${healthy ? "All clear" : problems + " stale"}</span><span>Idle items fire only on activity (normal until the first paying customer).</span>`;
+    $("#hcRows").innerHTML = rows;
+  }
+
+  // Section 3: email engagement (all-time + proportion bar)
+  function renderEngagement() {
+    const sent = liveNum("audits_sent_total");
+    const opened = liveNum("audits_opened_total");
+    const clicked = liveNum("audits_clicked_total");
+    const bounced = liveNum("audits_bounced_total");
+    const complained = liveNum("audits_complained_total");
+    const openRate = sent > 0 ? Math.round((opened / sent) * 100) : 0;
+    const clickRate = sent > 0 ? Math.round((clicked / sent) * 100) : 0;
+    $("#engageSub").textContent = "All time · " + sent + " sent · " + openRate + "% open · " + clickRate + "% click";
+    const alert = bounced > 0 || complained > 0;
+    $("#engageCards").innerHTML = `
+      <div class="engage-card"><div class="dc-label">Sent (total)</div><div class="dc-value num">${sent}</div></div>
+      <div class="engage-card"><div class="dc-label">Opened</div><div class="dc-value good num">${opened}</div><div class="dc-sub">${openRate}% open rate</div></div>
+      <div class="engage-card"><div class="dc-label">Clicked</div><div class="dc-value good num">${clicked}</div><div class="dc-sub">${clickRate}% click rate</div></div>
+      <div class="engage-card ${alert ? "alert" : ""}"><div class="dc-label">Bounced / Spam</div><div class="dc-value ${alert ? "bad" : ""} num">${bounced} / ${complained}</div><div class="dc-sub">${complained > 0 ? "complaints hurt reputation" : bounced > 0 ? "check bounce reasons" : "clean"}</div></div>`;
+    const openedNoClick = Math.max(0, opened - clicked);
+    const unopened = Math.max(0, sent - opened);
+    const segs = [
+      { label: "Clicked", value: clicked, color: "var(--tan)" },
+      { label: "Opened (no click)", value: openedNoClick, color: "var(--blue)" },
+      { label: "Unopened", value: unopened, color: "rgba(161,184,169,0.4)" }
+    ];
+    if (bounced > 0) segs.push({ label: "Bounced", value: bounced, color: "var(--coral)" });
+    $("#engageBar").innerHTML = proportionBar(segs);
+  }
+
+  // Section 4: customer mix
+  function renderTierMix() {
+    const tiers = [
+      { name: "starter", count: liveNum("starter_count"), color: "var(--blue)" },
+      { name: "standard", count: liveNum("standard_count"), color: "var(--tan)" },
+      { name: "full", count: liveNum("full_count"), color: "var(--sage)" }
+    ];
+    const active = tiers.reduce((s, t) => s + t.count, 0);
+    $("#tierMix").innerHTML = tiers.map(t => {
+      const p = active > 0 ? Math.round((t.count / active) * 100) : 0;
+      return `<div class="tier-row"><div class="tier-label"><span class="tier-dot" style="background:${t.color}"></span>${t.name}</div><div class="tier-bar"><div class="tier-fill" style="width:${active > 0 ? p : 0}%;background:${t.color}"></div></div><div class="tier-count num">${t.count}${active > 0 ? `<span class="pct">· ${p}%</span>` : ""}</div></div>`;
+    }).join("");
+  }
+
+  // Section 5: all-time pipeline funnel
+  function renderFunnel() {
+    const activeClients = liveNum("starter_count") + liveNum("standard_count") + liveNum("full_count");
+    const steps = [
+      { label: "Sourced (raw pool)", value: liveNum("prospects_total"), color: "#2596be" },
+      { label: "Emails sourced", value: liveNum("prospects_with_email"), color: "#3aaace" },
+      { label: "Audits drafted", value: liveNum("audits_total"), color: "var(--blue)" },
+      { label: "Self-audit forms", value: liveNum("self_audits_total"), color: "var(--tan)" },
+      { label: "Paying clients", value: activeClients, color: "var(--sage)" }
+    ];
+    const max = Math.max(1, ...steps.map(s => s.value));
+    $("#funnelRows").innerHTML = steps.map(s =>
+      `<div class="funnel-row"><div class="funnel-label-text">${esc(s.label)}</div><div class="funnel-bar-wrap"><div class="funnel-fill" style="width:${(s.value / max * 100).toFixed(1)}%;background:${s.color}"></div></div><div class="funnel-value num">${s.value}</div></div>`
+    ).join("");
+  }
+
+  // Section 6: recent activity (events, signups, self-audits)
+  function renderRecent() {
+    const events = liveArr("recent_events");
+    const signups = liveArr("recent_signups");
+    const selfAudits = liveArr("recent_self_audits");
+
+    $("#recentEvents").innerHTML = events.length === 0
+      ? `<div class="act-empty">First paying-customer signup event will appear here.</div>`
+      : events.map(e => {
+          const ok = e.result === "ok" || e.result === "skipped";
+          const tagCls = e.livemode ? "tag-live" : "tag-test";
+          const tagText = e.livemode ? "LIVE" : "TEST";
+          return `<div class="act-row"><span class="hc-dot ${ok ? "dot-ok" : "dot-bad"}"></span><div class="act-body"><div class="act-primary">${esc(e.event_type)} <span class="act-tag ${tagCls}">${tagText}</span></div><div class="act-meta">${esc(e.received_at_pt)} · ${esc(e.result || "pending")}</div></div></div>`;
+        }).join("");
+
+    $("#recentSignups").innerHTML = signups.length === 0
+      ? `<div class="act-empty">No paying customers yet. System wired and waiting.</div>`
+      : signups.map(c => {
+          const tier = c.tier || "";
+          return `<div class="act-row"><span class="hc-dot dot-ok"></span><div class="act-body"><div class="act-primary"><b>${esc(c.name)}</b> <span class="act-tag tier-${esc(tier)}">${esc(tier.toUpperCase())}</span></div><div class="act-meta">${esc(c.contact_email || "n/a")} · ${fmtCents(c.monthly_fee_cents || 0)}/mo · ${esc(c.created_at_pt)}</div></div></div>`;
+        }).join("");
+
+    $("#recentSelfAudits").innerHTML = selfAudits.length === 0
+      ? `<div class="act-empty">No self-audit form submissions yet.</div>`
+      : selfAudits.map(s => {
+          const status = s.jonathan_responded_at ? "REPLIED" : s.ai_response_drafted_at ? "DRAFT READY" : "NEW";
+          const statusCls = s.jonathan_responded_at ? "tag-done" : s.ai_response_drafted_at ? "tag-pending" : "tag-new";
+          const dotCls = s.jonathan_responded_at ? "dot-ok" : s.ai_response_drafted_at ? "dot-sig" : "dot-bad";
+          return `<div class="act-row"><span class="hc-dot ${dotCls}"></span><div class="act-body"><div class="act-primary"><b>${esc(s.business_name)}</b> <span class="act-tag ${statusCls}">${status}</span></div><div class="act-meta">${esc(s.contact_email || "n/a")} · ${esc(s.city || "n/a")} · ${esc(s.submitted_at_pt)}</div></div></div>`;
+        }).join("");
+  }
+
+  function renderSnapshot() {
+    renderMrrHero();
+    renderSendingPulse();
+    renderHealthCheck();
+    renderEngagement();
+    renderTierMix();
+    renderFunnel();
+    renderRecent();
+  }
+
   /* ---------------- RENDER ALL ---------------- */
   function renderRevenue() { renderKPIs(); renderLegend(); renderMRRChart(); renderRevChart(); renderFlowChart(); renderDonut(); renderMetrics(); renderTable(); }
-  function renderOps() { renderTasks(); renderGoals(); renderPipeline(); renderFeed(); renderLast24(); renderHealth(); renderWatch(); }
+  function renderOps() { renderTasks(); renderGoals(); renderPipeline(); renderFeed(); renderLast24(); renderHealth(); renderWatch(); renderSnapshot(); }
   function renderAll() { renderRevenue(); renderOps(); }
 
   function applyBanner() {

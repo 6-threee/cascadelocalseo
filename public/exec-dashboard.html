@@ -40,6 +40,12 @@
   <!-- KPI ROW (illustrative until revenueLive) -->
   <section class="row kpi-row" id="kpiRow"></section>
 
+  <!-- LIVE MRR HERO + 30d DELTAS (rendered only when mrr_cents > 0) -->
+  <section class="row row-mrr" id="mrrHeroRow">
+    <div class="panel mrr-hero" id="mrrHero"></div>
+  </section>
+  <section class="row deltas row-mrr" id="mrrDeltaRow"></section>
+
   <!-- ROW A: MRR stacked area + plan mix -->
   <section class="row row-a">
     <div class="panel">
@@ -243,6 +249,122 @@
         </div>
       </div>
       <div class="feed" id="feed"></div>
+    </div>
+  </section>
+
+  <!-- ===== LIVE BUSINESS SNAPSHOT (operational, always live) ===== -->
+  <div class="ops-head">
+    <h2>Business snapshot</h2>
+    <span class="sub">Whole-funnel live data</span>
+  </div>
+
+  <!-- SENDING PULSE: 14-day daily-sent -->
+  <section class="row row-b">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Daily audits sent<span class="live-tag">live</span></h3>
+          <div class="sub">Last 14 days</div>
+        </div>
+      </div>
+      <div class="chart-head"><span class="ch-title">Per day</span><span class="chart-stat" id="sentTotal14">0<span class="stat-sub">14d</span></span></div>
+      <div id="sentBar"></div>
+      <div class="chart-foot" id="sentBarFoot"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Send trajectory<span class="live-tag">live</span></h3>
+          <div class="sub">Smoothed line view</div>
+        </div>
+      </div>
+      <div class="chart-head"><span class="ch-title">14-day pace</span><span class="chart-stat" id="sentPace">0<span class="stat-sub">/day avg</span></span></div>
+      <div id="sentSpark"></div>
+      <div class="chart-foot" id="sentSparkFoot"></div>
+    </div>
+  </section>
+
+  <!-- SYSTEM HEALTH: freshness -->
+  <section class="row">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>System health<span class="live-tag">live</span></h3>
+          <div class="sub">Routine freshness</div>
+        </div>
+      </div>
+      <div class="hc-summary" id="hcSummary"></div>
+      <table class="hc"><tbody id="hcRows"></tbody></table>
+    </div>
+  </section>
+
+  <!-- EMAIL ENGAGEMENT -->
+  <section class="row">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Email engagement<span class="live-tag">live</span></h3>
+          <div class="sub" id="engageSub">All time</div>
+        </div>
+      </div>
+      <div class="engage-grid" id="engageCards"></div>
+      <div class="dc-label" style="margin-bottom:14px">Engagement breakdown</div>
+      <div id="engageBar"></div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER MIX + ALL-TIME FUNNEL -->
+  <section class="row row-three">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Customer mix<span class="live-tag">live</span></h3>
+          <div class="sub">Active clients by tier</div>
+        </div>
+      </div>
+      <div id="tierMix"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Pipeline funnel<span class="live-tag">live</span></h3>
+          <div class="sub">All-time, pool to paying</div>
+        </div>
+      </div>
+      <div id="funnelRows"></div>
+    </div>
+  </section>
+
+  <!-- RECENT ACTIVITY: events + signups + self-audits -->
+  <section class="row row-three">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Stripe events<span class="live-tag">live</span></h3>
+          <div class="sub">Most recent</div>
+        </div>
+      </div>
+      <div id="recentEvents"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Recent signups<span class="live-tag">live</span></h3>
+          <div class="sub">Most recent</div>
+        </div>
+      </div>
+      <div id="recentSignups"></div>
+    </div>
+  </section>
+  <section class="row">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Self-audit submissions<span class="live-tag">live</span></h3>
+          <div class="sub">Most recent</div>
+        </div>
+      </div>
+      <div id="recentSelfAudits"></div>
     </div>
   </section>
 
