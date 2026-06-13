@@ -179,7 +179,7 @@ async function proxySchema(url) {
 // and future pages are covered from one place. The project API key is a public, write-only client
 // key, safe in page source. US region. Preserving ?gclid/utm through the /gbp redirect (below) lets
 // PostHog attribute Google Ads clicks to where they land and convert.
-const POSTHOG_SNIPPET = `<script>(function(){var s=document.createElement("script");s.async=true;s.crossOrigin="anonymous";s.src="https://us-assets.i.posthog.com/static/array.js";s.onload=function(){window.posthog&&window.posthog.init("phc_un8mjm6sUKd2cGdcv4SdwopNigauxvU68KYik2GQGe84",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only"})};document.head.appendChild(s);})();</script>`;
+const POSTHOG_SNIPPET = `<script>(function(){var s=document.createElement("script");s.async=true;s.crossOrigin="anonymous";s.src="https://us-assets.i.posthog.com/static/array.js";s.onload=function(){window.posthog&&window.posthog.init("phc_un8mjm6sUKd2cGdcv4SdwopNigauxvU68KYik2GQGe84",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only",capture_heatmaps:true,autocapture:true})};document.head.appendChild(s);})();</script>`;
 
 // Conversion-intent capture, site-wide (covers homepage + every vertical landing page from one place):
 // any click on an external Stripe payment link (buy.stripe.com) fires a `checkout_started` event,
